@@ -168,7 +168,8 @@ a:hover { color: var(--ink); }
 @media (max-width: 55.99em) {
   .sidebar { padding-block: 1.5rem; }
   .sidebar-inner { gap: 1.1rem; }
-  .sidebar-meta, .sidebar-foot, .sidebar .btn, .sidebar-nav-item .tc-num { display: none; }
+  .sidebar-meta, .sidebar-foot, .sidebar-nav-item .tc-num { display: none; }
+  .sidebar .btn { padding: 0.6rem 1.1rem; font-size: 0.92rem; }
   .sidebar-about h1 { font-size: 1.5rem; }
   .sidebar-about .lead { margin-top: 0.5rem; font-size: 0.92rem; }
   .sidebar-nav {
@@ -523,6 +524,166 @@ section + section { border-top: 1px solid var(--line); }
   border-radius: 3px;
 }
 .callout p { margin: 0; color: var(--ink); }
+
+/* ---- UI mockups inside case studies ----
+   Decorative recreations with plausible data, built from the same tokens. */
+.shot {
+  margin: 2.25rem 0;
+  max-width: 46rem;
+}
+.shot-frame {
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow: hidden;
+}
+.shot-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+.shot-bar::before {
+  content: "";
+  width: 0.55rem; height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+.shot-body { padding: 1rem 1.1rem 1.2rem; display: grid; gap: 0.85rem; }
+.shot figcaption {
+  margin-top: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+.shot.phone { max-width: 24rem; }
+
+/* budget rows with progress bars */
+.mock-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 1rem;
+  align-items: baseline;
+}
+.mock-row .label { font-size: 0.9rem; color: var(--ink); }
+.mock-row .num { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+.mock-row .num strong { color: var(--ink); font-weight: 400; }
+.mock-bar {
+  grid-column: 1 / -1;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.mock-bar i {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+  border-radius: inherit;
+}
+.mock-bar.hot i { background: var(--accent); }
+
+/* activity feed lines */
+.mock-feed { display: grid; gap: 0.5rem; }
+.mock-feed li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.86rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.5rem;
+  list-style: none;
+}
+.case-body ul.mock-feed { padding: 0; margin: 0; max-width: none; }
+.case-body ul.mock-chips { padding: 0; max-width: none; }
+.case-body .mock-feed li, .case-body .mock-chips li { margin-bottom: 0; }
+.mock-feed li > span:nth-child(2) { flex: 1; text-align: left; }
+.mock-feed .who {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--primary-bright);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+  align-self: center;
+  flex: none;
+}
+.mock-feed .amt { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink); align-self: center; }
+
+/* before/after compare slider (static) */
+.mock-compare {
+  position: relative;
+  height: 11rem;
+  border-radius: 5px;
+  overflow: hidden;
+  background:
+    linear-gradient(105deg, oklch(0.32 0.05 60) 0 55%, transparent 55%),
+    linear-gradient(105deg, transparent 0 55%, oklch(0.42 0.06 75) 55%),
+    var(--surface-2);
+}
+.mock-compare::before, .mock-compare::after {
+  position: absolute;
+  bottom: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: oklch(0.9 0.02 80);
+  background: oklch(0.15 0.01 242 / 0.75);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+.mock-compare::before { content: "2024-11 · DAY 1"; left: 0.6rem; }
+.mock-compare::after { content: "2026-05 · TRAY 22"; right: 0.6rem; }
+.mock-handle {
+  position: absolute;
+  inset-block: 0;
+  left: 55%;
+  width: 2px;
+  background: var(--accent);
+}
+.mock-handle::before {
+  content: "◂ ▸";
+  position: absolute;
+  top: 50%; left: 50%;
+  translate: -50% -50%;
+  background: var(--accent);
+  color: oklch(0.15 0 0);
+  font-size: 0.62rem;
+  letter-spacing: -0.05em;
+  padding: 0.28rem 0.4rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* label chips (sessions, suggested labels) */
+.mock-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; padding: 0; margin: 0; list-style: none; }
+.mock-chips li {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.22rem 0.6rem;
+}
+.mock-chips li.on { color: var(--accent); border-color: var(--accent); }
+
+/* terminal / run output */
+.mock-term {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0;
+  white-space: pre-wrap;
+}
+.mock-term .ok { color: oklch(0.75 0.14 150); }
+.mock-term .cmd { color: var(--ink); }
+.mock-term .dim { color: var(--line-strong); }
 
 .case-next { border-top: 1px solid var(--line); padding-block: clamp(2.5rem, 6vh, 4rem); }
 .case-next .tc { margin-bottom: 1rem; }

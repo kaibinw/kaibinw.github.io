@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Household Dashboard — Case Study · Kai-Bin Wong</title>
+<meta name="description" content="A household procurement hub wiring Notion, Home Assistant, and Supabase into one screen, with a scheduled Claude agent scanning deal feeds overnight.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 rx=%223%22 fill=%22%23101114%22/><path d=%22M4 3v10M4 8l4-5M4 8l4 5%22 stroke=%22%23e8a33d%22 stroke-width=%221.6%22 fill=%22none%22/></svg>">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <a class="wordmark" href="../index.html">KBW<span class="cursor">_</span></a>
+
+    <div class="sidebar-about">
+      <h1><a href="../index.html">Kai-Bin Wong</a></h1>
+      <p class="lead"><strong>VFX Editor</strong> in Brisbane, Australia. 17 Hollywood credits — and I build the tools the cut runs on.</p>
+    </div>
+
+    <div class="sidebar-meta">
+      <span><b>LOC</b> Brisbane, AU</span>
+      <span><b>CRED</b> 17 productions</span>
+      <span><b>EDIT</b> Resolve · Avid · Premiere</span>
+      <span><b>CODE</b> Python · C# · HTML</span>
+      <span><b>MTHD</b> Agentic engineering</span>
+      <span><b>EDU</b> M.S. IT, QUT</span>
+    </div>
+
+    <nav class="sidebar-nav" aria-label="Site">
+      <a class="sidebar-nav-item" href="../index.html"><span>Home</span><span class="tc-num">01:00:00:00</span></a>
+      <a class="sidebar-nav-item" href="../index.html#work"><span>Selected work</span><span class="tc-num">01:04:20:00</span></a>
+      <a class="sidebar-nav-item" href="ledger.html"><span>Ledger</span><span class="tc-num">CASE 01</span></a>
+      <a class="sidebar-nav-item" href="dental-catalog.html"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
+      <a class="sidebar-nav-item" href="hq.html"><span>HQ</span><span class="tc-num">CASE 03</span></a>
+      <a class="sidebar-nav-item active" href="dashboard.html" aria-current="page"><span>Dashboard</span><span class="tc-num">CASE 04</span></a>
+      <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
+      <a class="sidebar-nav-item" href="../index.html#contact"><span>Contact</span><span class="tc-num">01:17:00:00</span></a>
+    </nav>
+
+    <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">Message me on LinkedIn</a>
+
+    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 04 OF 04</p>
+  </div>
+</aside>
+
+<main class="content" id="main">
+
+<div class="case-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#work">← Back to selected work</a>
+    <h1>Household Dashboard</h1>
+    <p class="lede">One screen for household buying decisions: what we're low on, what we want, what it costs, and whether it's on sale. Four systems that don't know about each other, wired into a single view, with an agent doing the overnight legwork.</p>
+    <div class="case-facts">
+      <span><b>ROLE</b> Product, design, engineering direction</span>
+      <span><b>STACK</b> Next.js · Notion · Home Assistant · Supabase</span>
+      <span><b>STATUS</b> In build, core views live</span>
+    </div>
+  </div>
+</div>
+
+<div class="case-body">
+  <div class="wrap">
+    <h2>The problem</h2>
+    <p>Household procurement is scattered state: consumable stock lives in your head, the wants list lives in Notion, spend history lives in Ledger, and deals live on forums you'd have to check daily. Buying well means joining all four at the moment of decision, which nobody does at 9pm on a Tuesday.</p>
+
+    <h2>The wiring</h2>
+    <table class="fact-table">
+      <tr><th>Stock state</th><td>Home Assistant tracks consumables; NFC tags on the shelf mark things low with one phone tap.</td></tr>
+      <tr><th>Wants list</th><td>Notion database of things worth waiting for a deal on, with target prices.</td></tr>
+      <tr><th>Spend context</th><td>Read-only queries against Ledger's Supabase, so a purchase is seen against the month's budget.</td></tr>
+      <tr><th>Deal agent</th><td>A scheduled Claude agent parses deal feeds and price-history data overnight, matching against the wants list and flagging genuine drops.</td></tr>
+    </table>
+
+    <h2>What the morning view looks like</h2>
+    <figure class="shot">
+      <div class="shot-frame" aria-hidden="true">
+        <div class="shot-bar">DASHBOARD · TUE 07:10 · 2 ALERTS</div>
+        <div class="shot-body">
+          <ul class="mock-feed">
+            <li><span class="who">STOCK</span><span>Dishwasher tablets — low since Sun</span><span class="amt">buy</span></li>
+            <li><span class="who">DEAL</span><span>Robot vacuum · wants list · 34% below 90-day avg</span><span class="amt">$389</span></li>
+            <li><span class="who">LEDGER</span><span>Household budget headroom this month</span><span class="amt">$212</span></li>
+          </ul>
+          <ul class="mock-chips">
+            <li class="on">2 need a decision</li><li>wants: 14 items</li><li>agent last ran 03:00</li>
+          </ul>
+        </div>
+      </div>
+      <figcaption>Recreation of the morning summary with representative data: a stock alert from a shelf tap, an agent-flagged deal against the wants list, spend headroom from Ledger.</figcaption>
+    </figure>
+
+    <h2>What it demonstrates</h2>
+    <ul>
+      <li><strong>Agents as scheduled colleagues.</strong> The deal scan is a nightly agentic job with a narrow brief and a paper trail, the same pattern as an overnight render check.</li>
+      <li><strong>Integration is the product.</strong> No single component is novel; the value is four systems joined exactly at the decision point.</li>
+      <li><strong>Same method, different domain.</strong> Constraints first, real users (a household), and iteration in production. The approach that ships editorial tools ships this too.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="case-next">
+  <div class="wrap">
+    <p class="tc">NEXT REEL</p>
+    <a href="ledger.html">Ledger →</a>
+  </div>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
+    <span>CUT: KBW · CASE 04 OF 04</span>
+  </div>
+</footer>
+
+</main>
+
+</body>
+</html>

@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 rx=%223%22 fill=%22%23101114%22/><path d=%22M4 3v10M4 8l4-5M4 8l4 5%22 stroke=%22%23e8a33d%22 stroke-width=%221.6%22 fill=%22none%22/></svg>">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,7 +27,9 @@
     <div class="sidebar-meta">
       <span><b>LOC</b> Brisbane, AU</span>
       <span><b>CRED</b> 17 productions</span>
-      <span><b>STK</b> Resolve · Python · C#</span>
+      <span><b>EDIT</b> Resolve · Avid · Premiere</span>
+      <span><b>CODE</b> Python · C# · HTML</span>
+      <span><b>MTHD</b> Agentic engineering</span>
       <span><b>EDU</b> M.S. IT, QUT</span>
     </div>
 
@@ -35,6 +38,8 @@
       <a class="sidebar-nav-item" href="#work"><span>Selected work</span><span class="tc-num">01:04:20:00</span></a>
       <a class="sidebar-nav-item" href="case-studies/ledger.html"><span>Ledger</span><span class="tc-num">CASE 01</span></a>
       <a class="sidebar-nav-item" href="case-studies/dental-catalog.html"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
+      <a class="sidebar-nav-item" href="case-studies/hq.html"><span>HQ</span><span class="tc-num">CASE 03</span></a>
+      <a class="sidebar-nav-item" href="case-studies/dashboard.html"><span>Dashboard</span><span class="tc-num">CASE 04</span></a>
       <a class="sidebar-nav-item" href="#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
       <a class="sidebar-nav-item" href="#contact"><span>Contact</span><span class="tc-num">01:17:00:00</span></a>
     </nav>
@@ -51,7 +56,7 @@
   <div class="wrap">
     <p class="tc">TC 01:00:00:00 — OPEN</p>
     <h1>I cut pixels on films that fill multiplexes — <em>and build the tools the cut runs on.</em></h1>
-    <p class="lede">Cut setup, shot tracking, and conform across <strong>17 tentpole productions</strong> at Rising Sun Pictures — now building a studio pipeline from scratch. As comfortable in a terminal as in a timeline.</p>
+    <p class="lede">Cut setup, shot tracking, and conform across <strong>17 tentpole productions</strong> at Rising Sun Pictures. I work in Resolve, Avid, and Premiere, and through agentic engineering I ship the software around the cut too.</p>
     <div class="hero-cta">
       <a class="btn" href="#contact">Hire a VFX editor who scripts</a>
       <a class="btn btn-ghost" href="#work">See the work</a>
@@ -77,9 +82,9 @@
       <article class="track">
         <p class="track-label"><b>V2</b> — TOOLS &amp; PIPELINE</p>
         <h3>Software that ships.</h3>
-        <p>Most editors stop at the timeline. I write the automation underneath it (<strong>ingest tools, delivery packagers, Resolve scripting</strong>) and apply the same agentic-engineering method to full products: a real-time household finance app and a local-first clinical photo tool, both in daily production use.</p>
+        <p>Most editors stop at the timeline. I write the automation underneath it (<strong>ingest tools, delivery packagers, batch renamers, Resolve scripting</strong>) and apply the same agentic-engineering method to full products: finance apps, clinical tools, and control panels, all in daily use by real people.</p>
         <ul class="tools" aria-label="Pipeline tools">
-          <li>Python</li><li>C#</li><li>Prism Pipeline</li><li>Next.js + Supabase</li><li>Claude</li>
+          <li>Python</li><li>C#</li><li>HTML/CSS/JS</li><li>Prism Pipeline</li><li>Next.js + Supabase</li><li>Claude</li>
         </ul>
       </article>
     </div>
@@ -113,13 +118,35 @@
       </div>
     </article>
 
-    <article class="work-item minor">
+    <article class="work-item">
       <div>
-        <h3>Studio pipeline tooling</h3>
-        <p class="work-kind">EDITORIAL + IO AUTOMATION · METHODOLOGY</p>
+        <h3><a href="case-studies/hq.html">HQ</a></h3>
+        <p class="work-kind">LOCAL CONTROL PANEL · ZERO DEPENDENCIES</p>
       </div>
       <div class="work-body">
-        <p>At my current studio I'm building the editorial and IO pipeline from scratch on DaVinci Resolve and Prism Pipeline: dailies importers, vendor delivery packaging with manifests, batch renaming tools. Studio work stays in-house; the method is what travels. <strong>Ask me about it.</strong></p>
+        <p>A browser control panel over my knowledge vault and Claude Code setup: daily report, live todo panel, and <strong>one-click buttons that run agentic automations headlessly</strong> with output streaming in. Single Node file, no packages, so a non-terminal user can run "audit the wiki" without knowing a terminal exists.</p>
+        <a class="work-link" href="case-studies/hq.html">Read the case study</a>
+      </div>
+    </article>
+
+    <article class="work-item">
+      <div>
+        <h3><a href="case-studies/dashboard.html">Household Dashboard</a></h3>
+        <p class="work-kind">PROCUREMENT HUB + DEAL AGENT · IN BUILD</p>
+      </div>
+      <div class="work-body">
+        <p>One screen for household buying: stock alerts from Home Assistant, a wants list from Notion, spend context from Ledger's Supabase, and <strong>a scheduled Claude agent that scans deal feeds overnight</strong> and flags price drops on things we actually want.</p>
+        <a class="work-link" href="case-studies/dashboard.html">Read the case study</a>
+      </div>
+    </article>
+
+    <article class="work-item minor">
+      <div>
+        <h3>Editorial pipeline tooling</h3>
+        <p class="work-kind">IO AUTOMATION · METHODOLOGY</p>
+      </div>
+      <div class="work-body">
+        <p>Day to day I build the small tools editorial runs on: dailies importers and delivery packagers in Resolve and Prism Pipeline, a batch renamer for versioned frame sequences, and cross-platform path conversion utilities. Studio work stays in-house; the method (agentic engineering) is what travels. <strong>Ask me about it.</strong></p>
       </div>
     </article>
   </div>
