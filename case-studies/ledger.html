@@ -21,12 +21,12 @@
 
     <div class="sidebar-about">
       <h1><a href="../index.html">Kai-Bin Wong</a></h1>
-      <p class="lead"><strong>VFX Editor</strong> in Brisbane, Australia. 17 Hollywood credits — and I build the tools the cut runs on.</p>
+      <p class="lead"><strong>VFX Editor</strong> in Brisbane, Australia. 20+ Hollywood credits — and I build the tools the cut runs on.</p>
     </div>
 
     <div class="sidebar-meta">
       <span><b>LOC</b> Brisbane, AU</span>
-      <span><b>CRED</b> 17 productions</span>
+      <span><b>CRED</b> 20+ productions · <a class="imdb-link" href="https://www.imdb.com/name/nm7834405/">IMDb</a></span>
       <span><b>EDIT</b> Resolve · Avid · Premiere</span>
       <span><b>CODE</b> Python · C# · HTML</span>
       <span><b>MTHD</b> Agentic engineering</span>
@@ -79,17 +79,27 @@
       <tr><th>Free to run</th><td>Vercel and Supabase free tiers cover two users indefinitely.</td></tr>
     </table>
 
-    <h2>How it was built</h2>
+    <h2>How it was built: twelve sessions</h2>
     <p>I have scripting experience (Python, VFX pipeline tooling) but had never built a full-stack web app, written row-level security policies, or set up CI/CD. Every technical decision was made through conversation with Claude: I described what the household needed; the architecture, schema, components, and bug fixes came out of the dialogue. I reviewed, tested, and steered.</p>
-    <ul>
-      <li><strong>Session 1</strong> scoped the data model and stack. No code, just decisions.</li>
-      <li><strong>Session 2</strong> deployed the Supabase schema (7 tables, RLS, realtime) and had login, dashboard, entry, and live sync working locally.</li>
-      <li><strong>Session 3</strong> shipped six features in one sitting: PWA install, category drill-down, budget alerts, custom categories, CSV export, and a hand-rolled SVG donut chart.</li>
-      <li><strong>Sessions 4–12</strong> added dark mode with a full token system, per-card tracking, recurring bills with auto-matching, payback tracking, a monthly close system with locked months, and jsPDF report export.</li>
-    </ul>
+    <table class="fact-table">
+      <tr><th>Session 0–1</th><td>Design references and scoping. Data model, tech stack, and documentation decided before a single line of code.</td></tr>
+      <tr><th>Session 2</th><td>Supabase schema deployed: <strong>7 tables, RLS policies, realtime subscriptions</strong>. Login, dashboard, transaction entry, and live sync working the same day.</td></tr>
+      <tr><th>Session 3</th><td>Six features in one sitting: PWA install, category drill-down, budget alerts, custom categories, CSV export, and a hand-rolled SVG donut chart. No chart library.</td></tr>
+      <tr><th>Session 4</th><td>Dark mode: a full CSS custom-property token system, three-way theme preference, and a Python bulk migration that removed every hardcoded hex in one pass. My wife onboarded that night.</td></tr>
+      <tr><th>Sessions 5–6</th><td>Per-card tracking (three cards, colour badges everywhere), recurring bills page with <strong>27 bills seeded</strong>, keyword auto-matching, and smart suggestions that came from watching her actually use it.</td></tr>
+      <tr><th>Sessions 7–9</th><td>People page with per-person net spend, payback tracking (who fronted what, what came back), and a two-page PDF report designed visually in Claude Design before implementation.</td></tr>
+      <tr><th>Session 10</th><td>Nine features in one day, including a monthly close system with locked months and a jsPDF export that survives iOS Safari.</td></tr>
+      <tr><th>Sessions 11–12</th><td>Mobile UI polish across every view, then a pure product-design session: a consent-based budget-adjustment system scoped, schema migration written, no code. A meeting, a design doc, and a review in one conversation.</td></tr>
+    </table>
     <div class="callout">
-      <p><strong>Twelve sessions, hours each, not weeks.</strong> In production since 2026-05-13 with two daily users, and still growing. One session was pure product design: scope, schema migration, and audit-log architecture decided in a single conversation that would normally be a meeting, a design doc, and a review.</p>
+      <p><strong>Hours per session, not weeks — roughly 8,000 lines deployed.</strong> In production since 2026-05-13 with two daily users, and still growing. Sprint reviews and architecture calls ran through a multi-tier agent protocol: one agent strategises, another breaks work into surgical tasks, a third executes, and consultant agents advise into a shared think-tank log. The review that took Ledger from 8/10 to 9/10 also deleted 682 lines of dead code.</p>
     </div>
+
+    <h2>The dark mode story</h2>
+    <p>Dark mode wasn't in the spec; it emerged because a budgeting PWA gets used in bed at night. The catch: the whole codebase used inline hex colours, so theme classes couldn't work without a rewrite. The fix was a design-token system plus a Python migration script that handled every quote variant in a single pass across eight files. Zero hardcoded palette values remain; the theme switches with one attribute. The pattern was worth keeping, so it's documented as a standalone concept in my knowledge base.</p>
+
+    <h2>Design is part of the stack</h2>
+    <p>Pages with real visual complexity (the history page's radial donut, the two-page PDF report) were designed in <strong>Claude Design first</strong>: it produces a self-contained HTML mockup with real colours and real data structures, iterated until right, then handed to the coding session as the spec. One person, one toolchain, no designer-to-engineer handoff loss. That two-step workflow is now how every visually heavy feature gets built, including parts of this site.</p>
 
     <h2>What it looks like</h2>
     <figure class="shot phone">
@@ -126,6 +136,7 @@
       <li><strong>Agentic engineering scales past scripts.</strong> Managed database, auth, realtime subscriptions, and deployment pipelines are all reachable through disciplined conversation plus domain judgment.</li>
       <li><strong>Constraints first, code second.</strong> The five constraints above ruled out every off-the-shelf option and picked the stack before a line was written.</li>
       <li><strong>Real users are the bar.</strong> The app replaced a genuinely painful workflow for two people who use it every day.</li>
+      <li><strong>The best features were discovered, not planned.</strong> Payback tracking, the smart bill suggestions, and the token-based dark mode all emerged from watching real use. The spreadsheet never could say who owed what; Ledger closes that loop with per-person net spend and a paybacks table in the PDF report.</li>
     </ul>
   </div>
 </div>
@@ -140,6 +151,7 @@
 <footer class="site-foot">
   <div class="wrap">
     <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
+    <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/">IMDb</a> · <a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">LinkedIn</a></span>
     <span>CUT: KBW · CASE 01 OF 04</span>
   </div>
 </footer>

@@ -431,6 +431,11 @@ section + section { border-top: 1px solid var(--line); }
 .contact .pitch { margin-top: 1.25rem; color: var(--muted); font-size: var(--step-1); line-height: 1.5; max-width: 40ch; }
 .contact .hero-cta { margin-top: 2.25rem; }
 
+.sidebar-meta .imdb-link { color: var(--muted); }
+.sidebar-meta .imdb-link:hover { color: var(--ink); }
+.foot-links a { color: var(--muted); text-decoration: none; }
+.foot-links a:hover { color: var(--ink); text-decoration: underline; }
+
 /* ---- footer ---- */
 .site-foot { border-top: 1px solid var(--line); padding-block: 1.5rem; }
 .site-foot .wrap {
