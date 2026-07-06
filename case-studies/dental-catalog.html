@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental Catalog — Case Study · Kai-Bin Wong</title>
+<meta name="description" content="A local-first patient photo manager for a clear-aligner dentist. One self-contained HTML file, zero cloud, in daily clinical use.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <a class="wordmark" href="../index.html">KBW<span class="cursor">_</span></a>
+
+    <div class="sidebar-about">
+      <h1><a href="../index.html">Kai-Bin Wong</a></h1>
+      <p class="lead"><strong>VFX Editor</strong> in Brisbane, Australia. 17 Hollywood credits — and I build the tools the cut runs on.</p>
+    </div>
+
+    <div class="sidebar-meta">
+      <span><b>LOC</b> Brisbane, AU</span>
+      <span><b>CRED</b> 17 productions</span>
+      <span><b>STK</b> Resolve · Python · C#</span>
+      <span><b>EDU</b> M.S. IT, QUT</span>
+    </div>
+
+    <nav class="sidebar-nav" aria-label="Site">
+      <a class="sidebar-nav-item" href="../index.html"><span>Home</span><span class="tc-num">01:00:00:00</span></a>
+      <a class="sidebar-nav-item" href="../index.html#work"><span>Selected work</span><span class="tc-num">01:04:20:00</span></a>
+      <a class="sidebar-nav-item" href="ledger.html"><span>Ledger</span><span class="tc-num">CASE 01</span></a>
+      <a class="sidebar-nav-item active" href="dental-catalog.html" aria-current="page"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
+      <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
+      <a class="sidebar-nav-item" href="../index.html#contact"><span>Contact</span><span class="tc-num">01:17:00:00</span></a>
+    </nav>
+
+    <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">Message me on LinkedIn</a>
+
+    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 02 OF 02</p>
+  </div>
+</aside>
+
+<main class="content" id="main">
+
+<div class="case-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#work">← Back to selected work</a>
+    <h1>Dental Catalog</h1>
+    <p class="lede">A patient photo manager for a clear-aligner dentist: browse by patient, compare sessions side by side, and sort new photos into clinical labels. Everything runs from one self-contained HTML file on her own drive, and it's in daily clinical use.</p>
+    <div class="case-facts">
+      <span><b>ROLE</b> Product direction, domain translation</span>
+      <span><b>STACK</b> Single HTML file · File System Access API</span>
+      <span><b>STATUS</b> v2 in daily use</span>
+    </div>
+  </div>
+</div>
+
+<div class="case-body">
+  <div class="wrap">
+    <h2>The problem</h2>
+    <p>My wife photographs clear-aligner patients at every session: front, sides, occlusal, smile, shade guides, across a folder of 100+ patients going back years. There was no way to browse by patient or compare sessions without hunting through Windows Explorer. The paid apps are subscription-based and sync to a cloud backend. Sensitive patient data plus a tight budget ruled both out.</p>
+
+    <h2>Constraints set before building</h2>
+    <table class="fact-table">
+      <tr><th>Lightweight</th><td>Lives on a single drive, runs from any browser. Portable by construction.</td></tr>
+      <tr><th>Secure</th><td>Zero data leaves the device: it works entirely without a backend, an account, or a subscription.</td></tr>
+      <tr><th>Modular</th><td>As the patient folder grows, the tool grows with it, without ever requiring a migration.</td></tr>
+    </table>
+    <p>Those three constraints eliminated every off-the-shelf option and pointed directly at a single self-contained HTML file using the File System Access API.</p>
+
+    <h2>How it was built</h2>
+    <p>I didn't write a line of code. I stated the constraints and dropped in five patient folders as a proof of concept. The model recognised the dental photo naming conventions unprompted, inferring that <strong>front / right / upper</strong> mapped to specific clinical views, and proposed a labelling scheme matching how dentists actually work. From there, iteration through prompting:</p>
+    <ul>
+      <li><strong>Iteration 1:</strong> core browser with patient grid, session timeline, gallery.</li>
+      <li><strong>Iteration 2:</strong> clinical notes and status per session, persisted to both localStorage and a notes file in the patient folder.</li>
+      <li><strong>Iteration 3:</strong> before/after comparison with a drag slider, the standard affordance in dental software.</li>
+      <li><strong>v2 overhaul:</strong> full design rewrite plus a Sort Wizard with image fingerprinting. It samples pixel luminance via the Canvas API and suggests labels for new photos based on visual similarity to already-sorted ones.</li>
+    </ul>
+    <div class="callout">
+      <p><strong>2,313 lines shipped. Zero written by hand.</strong> Built in hours across two sessions. It replaced a painful manual workflow for a non-technical daily user, which is the only bar that matters.</p>
+    </div>
+
+    <h2>What it demonstrates</h2>
+    <ul>
+      <li><strong>Domain expertise drove the outcome, not coding expertise.</strong> I knew the problem and the constraints; the AI knew how to build. Neither alone ships this.</li>
+      <li><strong>Iterative prompting compounds.</strong> The v2 image-fingerprinting Sort Wizard was unthinkable in week one; it became obvious only after watching real use of v1.</li>
+      <li><strong>Zero ongoing cost.</strong> There is no infrastructure or subscription to maintain, so the tool costs nothing to keep running.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="case-next">
+  <div class="wrap">
+    <p class="tc">NEXT REEL</p>
+    <a href="ledger.html">Ledger →</a>
+  </div>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
+    <span>CUT: KBW · CASE 02 OF 02</span>
+  </div>
+</footer>
+
+</main>
+
+</body>
+</html>

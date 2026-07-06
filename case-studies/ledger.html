@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ledger — Case Study · Kai-Bin Wong</title>
+<meta name="description" content="A real-time couples budgeting app built through agentic engineering: Next.js, Supabase, Vercel. Shipped and in daily use within a week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <a class="wordmark" href="../index.html">KBW<span class="cursor">_</span></a>
+
+    <div class="sidebar-about">
+      <h1><a href="../index.html">Kai-Bin Wong</a></h1>
+      <p class="lead"><strong>VFX Editor</strong> in Brisbane, Australia. 17 Hollywood credits — and I build the tools the cut runs on.</p>
+    </div>
+
+    <div class="sidebar-meta">
+      <span><b>LOC</b> Brisbane, AU</span>
+      <span><b>CRED</b> 17 productions</span>
+      <span><b>STK</b> Resolve · Python · C#</span>
+      <span><b>EDU</b> M.S. IT, QUT</span>
+    </div>
+
+    <nav class="sidebar-nav" aria-label="Site">
+      <a class="sidebar-nav-item" href="../index.html"><span>Home</span><span class="tc-num">01:00:00:00</span></a>
+      <a class="sidebar-nav-item" href="../index.html#work"><span>Selected work</span><span class="tc-num">01:04:20:00</span></a>
+      <a class="sidebar-nav-item active" href="ledger.html" aria-current="page"><span>Ledger</span><span class="tc-num">CASE 01</span></a>
+      <a class="sidebar-nav-item" href="dental-catalog.html"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
+      <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
+      <a class="sidebar-nav-item" href="../index.html#contact"><span>Contact</span><span class="tc-num">01:17:00:00</span></a>
+    </nav>
+
+    <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">Message me on LinkedIn</a>
+
+    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 01 OF 02</p>
+  </div>
+</aside>
+
+<main class="content" id="main">
+
+<div class="case-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#work">← Back to selected work</a>
+    <h1>Ledger</h1>
+    <p class="lede">A full-stack, real-time budgeting app for two people and one household. Database, auth, realtime sync, and deployment, built without a software-engineering background and in daily production use within a week.</p>
+    <div class="case-facts">
+      <span><b>ROLE</b> Product, design, engineering direction</span>
+      <span><b>STACK</b> Next.js · Supabase · Vercel</span>
+      <span><b>STATUS</b> In production since May 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="case-body">
+  <div class="wrap">
+    <h2>The problem</h2>
+    <p>Two people, one shared household, two credit cards, and a month-end ritual of copy-pasting PocketSmith data into a spreadsheet. It was hard to see which card was used at entry time and harder to track who paid us back. The paid options (YNAB, PocketSmith premium) had too much overhead or missed the exact feature set: shared real-time entry, household-level budgets, per-category alerts.</p>
+
+    <h2>Constraints set before building</h2>
+    <table class="fact-table">
+      <tr><th>Two users, one household</th><td>All data belongs to the household; a partner's entries appear instantly.</td></tr>
+      <tr><th>Real-time sync</th><td>Both people see the same numbers without refreshing. That's the whole point.</td></tr>
+      <tr><th>No bank sync</th><td>Manual entry keeps spending intentional and removes the security overhead of connected accounts.</td></tr>
+      <tr><th>Mobile-first PWA</th><td>Both users live on phones; the app installs to the home screen.</td></tr>
+      <tr><th>Free to run</th><td>Vercel and Supabase free tiers cover two users indefinitely.</td></tr>
+    </table>
+
+    <h2>How it was built</h2>
+    <p>I have scripting experience (Python, VFX pipeline tooling) but had never built a full-stack web app, written row-level security policies, or set up CI/CD. Every technical decision was made through conversation with Claude: I described what the household needed; the architecture, schema, components, and bug fixes came out of the dialogue. I reviewed, tested, and steered.</p>
+    <ul>
+      <li><strong>Session 1</strong> scoped the data model and stack. No code, just decisions.</li>
+      <li><strong>Session 2</strong> deployed the Supabase schema (7 tables, RLS, realtime) and had login, dashboard, entry, and live sync working locally.</li>
+      <li><strong>Session 3</strong> shipped six features in one sitting: PWA install, category drill-down, budget alerts, custom categories, CSV export, and a hand-rolled SVG donut chart.</li>
+      <li><strong>Sessions 4–12</strong> added dark mode with a full token system, per-card tracking, recurring bills with auto-matching, payback tracking, a monthly close system with locked months, and jsPDF report export.</li>
+    </ul>
+    <div class="callout">
+      <p><strong>Twelve sessions, hours each, not weeks.</strong> In production since 2026-05-13 with two daily users, and still growing. One session was pure product design: scope, schema migration, and audit-log architecture decided in a single conversation that would normally be a meeting, a design doc, and a review.</p>
+    </div>
+
+    <h2>What it demonstrates</h2>
+    <ul>
+      <li><strong>Agentic engineering scales past scripts.</strong> Managed database, auth, realtime subscriptions, and deployment pipelines are all reachable through disciplined conversation plus domain judgment.</li>
+      <li><strong>Constraints first, code second.</strong> The five constraints above ruled out every off-the-shelf option and picked the stack before a line was written.</li>
+      <li><strong>Real users are the bar.</strong> The app replaced a genuinely painful workflow for two people who use it every day.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="case-next">
+  <div class="wrap">
+    <p class="tc">NEXT REEL</p>
+    <a href="dental-catalog.html">Dental Catalog →</a>
+  </div>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
+    <span>CUT: KBW · CASE 01 OF 02</span>
+  </div>
+</footer>
+
+</main>
+
+</body>
+</html>
