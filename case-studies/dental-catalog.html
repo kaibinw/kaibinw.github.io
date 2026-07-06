@@ -90,18 +90,57 @@
       <p><strong>2,313 lines shipped. Zero written by hand.</strong> Built in hours across two sessions. It replaced a painful manual workflow for a non-technical daily user, which is the only bar that matters.</p>
     </div>
 
-    <h2>What it looks like</h2>
+    <h2>What it looks like, feature by feature</h2>
+    <p>Recreations built from the tool's own design language. No real patients: representative data only.</p>
+
     <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
-        <div class="shot-bar">DENTAL CATALOG · PATIENT 047 · CLEAR ALIGNER</div>
+        <div class="shot-bar">PATIENT BROWSER · 100+ FOLDERS, ONE GRID</div>
         <div class="shot-body">
-          <div class="mock-compare"><span class="mock-handle"></span></div>
+          <div class="mock-grid">
+            <div class="mock-tile"><span class="t-name">Patient 031</span><span class="t-sub">6 sessions · 2023–2026</span></div>
+            <div class="mock-tile hot"><span class="t-name">Patient 047</span><span class="t-sub">TODAY · tray 22</span></div>
+            <div class="mock-tile"><span class="t-name">Patient 052</span><span class="t-sub">4 sessions · retention</span></div>
+            <div class="mock-tile"><span class="t-name">Patient 063</span><span class="t-sub">2 sessions · new</span></div>
+          </div>
           <ul class="mock-chips">
-            <li class="on">front</li><li>right</li><li>left</li><li>upper occlusal</li><li>lower occlusal</li><li>smile</li><li>shade</li>
+            <li class="on">all</li><li>active aligner</li><li>retention</li><li>needs photos</li>
           </ul>
         </div>
       </div>
-      <figcaption>Recreation of the compare view: drag the handle to wipe between day-one and current-tray photos; the chip row is the clinical label set the Sort Wizard assigns to incoming photos.</figcaption>
+      <figcaption>The patient grid replaces hunting through Windows Explorer: every folder becomes a card with its session history, filterable by treatment stage. All read live from the drive via the File System Access API.</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <div class="shot-frame" aria-hidden="true">
+        <div class="shot-bar">SESSION TIMELINE · PATIENT 047</div>
+        <div class="shot-body">
+          <ul class="mock-chips">
+            <li>2024-11 · day 1</li><li>2025-02 · tray 6</li><li>2025-08 · tray 14</li><li class="on">2026-05 · tray 22</li>
+          </ul>
+          <div class="mock-compare"><span class="mock-handle"></span></div>
+          <p class="mock-note"><b>Session note</b> — tracking well; slight rotation on 12 persisting. Saved to localStorage <strong>and</strong> a notes file in the patient folder.</p>
+        </div>
+      </div>
+      <figcaption>Pick any two sessions and wipe between them with the drag handle — the standard before/after affordance in dental software. Clinical notes persist beside the photos they describe, so they survive the tool.</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <div class="shot-frame" aria-hidden="true">
+        <div class="shot-bar">SORT WIZARD · 14 NEW PHOTOS FOUND</div>
+        <div class="shot-body">
+          <ul class="mock-feed">
+            <li><span class="who">IMG</span><span>IMG_8841.jpg · fingerprint ≈ front</span><span class="amt">92%</span></li>
+            <li><span class="who">IMG</span><span>IMG_8842.jpg · fingerprint ≈ upper occlusal</span><span class="amt">88%</span></li>
+            <li><span class="who">IMG</span><span>IMG_8846.jpg · no confident match</span><span class="amt">ask</span></li>
+          </ul>
+          <ul class="mock-chips">
+            <li class="on">front</li><li>right</li><li>left</li><li>upper occlusal</li><li>lower occlusal</li><li>smile</li><li>shade</li>
+          </ul>
+          <div class="mock-actions"><span class="mock-btn">Accept 13 suggestions</span><span class="mock-btn ghost">Review one by one</span></div>
+        </div>
+      </div>
+      <figcaption>The v2 Sort Wizard: new photos are fingerprinted by pixel luminance (Canvas API) and compared against already-sorted ones to suggest a clinical label. Confident matches batch-accept; uncertain ones ask. All local, no cloud, no model API.</figcaption>
     </figure>
 
     <h2>What it demonstrates</h2>

@@ -677,6 +677,67 @@ section + section { border-top: 1px solid var(--line); }
 }
 .mock-chips li.on { color: var(--accent); border-color: var(--accent); }
 
+/* status badge in a shot bar (e.g. DESIGNED · IN BUILD) */
+.shot-bar .shot-badge {
+  margin-left: auto;
+  color: var(--primary-bright);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.04em;
+}
+
+/* fake action buttons inside mocks */
+.mock-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.mock-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 3px;
+  background: var(--primary);
+  color: oklch(0.98 0.005 242);
+}
+.mock-btn.ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line-strong);
+}
+
+/* small tile grid (patient browser) */
+.mock-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: 0.6rem;
+}
+.mock-tile {
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--surface-2);
+  padding: 0.6rem 0.7rem;
+}
+.mock-tile .t-name { font-size: 0.82rem; color: var(--ink); display: block; }
+.mock-tile .t-sub {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--muted);
+  display: block;
+  margin-top: 0.2rem;
+}
+.mock-tile.hot { border-color: var(--accent); }
+.mock-tile.hot .t-sub { color: var(--accent); }
+
+/* inline notice line inside mocks (toast / nudge) */
+.mock-note {
+  font-size: 0.82rem;
+  color: var(--ink);
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  padding: 0.55rem 0.8rem;
+}
+.mock-note b { color: var(--accent); font-weight: 500; }
+
 /* terminal / run output */
 .mock-term {
   font-family: var(--font-mono);

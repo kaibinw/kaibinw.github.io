@@ -101,7 +101,8 @@
     <h2>Design is part of the stack</h2>
     <p>Pages with real visual complexity (the history page's radial donut, the two-page PDF report) were designed in <strong>Claude Design first</strong>: it produces a self-contained HTML mockup with real colours and real data structures, iterated until right, then handed to the coding session as the spec. One person, one toolchain, no designer-to-engineer handoff loss. That two-step workflow is now how every visually heavy feature gets built, including parts of this site.</p>
 
-    <h2>What it looks like</h2>
+    <h2>What it looks like, feature by feature</h2>
+    <p>Recreations built from the app's own design language, with representative data.</p>
     <figure class="shot phone">
       <div class="shot-frame" aria-hidden="true">
         <div class="shot-bar">LEDGER · JULY 2026 · HOUSEHOLD</div>
@@ -128,7 +129,87 @@
           </ul>
         </div>
       </div>
-      <figcaption>Recreation of the July dashboard with representative data: shared category budgets, per-card entries from both users syncing live, payback flag on a fronted expense.</figcaption>
+      <figcaption>The dashboard: shared category budgets, entries from both users syncing live, payback flag on a fronted expense.</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <div class="shot-frame" aria-hidden="true">
+        <div class="shot-bar">CARDS · WHICH PLASTIC PAID</div>
+        <div class="shot-body">
+          <ul class="mock-chips">
+            <li class="on">Amex — $1,204 this month</li><li>Westpac — $486</li><li>ME Go — $118</li>
+          </ul>
+          <ul class="mock-feed">
+            <li><span class="who">AMEX</span><span>Woolworths</span><span class="amt">$96.30</span></li>
+            <li><span class="who">WPC</span><span>Chemist Warehouse · parents</span><span class="amt">$54.00</span></li>
+            <li><span class="who">MEGO</span><span>Translink</span><span class="amt">$9.60</span></li>
+          </ul>
+        </div>
+      </div>
+      <figcaption>Per-card tracking: every transaction carries a card badge, and the People page nets out per-person spend. Purchases made for my parents get their own tag and are excluded from household splits — a rule no off-the-shelf app had.</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <div class="shot-frame" aria-hidden="true">
+        <div class="shot-bar">RECURRING BILLS · 27 SEEDED · AUTO-MATCH</div>
+        <div class="shot-body">
+          <ul class="mock-feed">
+            <li><span class="who">PAID</span><span>Netflix · matched 03 Jul</span><span class="amt">$22.99</span></li>
+            <li><span class="who">PAID</span><span>Car insurance · matched 05 Jul</span><span class="amt">$104.20</span></li>
+            <li><span class="who">DUE</span><span>Electricity · expected by 14 Jul</span><span class="amt">~$180</span></li>
+          </ul>
+          <p class="mock-note"><b>Bill match</b> — "AGL ENERGY" looks like <strong>Electricity</strong>. Mark it paid?</p>
+        </div>
+      </div>
+      <figcaption>The bills engine matches incoming transactions to seeded bills by keyword and nudges after save. The smart-suggestion behaviour came from watching my wife use the app, not from a spec.</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <div class="shot-frame" aria-hidden="true">
+        <div class="shot-bar">LOG EXPENSE · APPLE SHORTCUT</div>
+        <div class="shot-body">
+<pre class="mock-term"><span class="cmd">Merchant?</span>  Coles
+<span class="cmd">Amount?</span>    187.40
+<span class="cmd">Category?</span>  Groceries          <span class="dim">(list pulled from /api/shortcut/categories)</span>
+<span class="cmd">Paid by?</span>   KB
+<span class="dim">POST /api/shortcut/add-transaction · x-shortcut-secret ✓</span>
+<span class="ok">✓ Logged: Coles $187.40 → Groceries (KB) — visible on both phones now</span></pre>
+        </div>
+      </div>
+      <figcaption>Logging from the iPhone action button without opening the app: an Apple Shortcut walks four prompts and fires an authenticated API route. The categories endpoint keeps the menu in sync with the app.</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <div class="shot-frame" aria-hidden="true">
+        <div class="shot-bar">REACTIVE BUDGET<span class="shot-badge">DESIGNED · IN BUILD</span></div>
+        <div class="shot-body">
+          <div class="mock-row">
+            <span class="label">Dining out</span>
+            <span class="num"><strong>$334</strong> / $300 · over by $34</span>
+            <span class="mock-bar hot"><i style="width:100%"></i></span>
+          </div>
+          <ul class="mock-feed">
+            <li><span class="who">1</span><span>Draw from Fuel · $132 headroom</span><span class="amt">suggested</span></li>
+            <li><span class="who">2</span><span>Draw from Entertainment · $56 headroom</span><span class="amt">option</span></li>
+          </ul>
+          <div class="mock-actions"><span class="mock-btn">Draw $34 from Fuel</span><span class="mock-btn ghost">Acknowledge overspend</span></div>
+          <p class="mock-note">Effective cap: <b>$300 + $34 drawn</b> · every move logged in <strong>budget_adjustments</strong>, undo writes an offsetting row</p>
+        </div>
+      </div>
+      <figcaption>Reactive budget, the next release: overruns resolved by consent, never automatically. Donor categories are suggested by priority order; adjustments are immutable paired rows so the audit trail can't lie. Schema is live in production; UI is in build.</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <div class="shot-frame" aria-hidden="true">
+        <div class="shot-bar">MONTH END · CLOSE THE BOOKS</div>
+        <div class="shot-body">
+          <ul class="mock-chips">
+            <li class="on">JUNE LOCKED</li><li>PDF report · 2 pages</li><li>paybacks table</li><li>CSV per-person totals</li>
+          </ul>
+          <p class="mock-note">June is locked — entries are read-only. Either user can unlock. <b>Lock &amp; Save</b> exports the A4 PDF (jsPDF, iOS-Safari safe).</p>
+        </div>
+      </div>
+      <figcaption>The monthly close: locked months make the ledger trustworthy as a record, and the PDF report (designed visually in Claude Design first) is the household's month-end artifact.</figcaption>
     </figure>
 
     <h2>What it demonstrates</h2>
