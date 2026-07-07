@@ -455,6 +455,10 @@ section + section { border-top: 1px solid var(--line); }
 .bin summary .bin-count { margin-left: auto; color: var(--muted); font-size: 0.72rem; }
 .bin summary:hover { background: var(--surface); }
 .bin ul { list-style: none; margin: 0; padding: 0 0.9rem 0.7rem 2.15rem; }
+@media (min-width: 72em) {
+  .bin ul { columns: 2; column-gap: 3rem; }
+  .bin li { break-inside: avoid; }
+}
 .bin li {
   display: flex;
   justify-content: space-between;
