@@ -40,13 +40,16 @@
       <a class="sidebar-nav-item" href="dental-catalog.html"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
       <a class="sidebar-nav-item" href="hq.html"><span>HQ</span><span class="tc-num">CASE 03</span></a>
       <a class="sidebar-nav-item" href="dashboard.html"><span>Dashboard</span><span class="tc-num">CASE 04</span></a>
+      <a class="sidebar-nav-item" href="dailies-importer.html"><span>Dailies Importer</span><span class="tc-num">CASE 05</span></a>
+      <a class="sidebar-nav-item" href="second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 06</span></a>
       <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#contact"><span>Contact</span><span class="tc-num">01:17:00:00</span></a>
     </nav>
 
     <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">Message me on LinkedIn</a>
+    <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com">Email me</a>
 
-    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 01 OF 04</p>
+    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 01 OF 06</p>
   </div>
 </aside>
 
@@ -67,7 +70,11 @@
 
 <div class="case-body">
   <div class="wrap">
-    <h2>The problem</h2>
+    <h2>The studio problem</h2>
+    <p>Every show runs on a cost report that's already out of date. Departments burn bid-days that only surface at month end; overages on awarded work get discovered after the burn, not during it; and when two entities front costs for each other (a facility and its outpost, a show and its reshoot unit), reconciling who owes whom is a spreadsheet ritual nobody trusts. Line producers don't need more reports — they need <strong>actuals that move in real time, visible to everyone who can spend</strong>.</p>
+    <p>Shrink that problem until it fits in a kitchen: it's still real money, real cost centres, and two people who both spend against the same budget. That's the version I could build for, live in production, with users who complain immediately.</p>
+
+    <h2>The same problem at household scale</h2>
     <p>Two people, one shared household, two credit cards, and a month-end ritual of copy-pasting PocketSmith data into a spreadsheet. It was hard to see which card was used at entry time and harder to track who paid us back. The paid options (YNAB, PocketSmith premium) had too much overhead or missed the exact feature set: shared real-time entry, household-level budgets, per-category alerts.</p>
 
     <h2>Constraints set before building</h2>
@@ -133,20 +140,65 @@
     </figure>
 
     <figure class="shot">
-      <div class="shot-frame" aria-hidden="true">
-        <div class="shot-bar">CARDS · WHICH PLASTIC PAID</div>
+      <div class="shot-frame" data-filter-group>
+        <div class="shot-bar">CARDS · WHICH PLASTIC PAID<span class="shot-hint">CLICK A CARD</span></div>
         <div class="shot-body">
           <ul class="mock-chips">
-            <li class="on">Amex — $1,204 this month</li><li>Westpac — $486</li><li>ME Go — $118</li>
+            <li><button class="on" data-filter="all">All cards</button></li>
+            <li><button data-filter="amex">Amex — $1,204</button></li>
+            <li><button data-filter="wpc">Westpac — $486</button></li>
+            <li><button data-filter="mego">ME Go — $118</button></li>
           </ul>
           <ul class="mock-feed">
-            <li><span class="who">AMEX</span><span>Woolworths</span><span class="amt">$96.30</span></li>
-            <li><span class="who">WPC</span><span>Chemist Warehouse · parents</span><span class="amt">$54.00</span></li>
-            <li><span class="who">MEGO</span><span>Translink</span><span class="amt">$9.60</span></li>
+            <li data-tag="amex"><span class="who">AMEX</span><span>Woolworths</span><span class="amt">$96.30</span></li>
+            <li data-tag="amex"><span class="who">AMEX</span><span>Sushi train · payback pending</span><span class="amt">$42.50</span></li>
+            <li data-tag="wpc"><span class="who">WPC</span><span>Chemist Warehouse · parents</span><span class="amt">$54.00</span></li>
+            <li data-tag="wpc"><span class="who">WPC</span><span>Bunnings</span><span class="amt">$31.80</span></li>
+            <li data-tag="mego"><span class="who">MEGO</span><span>Translink</span><span class="amt">$9.60</span></li>
           </ul>
         </div>
       </div>
-      <figcaption>Per-card tracking: every transaction carries a card badge, and the People page nets out per-person spend. Purchases made for my parents get their own tag and are excluded from household splits — a rule no off-the-shelf app had.</figcaption>
+      <figcaption>Per-card tracking, filterable live: every transaction carries a card badge, and the People page nets out per-person spend. Purchases made for my parents get their own tag and are excluded from household splits — a rule no off-the-shelf app had.</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <div class="shot-frame" data-tabs data-state="all">
+        <div class="shot-bar">HISTORY · JULY BY CATEGORY<span class="shot-hint">CLICK A SEGMENT LABEL</span></div>
+        <div class="shot-body">
+          <div class="mock-donut">
+            <svg width="150" height="150" viewBox="0 0 130 130" role="img" aria-label="July spend by category donut chart">
+              <g transform="rotate(-90 65 65)">
+                <circle class="ring g-groceries" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.578 0.13 242)" stroke-width="16" stroke-dasharray="124.2 202.5" stroke-dashoffset="0"/>
+                <circle class="ring g-bills" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.76 0.11 242)" stroke-width="16" stroke-dasharray="88.2 238.5" stroke-dashoffset="-124.2"/>
+                <circle class="ring g-dining" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.80 0.14 80)" stroke-width="16" stroke-dasharray="49 277.7" stroke-dashoffset="-212.4"/>
+                <circle class="ring g-fuel" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.75 0.14 150)" stroke-width="16" stroke-dasharray="32.7 294" stroke-dashoffset="-261.4"/>
+                <circle class="ring g-other" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.36 0.02 242)" stroke-width="16" stroke-dasharray="32.7 294" stroke-dashoffset="-294.1"/>
+              </g>
+              <text class="donut-label" x="65" y="60" text-anchor="middle">JULY</text>
+              <text class="donut-value" x="65" y="78" text-anchor="middle">$3,214</text>
+            </svg>
+            <div>
+              <ul class="mock-chips">
+                <li><button class="on" data-tab="all">all</button></li>
+                <li><button data-tab="groceries">groceries</button></li>
+                <li><button data-tab="bills">bills</button></li>
+                <li><button data-tab="dining">dining</button></li>
+                <li><button data-tab="fuel">fuel</button></li>
+                <li><button data-tab="other">other</button></li>
+              </ul>
+              <div data-panels>
+                <p class="mock-note" data-panel="all">Whole month: <b>$3,214</b> across 5 categories, 2 people, 3 cards.</p>
+                <p class="mock-note" data-panel="groceries" hidden>Groceries: <b>$1,222 · 38%</b> — $612 of it this half, tracking under.</p>
+                <p class="mock-note" data-panel="bills" hidden>Bills: <b>$868 · 27%</b> — 24 of 27 recurring bills matched automatically.</p>
+                <p class="mock-note" data-panel="dining" hidden>Dining out: <b>$482 · 15%</b> — over budget; reactive draw suggested.</p>
+                <p class="mock-note" data-panel="fuel" hidden>Fuel: <b>$321 · 10%</b> — $132 headroom, top donor candidate.</p>
+                <p class="mock-note" data-panel="other" hidden>Other: <b>$321 · 10%</b> — includes two payback-pending entries.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption>The history donut is hand-rolled SVG — no chart library — exactly like the one in the app. Click a category to isolate its segment.</figcaption>
     </figure>
 
     <figure class="shot">
@@ -180,7 +232,7 @@
     </figure>
 
     <figure class="shot">
-      <div class="shot-frame" aria-hidden="true">
+      <div class="shot-frame" data-tabs data-state="pending">
         <div class="shot-bar">REACTIVE BUDGET<span class="shot-badge">DESIGNED · IN BUILD</span></div>
         <div class="shot-body">
           <div class="mock-row">
@@ -192,11 +244,19 @@
             <li><span class="who">1</span><span>Draw from Fuel · $132 headroom</span><span class="amt">suggested</span></li>
             <li><span class="who">2</span><span>Draw from Entertainment · $56 headroom</span><span class="amt">option</span></li>
           </ul>
-          <div class="mock-actions"><span class="mock-btn">Draw $34 from Fuel</span><span class="mock-btn ghost">Acknowledge overspend</span></div>
-          <p class="mock-note">Effective cap: <b>$300 + $34 drawn</b> · every move logged in <strong>budget_adjustments</strong>, undo writes an offsetting row</p>
+          <div class="mock-actions">
+            <button class="mock-btn" data-tab="draw">Draw $34 from Fuel</button>
+            <button class="mock-btn ghost" data-tab="ack">Acknowledge overspend</button>
+            <button class="mock-btn ghost" data-tab="pending">Reset</button>
+          </div>
+          <div data-panels>
+            <p class="mock-note" data-panel="pending">Waiting on a decision. Nothing moves without consent: the app suggests, <b>you approve</b>.</p>
+            <p class="mock-note" data-panel="draw" hidden>Drawn. Effective cap: <b>$300 + $34 from Fuel</b> · paired rows written to <strong>budget_adjustments</strong> (draw-out on Fuel, draw-in on Dining), undo writes an offsetting row.</p>
+            <p class="mock-note" data-panel="ack" hidden>Acknowledged. Cap stays $300; the overspend is <b>logged, not hidden</b> — it shows in the month-end PDF as an accepted overage.</p>
+          </div>
         </div>
       </div>
-      <figcaption>Reactive budget, the next release: overruns resolved by consent, never automatically. Donor categories are suggested by priority order; adjustments are immutable paired rows so the audit trail can't lie. Schema is live in production; UI is in build.</figcaption>
+      <figcaption>Reactive budget, the next release: overruns resolved by consent, never automatically. Try the buttons — the three outcomes are the real state machine. Donor categories are suggested by priority order; adjustments are immutable paired rows so the audit trail can't lie. Schema is live in production; UI is in build.</figcaption>
     </figure>
 
     <figure class="shot">
@@ -233,11 +293,12 @@
   <div class="wrap">
     <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
     <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/">IMDb</a> · <a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">LinkedIn</a></span>
-    <span>CUT: KBW · CASE 01 OF 04</span>
+    <span>CUT: KBW · CASE 01 OF 06</span>
   </div>
 </footer>
 
 </main>
 
+<script src="../mock.js" defer></script>
 </body>
 </html>

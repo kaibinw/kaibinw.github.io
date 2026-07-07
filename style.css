@@ -644,6 +644,12 @@ section + section { border-top: 1px solid var(--line); }
 }
 .mock-compare::before { content: "2024-11 · DAY 1"; left: 0.6rem; }
 .mock-compare::after { content: "2026-05 · TRAY 22"; right: 0.6rem; }
+[data-state="s6"] .mock-compare::after { content: "2025-02 · TRAY 6"; }
+[data-state="s6"] .mock-compare .mock-handle { left: 30%; }
+[data-state="s14"] .mock-compare::after { content: "2025-08 · TRAY 14"; }
+[data-state="s14"] .mock-compare .mock-handle { left: 44%; }
+[data-state="s22"] .mock-compare::after { content: "2026-05 · TRAY 22"; }
+[data-state="s22"] .mock-compare .mock-handle { left: 55%; }
 .mock-handle {
   position: absolute;
   inset-block: 0;
@@ -737,6 +743,59 @@ section + section { border-top: 1px solid var(--line); }
   padding: 0.55rem 0.8rem;
 }
 .mock-note b { color: var(--accent); font-weight: 500; }
+
+/* interactive mock affordances */
+[data-panel][hidden], [data-tag][hidden] { display: none; }
+button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family: var(--font-mono); }
+.mock-chips button, .mock-chips-btn button { cursor: pointer; }
+.mock-chips li button {
+  all: unset;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.shot-hint {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--primary-bright);
+  letter-spacing: 0.03em;
+}
+
+/* live timecode readout above the ruler */
+.tc-live {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.45rem var(--gutter);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+.tc-live b { color: var(--accent); font-weight: 400; letter-spacing: 0.06em; }
+.tc-live .rec {
+  width: 0.55rem; height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+  align-self: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tc-live .rec { animation: blink 1.2s steps(1) infinite; }
+}
+
+/* donut chart mock */
+.mock-donut { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.mock-donut svg { flex: none; }
+.mock-donut .ring { transition: opacity 0.2s ease-out; }
+.mock-donut[data-state]:not([data-state="all"]) .ring { opacity: 0.25; }
+.mock-donut[data-state="groceries"] .ring.g-groceries,
+.mock-donut[data-state="dining"] .ring.g-dining,
+.mock-donut[data-state="fuel"] .ring.g-fuel,
+.mock-donut[data-state="bills"] .ring.g-bills,
+.mock-donut[data-state="other"] .ring.g-other { opacity: 1; }
+.mock-donut .donut-label { font-family: var(--font-mono); font-size: 0.72rem; fill: var(--muted); }
+.mock-donut .donut-value { font-family: var(--font-mono); font-size: 0.95rem; fill: var(--ink); }
 
 /* terminal / run output */
 .mock-term {

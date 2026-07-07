@@ -40,13 +40,16 @@
       <a class="sidebar-nav-item" href="dental-catalog.html"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
       <a class="sidebar-nav-item" href="hq.html"><span>HQ</span><span class="tc-num">CASE 03</span></a>
       <a class="sidebar-nav-item active" href="dashboard.html" aria-current="page"><span>Dashboard</span><span class="tc-num">CASE 04</span></a>
+      <a class="sidebar-nav-item" href="dailies-importer.html"><span>Dailies Importer</span><span class="tc-num">CASE 05</span></a>
+      <a class="sidebar-nav-item" href="second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 06</span></a>
       <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#contact"><span>Contact</span><span class="tc-num">01:17:00:00</span></a>
     </nav>
 
     <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">Message me on LinkedIn</a>
+    <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com">Email me</a>
 
-    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 04 OF 04</p>
+    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 04 OF 06</p>
   </div>
 </aside>
 
@@ -67,7 +70,11 @@
 
 <div class="case-body">
   <div class="wrap">
-    <h2>The problem</h2>
+    <h2>The studio problem</h2>
+    <p>Ask a facility what it owns and where it's thin, and the answer lives in five places: floating license counts in a vendor portal (who's holding the Nuke seats right now?), render capacity in the farm manager, kit and drives in a spreadsheet someone updates quarterly, renewal dates in a producer's calendar, and pricing in whatever the reseller last quoted. Nobody sees <strong>"what's low, where, and what needs restocking"</strong> on one screen — so seats run out mid-crunch and renewals land as surprises.</p>
+    <p>A household has the identical problem with smaller numbers: consumables run out, wanted purchases wait for the right price, and the budget lives in a different system from the shopping list.</p>
+
+    <h2>The same problem at household scale</h2>
     <p>Household procurement is scattered state: consumable stock lives in your head, the wants list lives in Notion, spend history lives in Ledger, and deals live on forums you'd have to check daily. Buying well means joining all four at the moment of decision, which nobody does at 9pm on a Tuesday.</p>
 
     <h2>The wiring</h2>
@@ -77,6 +84,35 @@
       <tr><th>Spend context</th><td>Read-only queries against Ledger's Supabase, so a purchase is seen against the month's budget.</td></tr>
       <tr><th>Deal agent</th><td>A scheduled Claude agent parses deal feeds and price-history data overnight, matching against the wants list and flagging genuine drops.</td></tr>
     </table>
+
+    <h2>The NFC layer: physical world in, one tap</h2>
+    <p>Stock state has to be effortless or it rots. So the shelf itself is the interface: an <strong>NFC tag on the pantry shelf</strong>, tapped with a phone, fires an Apple Shortcut into a Home Assistant webhook, which flips an <code>input_boolean</code> for that consumable. Automations hang off those booleans (low-stock notifications, the dashboard's buy list), and a dedicated <strong>Home Assistant dashboard is in build</strong> to show stock state natively alongside the house's energy and climate cards. The same pattern a studio would use for kit checkout: tag the shelf, not the person.</p>
+    <figure class="shot">
+      <div class="shot-frame" data-tabs data-state="idle">
+        <div class="shot-bar">NFC → HOME ASSISTANT<span class="shot-hint">TAP THE TAG</span></div>
+        <div class="shot-body">
+          <div data-panels>
+            <ul class="mock-feed" data-panel="idle">
+              <li><span class="who">TAG</span><span>pantry · dishwasher_tablets</span><span class="amt">in stock</span></li>
+              <li><span class="who">HA</span><span>input_boolean.dishwasher_tablets_low</span><span class="amt">off</span></li>
+            </ul>
+            <ul class="mock-feed" data-panel="tapped" hidden>
+              <li><span class="who">TAG</span><span>tapped 07:42 · webhook fired</span><span class="amt">✓</span></li>
+              <li><span class="who">HA</span><span>input_boolean.dishwasher_tablets_low</span><span class="amt">on</span></li>
+              <li><span class="who">AUTO</span><span>added to buy list · notification sent to both phones</span><span class="amt">✓</span></li>
+            </ul>
+          </div>
+          <div class="mock-actions">
+            <button class="mock-btn" data-tab="tapped">Tap tag</button>
+            <button class="mock-btn ghost" data-tab="idle">Restocked</button>
+          </div>
+        </div>
+      </div>
+      <figcaption>The tap-to-flag flow: NFC tag → Shortcut → Home Assistant webhook → boolean → automations. Marking something low costs two seconds at the shelf, which is why it actually happens.</figcaption>
+    </figure>
+
+    <h2>The data plumbing, proven elsewhere first</h2>
+    <p>The wiring pattern isn't new to me: I run the same architecture in studio tooling that scans large delivery trees, tracks item state through a review-and-publish flow, and serves web-based UI panels off a small local HTTP server, with expensive sources loaded eagerly and everything else stubbed lazily so the first paint is instant. The dashboard reuses those exact moves: <strong>each source polled on its own cadence, one normalised feed, state transitions tracked rather than recomputed</strong>, and a kanban-style "needs a decision" queue as the primary surface. Different nouns, same plumbing.</p>
 
     <h2>What the morning view looks like</h2>
     <figure class="shot">
@@ -108,7 +144,7 @@
 <div class="case-next">
   <div class="wrap">
     <p class="tc">NEXT REEL</p>
-    <a href="ledger.html">Ledger →</a>
+    <a href="dailies-importer.html">Dailies Importer →</a>
   </div>
 </div>
 
@@ -116,11 +152,12 @@
   <div class="wrap">
     <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
     <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/">IMDb</a> · <a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">LinkedIn</a></span>
-    <span>CUT: KBW · CASE 04 OF 04</span>
+    <span>CUT: KBW · CASE 04 OF 06</span>
   </div>
 </footer>
 
 </main>
 
+<script src="../mock.js" defer></script>
 </body>
 </html>

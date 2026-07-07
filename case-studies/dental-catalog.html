@@ -40,13 +40,16 @@
       <a class="sidebar-nav-item active" href="dental-catalog.html" aria-current="page"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
       <a class="sidebar-nav-item" href="hq.html"><span>HQ</span><span class="tc-num">CASE 03</span></a>
       <a class="sidebar-nav-item" href="dashboard.html"><span>Dashboard</span><span class="tc-num">CASE 04</span></a>
+      <a class="sidebar-nav-item" href="dailies-importer.html"><span>Dailies Importer</span><span class="tc-num">CASE 05</span></a>
+      <a class="sidebar-nav-item" href="second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 06</span></a>
       <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#contact"><span>Contact</span><span class="tc-num">01:17:00:00</span></a>
     </nav>
 
     <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">Message me on LinkedIn</a>
+    <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com">Email me</a>
 
-    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 02 OF 04</p>
+    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 02 OF 06</p>
   </div>
 </aside>
 
@@ -67,7 +70,11 @@
 
 <div class="case-body">
   <div class="wrap">
-    <h2>The problem</h2>
+    <h2>The studio problem</h2>
+    <p>Every facility owns a growing library of versioned imagery: plates, WIP renders, comp versions, reference stills, stacked up per shot across years of shows. Supervisors review by <strong>wiping between versions</strong>; coordinators label incoming turnover (plate, ref, grade, QC frame) by hand; and finding "the approved version from March against today's WIP" means archaeology in a file browser. The review tools that do this well are seat-licensed and cloud-tethered, which client security (TPN-style) and budget both push back on.</p>
+    <p>The same shape at consumer scale: one practitioner, one growing image library, version-over-time comparison as the core workflow, and data that must never leave the building.</p>
+
+    <h2>The same problem at clinical scale</h2>
     <p>My wife photographs clear-aligner patients at every session: front, sides, occlusal, smile, shade guides, across a folder of 100+ patients going back years. There was no way to browse by patient or compare sessions without hunting through Windows Explorer. The paid apps are subscription-based and sync to a cloud backend. Sensitive patient data plus a tight budget ruled both out.</p>
 
     <h2>Constraints set before building</h2>
@@ -112,36 +119,60 @@
     </figure>
 
     <figure class="shot">
-      <div class="shot-frame" aria-hidden="true">
-        <div class="shot-bar">SESSION TIMELINE · PATIENT 047</div>
+      <div class="shot-frame" data-tabs data-state="s22">
+        <div class="shot-bar">SESSION TIMELINE · PATIENT 047<span class="shot-hint">CLICK A SESSION</span></div>
         <div class="shot-body">
           <ul class="mock-chips">
-            <li>2024-11 · day 1</li><li>2025-02 · tray 6</li><li>2025-08 · tray 14</li><li class="on">2026-05 · tray 22</li>
+            <li><button data-tab="s6">2025-02 · tray 6</button></li>
+            <li><button data-tab="s14">2025-08 · tray 14</button></li>
+            <li><button class="on" data-tab="s22">2026-05 · tray 22</button></li>
           </ul>
           <div class="mock-compare"><span class="mock-handle"></span></div>
-          <p class="mock-note"><b>Session note</b> — tracking well; slight rotation on 12 persisting. Saved to localStorage <strong>and</strong> a notes file in the patient folder.</p>
+          <div data-panels>
+            <p class="mock-note" data-panel="s6" hidden><b>Tray 6 note</b> — early movement on the anterior segment, patient compliant.</p>
+            <p class="mock-note" data-panel="s14" hidden><b>Tray 14 note</b> — midline correcting; refinement scan booked.</p>
+            <p class="mock-note" data-panel="s22"><b>Tray 22 note</b> — tracking well; slight rotation on 12 persisting. Saved to localStorage <strong>and</strong> a notes file in the patient folder.</p>
+          </div>
         </div>
       </div>
-      <figcaption>Pick any two sessions and wipe between them with the drag handle — the standard before/after affordance in dental software. Clinical notes persist beside the photos they describe, so they survive the tool.</figcaption>
+      <figcaption>Click a session to compare it against day one — the wipe handle and the clinical note follow. The standard before/after affordance in dental software, with notes persisting beside the photos they describe.</figcaption>
     </figure>
 
     <figure class="shot">
-      <div class="shot-frame" aria-hidden="true">
-        <div class="shot-bar">SORT WIZARD · 14 NEW PHOTOS FOUND</div>
+      <div class="shot-frame" data-tabs data-state="found">
+        <div class="shot-bar">SORT WIZARD · 14 NEW PHOTOS FOUND<span class="shot-hint">TRY THE BUTTONS</span></div>
         <div class="shot-body">
-          <ul class="mock-feed">
-            <li><span class="who">IMG</span><span>IMG_8841.jpg · fingerprint ≈ front</span><span class="amt">92%</span></li>
-            <li><span class="who">IMG</span><span>IMG_8842.jpg · fingerprint ≈ upper occlusal</span><span class="amt">88%</span></li>
-            <li><span class="who">IMG</span><span>IMG_8846.jpg · no confident match</span><span class="amt">ask</span></li>
-          </ul>
+          <div data-panels>
+            <ul class="mock-feed" data-panel="found">
+              <li><span class="who">IMG</span><span>IMG_8841.jpg · fingerprint ≈ front</span><span class="amt">92%</span></li>
+              <li><span class="who">IMG</span><span>IMG_8842.jpg · fingerprint ≈ upper occlusal</span><span class="amt">88%</span></li>
+              <li><span class="who">IMG</span><span>IMG_8846.jpg · no confident match</span><span class="amt">ask</span></li>
+            </ul>
+            <ul class="mock-feed" data-panel="accepted" hidden>
+              <li><span class="who">OK</span><span>13 photos filed to their suggested labels</span><span class="amt">done</span></li>
+              <li><span class="who">ASK</span><span>IMG_8846.jpg · pick a label below</span><span class="amt">1 left</span></li>
+            </ul>
+            <ul class="mock-feed" data-panel="review" hidden>
+              <li><span class="who">1/14</span><span>IMG_8841.jpg · suggested: front</span><span class="amt">⏎ accept</span></li>
+              <li><span class="who">•</span><span>arrow keys to relabel, enter to file, esc to skip</span><span class="amt"></span></li>
+            </ul>
+          </div>
           <ul class="mock-chips">
             <li class="on">front</li><li>right</li><li>left</li><li>upper occlusal</li><li>lower occlusal</li><li>smile</li><li>shade</li>
           </ul>
-          <div class="mock-actions"><span class="mock-btn">Accept 13 suggestions</span><span class="mock-btn ghost">Review one by one</span></div>
+          <div class="mock-actions">
+            <button class="mock-btn" data-tab="accepted">Accept 13 suggestions</button>
+            <button class="mock-btn ghost" data-tab="review">Review one by one</button>
+            <button class="mock-btn ghost" data-tab="found">Reset</button>
+          </div>
         </div>
       </div>
       <figcaption>The v2 Sort Wizard: new photos are fingerprinted by pixel luminance (Canvas API) and compared against already-sorted ones to suggest a clinical label. Confident matches batch-accept; uncertain ones ask. All local, no cloud, no model API.</figcaption>
     </figure>
+
+    <h2>The approach: quick tool first, foundation second</h2>
+    <p>Before this project I had already proven the pattern on internal studio tooling: when a recurring "what's actually in this folder?" question was costing minutes every time, the answer was a <strong>two-minute tool</strong> — a folder walk plus a smart summary, about a hundred lines. Months later, a bigger visual inspection tool didn't start from scratch: it inherited the folder-walking, the naming-convention parser, and the caching from the quick tool, and added playback and a browsing UI on top.</p>
+    <p>Dental Catalog followed the same arc deliberately. v1 was the smallest thing that answered the daily question (browse by patient, compare sessions). Because v1 was built cleanly, the v2 overhaul — full redesign plus the fingerprinting Sort Wizard — reused its bones instead of replacing them. <strong>Build the quick tool right and it becomes the foundation; every expansion after it gets faster.</strong></p>
 
     <h2>What it demonstrates</h2>
     <ul>
@@ -163,11 +194,12 @@
   <div class="wrap">
     <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
     <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/">IMDb</a> · <a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">LinkedIn</a></span>
-    <span>CUT: KBW · CASE 02 OF 04</span>
+    <span>CUT: KBW · CASE 02 OF 06</span>
   </div>
 </footer>
 
 </main>
 
+<script src="../mock.js" defer></script>
 </body>
 </html>

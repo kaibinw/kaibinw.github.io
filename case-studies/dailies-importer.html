@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dailies Importer — Case Study · Kai-Bin Wong</title>
+<meta name="description" content="A DaVinci Resolve script that scans a show's shot tree, imports overnight renders by identifier, and appends them to review timelines with colour coding.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 rx=%223%22 fill=%22%23101114%22/><path d=%22M4 3v10M4 8l4-5M4 8l4 5%22 stroke=%22%23e8a33d%22 stroke-width=%221.6%22 fill=%22none%22/></svg>">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <a class="wordmark" href="../index.html">KBW<span class="cursor">_</span></a>
+
+    <div class="sidebar-about">
+      <h1><a href="../index.html">Kai-Bin Wong</a></h1>
+      <p class="lead"><strong>VFX Editor</strong> in Brisbane, Australia. 20+ Hollywood credits — and I build the tools the cut runs on.</p>
+    </div>
+
+    <div class="sidebar-meta">
+      <span><b>LOC</b> Brisbane, AU</span>
+      <span><b>CRED</b> 20+ productions · <a class="imdb-link" href="https://www.imdb.com/name/nm7834405/">IMDb</a></span>
+      <span><b>EDIT</b> Resolve · Avid · Premiere</span>
+      <span><b>CODE</b> Python · C# · HTML</span>
+      <span><b>MTHD</b> Agentic engineering</span>
+      <span><b>EDU</b> M.S. IT, QUT</span>
+    </div>
+
+    <nav class="sidebar-nav" aria-label="Site">
+      <a class="sidebar-nav-item" href="../index.html"><span>Home</span><span class="tc-num">01:00:00:00</span></a>
+      <a class="sidebar-nav-item" href="../index.html#work"><span>Selected work</span><span class="tc-num">01:04:20:00</span></a>
+      <a class="sidebar-nav-item" href="ledger.html"><span>Ledger</span><span class="tc-num">CASE 01</span></a>
+      <a class="sidebar-nav-item" href="dental-catalog.html"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
+      <a class="sidebar-nav-item" href="hq.html"><span>HQ</span><span class="tc-num">CASE 03</span></a>
+      <a class="sidebar-nav-item" href="dashboard.html"><span>Dashboard</span><span class="tc-num">CASE 04</span></a>
+      <a class="sidebar-nav-item active" href="dailies-importer.html" aria-current="page"><span>Dailies Importer</span><span class="tc-num">CASE 05</span></a>
+      <a class="sidebar-nav-item" href="second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 06</span></a>
+      <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
+      <a class="sidebar-nav-item" href="../index.html#contact"><span>Contact</span><span class="tc-num">01:17:00:00</span></a>
+    </nav>
+
+    <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">Message me on LinkedIn</a>
+    <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com">Email me</a>
+
+    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 05 OF 06</p>
+  </div>
+</aside>
+
+<main class="content" id="main">
+
+<div class="case-head">
+  <div class="wrap">
+    <a class="back" href="../index.html#work">← Back to selected work</a>
+    <h1>Dailies Importer</h1>
+    <p class="lede">A DaVinci Resolve script that turns the morning dailies scramble into one click: scan the shot tree, pick up overnight renders by identifier, import, and append to the right review timeline with colour coding. Shown here in its core form; studio-specific integrations stay in-house.</p>
+    <div class="case-facts">
+      <span><b>ROLE</b> Design, build, daily operation</span>
+      <span><b>STACK</b> Python · Resolve scripting API · JSON configs</span>
+      <span><b>STATUS</b> In daily studio use</span>
+    </div>
+  </div>
+</div>
+
+<div class="case-body">
+  <div class="wrap">
+    <h2>The studio problem</h2>
+    <p>Overnight, artists publish renders across hundreds of shot folders: animatics, comp WIPs, client-send candidates, lighting passes. Before the morning review, someone in editorial walks that tree, works out what's new, imports it, and builds a timeline the supervisor can actually scrub — <strong>every single day, before 9am, by hand</strong>. It's the most repetitive job in editorial, and the most punishing to get wrong: a missed render is a shot that doesn't get reviewed.</p>
+
+    <h2>What it does</h2>
+    <table class="fact-table">
+      <tr><th>Scan by identifier</th><td>Walks the show's render folders and classifies media by naming-convention identifiers: animatic, matte-painting passes, comp WIP, client send, lighting slap-comps. Sequences and MOVs both.</td></tr>
+      <tr><th>Config as memory</th><td>Identifiers live in a JSON config with an on/off toggle each. Newly discovered identifiers are added <strong>disabled</strong>: the tool never imports something it hasn't been told to want.</td></tr>
+      <tr><th>Append, don't rebuild</th><td>A timeline registry remembers which review timeline each identifier feeds. Re-running appends only what's new instead of duplicating the morning's work.</td></tr>
+      <tr><th>Colour as language</th><td>Every imported clip gets a Resolve colour tag by identifier (animatics green, WIPs teal, client sends lime) so the timeline reads at a glance in review.</td></tr>
+    </table>
+
+    <h2>What a run looks like</h2>
+    <figure class="shot">
+      <div class="shot-frame" data-tabs data-state="scan">
+        <div class="shot-bar">QUICK IMPORT · MORNING RUN<span class="shot-hint">RUN IT</span></div>
+        <div class="shot-body">
+          <div data-panels>
+<pre class="mock-term" data-panel="scan"><span class="cmd">▶ Scan shot tree</span>
+<span class="dim">walking Renders/2dRender + Renders/3dRender…</span>
+found 212 media groups across 148 shots
+new since yesterday: <span class="ok">14</span>  (cmp_wip 9 · cmp_send 3 · edt_animatic 2)
+1 unknown identifier discovered → <span class="dim">lgt_test (added to config, disabled)</span></pre>
+<pre class="mock-term" data-panel="import" hidden><span class="cmd">▶ Import + append</span>
+importing 14 items… <span class="ok">done in 41s</span>
+<span class="ok">✓ 9 → COMP WIP timeline (teal)</span>
+<span class="ok">✓ 3 → CLIENT SEND timeline (lime)</span>
+<span class="ok">✓ 2 → ANIMATIC timeline (green)</span>
+registry updated — next run appends from here</pre>
+          </div>
+          <div class="mock-actions">
+            <button class="mock-btn ghost on" data-tab="scan">1 · Scan</button>
+            <button class="mock-btn" data-tab="import">2 · Import + append</button>
+          </div>
+        </div>
+      </div>
+      <figcaption>A representative morning run: scan classifies overnight renders by identifier; import appends only the new items to their colour-coded review timelines.</figcaption>
+    </figure>
+
+    <h2>What it demonstrates</h2>
+    <ul>
+      <li><strong>Editorial knowledge is the spec.</strong> The identifiers, the timeline structure, and the colour language encode how reviews actually run. A pipeline TD could write this script; only an editor would know what it should do.</li>
+      <li><strong>Config-driven means show-portable.</strong> Point it at a different show root, let it discover that show's identifiers, toggle on what matters. Nothing is hardcoded to one production.</li>
+      <li><strong>Trust through restraint.</strong> Unknown media is surfaced but never auto-imported, and reruns are idempotent. The tool earns its place in a daily-deadline workflow by being boring and predictable.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="case-next">
+  <div class="wrap">
+    <p class="tc">NEXT REEL</p>
+    <a href="second-brain.html">Second Brain →</a>
+  </div>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
+    <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/">IMDb</a> · <a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">LinkedIn</a></span>
+    <span>CUT: KBW · CASE 05 OF 06</span>
+  </div>
+</footer>
+
+</main>
+
+<script src="../mock.js" defer></script>
+</body>
+</html>
