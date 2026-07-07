@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dailies Importer — Case Study · Kai-Bin Wong</title>
-<meta name="description" content="A DaVinci Resolve script that scans a show's shot tree, imports overnight renders by identifier, and appends them to review timelines with colour coding.">
+<meta name="description" content="A DaVinci Resolve script that scans a show's shot tree, takes the cut's EDL once, then imports overnight renders by department and appends them to dailies timelines with colour coding.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet">
@@ -59,7 +59,7 @@
   <div class="wrap">
     <a class="back" href="../index.html#work">← Back to selected work</a>
     <h1>Dailies Importer</h1>
-    <p class="lede">A DaVinci Resolve script that turns the morning dailies scramble into one click: scan the shot tree, pick up overnight renders by identifier, import, and append to the right review timeline with colour coding. Shown here in its core form; studio-specific integrations stay in-house.</p>
+    <p class="lede">A DaVinci Resolve script that turns hours of daily dailies-timeline setup into one click: feed it the cut's EDL once, then every morning it scans the shot tree, picks up overnight renders by department, and appends them to the right review timeline with colour coding. Shown here in its core form; studio-specific integrations stay in-house.</p>
     <div class="case-facts">
       <span><b>ROLE</b> Design, build, daily operation</span>
       <span><b>STACK</b> Python · Resolve scripting API · JSON configs</span>
@@ -71,14 +71,16 @@
 <div class="case-body">
   <div class="wrap">
     <h2>The studio problem</h2>
-    <p>Overnight, artists publish renders across hundreds of shot folders: animatics, comp WIPs, client-send candidates, lighting passes. Before the morning review, someone in editorial walks that tree, works out what's new, imports it, and builds a timeline the supervisor can actually scrub — <strong>every single day, before 9am, by hand</strong>. It's the most repetitive job in editorial, and the most punishing to get wrong: a missed render is a shot that doesn't get reviewed.</p>
+    <p>Ask any VFX editor about their mornings. Overnight, artists publish renders into ShotGrid across hundreds of shots — animation blocking, lighting takes, comp versions, matte-painting passes — and before the day's first review, editorial has to find what's new, pull it in, and rebuild dailies timelines the supervisor can actually scrub. On a busy show that's <strong>hours of setup, every single day</strong>, multiplied by however many departments are reviewing. It's the most repetitive job in editorial and the most punishing to get wrong: a missed render is a shot that doesn't get reviewed, and everyone in the room notices.</p>
+    <p>The fix isn't importing faster. It's never rebuilding: <strong>conform the cut once, then only ever append what changed</strong>.</p>
 
     <h2>What it does</h2>
     <table class="fact-table">
-      <tr><th>Scan by identifier</th><td>Walks the show's render folders and classifies media by naming-convention identifiers: animatic, matte-painting passes, comp WIP, client send, lighting slap-comps. Sequences and MOVs both.</td></tr>
-      <tr><th>Config as memory</th><td>Identifiers live in a JSON config with an on/off toggle each. Newly discovered identifiers are added <strong>disabled</strong>: the tool never imports something it hasn't been told to want.</td></tr>
-      <tr><th>Append, don't rebuild</th><td>A timeline registry remembers which review timeline each identifier feeds. Re-running appends only what's new instead of duplicating the morning's work.</td></tr>
-      <tr><th>Colour as language</th><td>Every imported clip gets a Resolve colour tag by identifier (animatics green, WIPs teal, client sends lime) so the timeline reads at a glance in review.</td></tr>
+      <tr><th>Takes an EDL once</th><td>The cut comes in as an EDL a single time and becomes the master review timeline. That's the whole setup cost. From then on the tool maintains the timelines; nobody rebuilds them by hand again.</td></tr>
+      <tr><th>Scan by department</th><td>Walks the show's render folders and classifies new media by which department published it: animation, lighting, compositing, matte painting, editorial temps. Frame sequences and movie files both.</td></tr>
+      <tr><th>Config as memory</th><td>Department render types live in a JSON config with an on/off toggle each. Newly discovered types are added <strong>disabled</strong>: the tool never imports something it hasn't been told to want.</td></tr>
+      <tr><th>Append, don't rebuild</th><td>A timeline registry remembers which review timeline each department feeds. Every run appends only what's new — the hours of daily setup collapse into the seconds the import takes.</td></tr>
+      <tr><th>Colour as language</th><td>Every imported clip gets a Resolve colour tag by department, so the timeline reads at a glance in review: who published it, and how far along it is.</td></tr>
     </table>
 
     <h2>What a run looks like</h2>
@@ -88,15 +90,15 @@
         <div class="shot-body">
           <div data-panels>
 <pre class="mock-term" data-panel="scan"><span class="cmd">▶ Scan shot tree</span>
-<span class="dim">walking Renders/2dRender + Renders/3dRender…</span>
+<span class="dim">master timeline conformed from EDL 2026-06-12 — reusing</span>
 found 212 media groups across 148 shots
-new since yesterday: <span class="ok">14</span>  (cmp_wip 9 · cmp_send 3 · edt_animatic 2)
-1 unknown identifier discovered → <span class="dim">lgt_test (added to config, disabled)</span></pre>
+new since yesterday: <span class="ok">14</span>  (compositing 9 · lighting 3 · animation 2)
+1 unknown render type discovered → <span class="dim">added to config, disabled</span></pre>
 <pre class="mock-term" data-panel="import" hidden><span class="cmd">▶ Import + append</span>
 importing 14 items… <span class="ok">done in 41s</span>
-<span class="ok">✓ 9 → COMP WIP timeline (teal)</span>
-<span class="ok">✓ 3 → CLIENT SEND timeline (lime)</span>
-<span class="ok">✓ 2 → ANIMATIC timeline (green)</span>
+<span class="ok">✓ 9 → COMPOSITING dailies timeline (teal)</span>
+<span class="ok">✓ 3 → LIGHTING dailies timeline (yellow)</span>
+<span class="ok">✓ 2 → ANIMATION dailies timeline (green)</span>
 registry updated — next run appends from here</pre>
           </div>
           <div class="mock-actions">
@@ -105,13 +107,13 @@ registry updated — next run appends from here</pre>
           </div>
         </div>
       </div>
-      <figcaption>A representative morning run: scan classifies overnight renders by identifier; import appends only the new items to their colour-coded review timelines.</figcaption>
+      <figcaption>A representative morning run: scan classifies overnight renders by department; import appends only the new items to their colour-coded review timelines.</figcaption>
     </figure>
 
     <h2>What it demonstrates</h2>
     <ul>
-      <li><strong>Editorial knowledge is the spec.</strong> The identifiers, the timeline structure, and the colour language encode how reviews actually run. A pipeline TD could write this script; only an editor would know what it should do.</li>
-      <li><strong>Config-driven means show-portable.</strong> Point it at a different show root, let it discover that show's identifiers, toggle on what matters. Nothing is hardcoded to one production.</li>
+      <li><strong>Editorial knowledge is the spec.</strong> The department breakdown, the timeline structure, and the colour language encode how reviews actually run. A pipeline TD could write this script; only an editor would know what it should do.</li>
+      <li><strong>Config-driven means show-portable.</strong> Point it at a different show root, hand it that show's EDL, let it discover the render types, toggle on what matters. Nothing is hardcoded to one production.</li>
       <li><strong>Trust through restraint.</strong> Unknown media is surfaced but never auto-imported, and reruns are idempotent. The tool earns its place in a daily-deadline workflow by being boring and predictable.</li>
     </ul>
   </div>
