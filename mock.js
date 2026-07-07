@@ -32,6 +32,22 @@
     });
   });
 
+  /* Soft-loop text cycling: data-cycle='["a","b","c"]' rotates every few seconds. */
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduced) {
+    document.querySelectorAll("[data-cycle]").forEach(function (el) {
+      var values;
+      try { values = JSON.parse(el.getAttribute("data-cycle")); } catch (e) { return; }
+      if (!values || values.length < 2) return;
+      var i = 0;
+      setInterval(function () {
+        if (document.hidden) return;
+        i = (i + 1) % values.length;
+        el.textContent = values[i];
+      }, 3200);
+    });
+  }
+
   /* Running timecode: elements with data-timecode tick at 24fps from their start value. */
   var tcEls = document.querySelectorAll("[data-timecode]");
   if (tcEls.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
