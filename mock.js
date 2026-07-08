@@ -63,4 +63,66 @@
       });
     }, 1000 / 24);
   }
+
+  /* Ruler nav: the playhead tracks scroll and the nearest section's marker
+     goes current. Without JS the ruler stays a decorative scrub loop. */
+  var ruler = document.querySelector(".ruler[data-ruler-nav]");
+  if (ruler) {
+    var marks = Array.prototype.slice.call(ruler.querySelectorAll(".ruler-mark"));
+    var targets = marks
+      .map(function (m) {
+        var el = document.querySelector(m.getAttribute("href"));
+        return el ? { mark: m, el: el } : null;
+      })
+      .filter(Boolean);
+    if (targets.length) {
+      ruler.classList.add("is-live");
+      var playhead = ruler.querySelector(".playhead");
+      var update = function () {
+        var y = window.scrollY + window.innerHeight * 0.35;
+        var current = targets[0];
+        targets.forEach(function (t) {
+          if (t.el.getBoundingClientRect().top + window.scrollY <= y) current = t;
+        });
+        targets.forEach(function (t) {
+          if (t === current) t.mark.setAttribute("aria-current", "true");
+          else t.mark.removeAttribute("aria-current");
+        });
+        if (playhead) playhead.style.left = current.mark.style.getPropertyValue("--x");
+      };
+      var queued = false;
+      window.addEventListener("scroll", function () {
+        if (queued) return;
+        queued = true;
+        setTimeout(function () { queued = false; update(); }, 80);
+      }, { passive: true });
+      update();
+    }
+  }
+
+  /* About hobbies: tapping a timeline marker opens its note, like a
+     marker comment on an NLE timeline. One open at a time; Esc closes. */
+  var hobbyTrack = document.querySelector(".hobby-track");
+  if (hobbyTrack) {
+    var hobbyButtons = hobbyTrack.querySelectorAll(".hobby-marker");
+    var closeAll = function () {
+      hobbyTrack.querySelectorAll(".hobby-note").forEach(function (n) { n.hidden = true; });
+      hobbyButtons.forEach(function (b) { b.setAttribute("aria-expanded", "false"); });
+    };
+    hobbyButtons.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var note = btn.parentElement.querySelector(".hobby-note");
+        if (!note) return;
+        var wasOpen = !note.hidden;
+        closeAll();
+        note.hidden = wasOpen;
+        btn.setAttribute("aria-expanded", String(!wasOpen));
+      });
+    });
+    document.addEventListener("click", closeAll);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeAll();
+    });
+  }
 })();

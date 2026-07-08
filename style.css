@@ -272,9 +272,9 @@ a:hover { color: var(--ink); }
   from { opacity: 0; transform: translateY(14px); }
 }
 
-/* timeline ruler strip under the hero */
+/* timeline ruler strip under the hero — doubles as section navigation */
 .ruler {
-  height: 3.25rem;
+  height: 4.1rem;
   border-bottom: 1px solid var(--line);
   background:
     repeating-linear-gradient(to right,
@@ -289,6 +289,7 @@ a:hover { color: var(--ink); }
   left: 22%;
   width: 2px;
   background: var(--accent);
+  pointer-events: none;
 }
 .ruler .playhead::before {
   content: "";
@@ -299,9 +300,66 @@ a:hover { color: var(--ink); }
   border-top: 9px solid var(--accent);
 }
 @media (prefers-reduced-motion: no-preference) {
-  .ruler .playhead { animation: scrub 26s linear infinite alternate; }
+  .ruler:not(.is-live) .playhead { animation: scrub 26s linear infinite alternate; }
+}
+.ruler.is-live .playhead { transition: left 0.25s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .ruler.is-live .playhead { transition: none; }
 }
 @keyframes scrub { from { left: 8%; } to { left: 88%; } }
+
+/* nav markers on the ruler: a tick + always-visible mono label */
+.ruler-mark {
+  position: absolute;
+  bottom: 0;
+  left: var(--x);
+  translate: -50% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.15rem;
+  height: 100%;
+  padding: 0 0.55rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ruler-mark i {
+  width: 0.6rem; height: 0.6rem;
+  background: var(--line-strong);
+  clip-path: polygon(0 0, 100% 0, 100% 55%, 50% 100%, 0 55%);
+  transition: background 0.15s ease-out;
+}
+.ruler-mark:hover, .ruler-mark:focus-visible { color: var(--ink); }
+.ruler-mark:hover i, .ruler-mark:focus-visible i { background: var(--accent); }
+.ruler-mark[aria-current] { color: var(--accent); }
+.ruler-mark[aria-current] i { background: var(--accent); }
+@media (max-width: 55.99em) {
+  /* mobile: the ruler is the primary nav — sticky, bigger touch targets,
+     only the active label shown so seven marks fit 375px */
+  .ruler {
+    position: sticky;
+    top: 0;
+    z-index: 15;
+    background-color: var(--bg);
+    height: 3.4rem;
+  }
+  .ruler-mark { padding: 0 0.7rem 1.35rem; min-width: 2.75rem; position: relative; }
+  .ruler-mark span { display: none; }
+  .ruler-mark[aria-current] span {
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    translate: -50% 0;
+  }
+  .ruler-mark:first-of-type[aria-current] span { left: 0; translate: 0; }
+  .ruler-mark:last-of-type[aria-current] span { left: auto; right: 0; translate: 0; }
+}
 
 /* ---- buttons ---- */
 .btn {
@@ -373,7 +431,7 @@ section + section { border-top: 1px solid var(--line); }
 .work-item {
   display: grid;
   gap: 1.25rem;
-  padding-block: clamp(1.75rem, 4vh, 2.75rem);
+  padding-block: clamp(1.25rem, 3vh, 2rem);
 }
 .work-item + .work-item { border-top: 1px solid var(--line); }
 @media (min-width: 68em) {
@@ -395,6 +453,15 @@ section + section { border-top: 1px solid var(--line); }
 .work-link:hover { color: var(--ink); }
 .work-item.minor h3 { font-size: var(--step-1); }
 .work-item.minor .work-body p { font-size: 0.95rem; }
+
+/* compressed descriptions: three lines, the case study carries the depth */
+.work-body p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
 
 /* ---- clapper slate (per-case sprinkle) ---- */
 .slate {
@@ -589,6 +656,15 @@ section + section { border-top: 1px solid var(--line); }
   margin: clamp(2.5rem, 6vh, 4rem) 0 1rem;
 }
 .case-body h2:first-child { margin-top: 0; }
+.case-body h3 {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 2rem 0 0.75rem;
+}
 .case-body p, .case-body li { color: var(--muted); }
 .case-body p strong, .case-body li strong { color: var(--ink); font-weight: 500; }
 .case-body ul { max-width: var(--measure); padding-left: 1.2rem; }
@@ -910,3 +986,179 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
 .case-next { border-top: 1px solid var(--line); padding-block: clamp(2.5rem, 6vh, 4rem); }
 .case-next .tc { margin-bottom: 1rem; }
 .case-next a { font-size: var(--step-1); font-weight: 700; text-decoration: none; letter-spacing: -0.01em; }
+
+/* =========================================================
+   Inline icons (LinkedIn / IMDb / email)
+   ========================================================= */
+.icon {
+  width: 1em; height: 1em;
+  flex: none;
+  fill: currentColor;
+  vertical-align: -0.12em;
+}
+.foot-links a { display: inline-flex; align-items: center; gap: 0.35rem; }
+.foot-links .icon { width: 1.05em; height: 1.05em; }
+
+/* =========================================================
+   Sidebar: Selected work as a master dropdown
+   ========================================================= */
+.side-group { border-bottom: 1px solid var(--line); }
+.side-group > summary {
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  padding: 0.6rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+.side-group > summary::-webkit-details-marker { display: none; }
+.side-group > summary .tc-num { color: var(--line-strong); font-size: 0.72rem; }
+.side-group > summary .tc-num::before { content: "▸ "; color: var(--accent); }
+.side-group[open] > summary .tc-num::before { content: "▾ "; }
+.side-group > summary:hover { color: var(--ink); }
+.side-group > summary:hover .tc-num { color: var(--accent); }
+.side-group .sidebar-nav-item { padding-left: 1rem; }
+.side-group .sidebar-nav-item:last-child { border-bottom: 0; }
+@media (max-width: 55.99em) {
+  /* mobile banner nav is flat — the group opens inline in the wrap row */
+  .side-group { border-bottom: 0; }
+  .side-group > summary { padding: 0.25rem 0; }
+  .side-group .sidebar-nav-item { padding-left: 0.75rem; }
+}
+
+/* =========================================================
+   Case-study header slate (the clapper IS the header)
+   ========================================================= */
+.slate-head {
+  margin-top: 2rem;
+  max-width: 44rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.slate-head .sticks {
+  height: 1.1rem;
+  background: repeating-linear-gradient(115deg,
+    var(--ink) 0 1.1rem, oklch(0.14 0 0) 1.1rem 2.2rem);
+  border-bottom: 1px solid var(--line-strong);
+}
+.slate-head .board {
+  background: var(--surface);
+  padding: 0.9rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--muted);
+  display: grid;
+  gap: 0.65rem;
+}
+.slate-head .board-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.4rem;
+}
+.slate-head .board b { color: var(--accent); font-weight: 400; }
+.slate-head .board-desc {
+  color: var(--ink);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.65rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.slate-head .board-tc { letter-spacing: 0.06em; }
+
+/* =========================================================
+   Credit bins: Media Composer window chrome
+   ========================================================= */
+.bin-lights {
+  margin-left: 0.9rem;
+  display: inline-flex;
+  gap: 0.38rem;
+  align-self: center;
+  flex: none;
+}
+.bin-lights i {
+  width: 0.55rem; height: 0.55rem;
+  border-radius: 50%;
+  background: var(--line-strong);
+  transition: background 0.15s ease-out;
+}
+.bin summary:hover .bin-lights i:nth-child(1) { background: oklch(0.62 0.19 25); }
+.bin summary:hover .bin-lights i:nth-child(2) { background: var(--accent); }
+.bin summary:hover .bin-lights i:nth-child(3) { background: oklch(0.68 0.17 145); }
+@media (prefers-reduced-motion: reduce) { .bin-lights i { transition: none; } }
+
+/* =========================================================
+   About: hobbies as timeline markers
+   ========================================================= */
+.hobby-track {
+  margin-top: 2.25rem;
+  position: relative;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--line-strong);
+  background:
+    repeating-linear-gradient(to right,
+      var(--line) 0 1px, transparent 1px 5%) bottom / 100% 0.55rem no-repeat;
+}
+.hobby-track li { position: relative; display: flex; }
+.hobby-marker {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.4rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-align: center;
+}
+.hobby-marker::after {
+  content: "";
+  order: 2;
+  width: 0.65rem; height: 0.65rem;
+  background: var(--accent);
+  clip-path: polygon(0 0, 100% 0, 100% 55%, 50% 100%, 0 55%);
+}
+.hobby-marker span { order: 1; }
+.hobby-marker:hover, .hobby-marker:focus-visible { color: var(--ink); }
+.hobby-note {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  translate: -50% 0;
+  min-width: 11rem;
+  max-width: 15rem;
+  background: var(--surface-2);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.82rem;
+  color: var(--ink);
+  z-index: 5;
+}
+.hobby-note::before {
+  content: "MARKER";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+.hobby-track li:first-child .hobby-note { left: 0; translate: 0; }
+.hobby-track li:last-child .hobby-note { left: auto; right: 0; translate: 0; }
+.hobby-note[hidden] { display: none; }
+@media (max-width: 47.99em) {
+  .hobby-marker span { display: none; }
+  .hobby-marker { padding-inline: 0.85rem; }
+}

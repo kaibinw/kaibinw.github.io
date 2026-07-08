@@ -35,20 +35,23 @@
 
     <nav class="sidebar-nav" aria-label="Site">
       <a class="sidebar-nav-item active" href="#"><span>Home</span><span class="tc-num">01:00:00:00</span></a>
-      <a class="sidebar-nav-item" href="#work"><span>Selected work</span><span class="tc-num">01:04:20:00</span></a>
-      <a class="sidebar-nav-item" href="case-studies/ledger.html"><span>Ledger</span><span class="tc-num">CASE 01</span></a>
-      <a class="sidebar-nav-item" href="case-studies/dental-catalog.html"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
-      <a class="sidebar-nav-item" href="case-studies/hq.html"><span>HQ</span><span class="tc-num">CASE 03</span></a>
-      <a class="sidebar-nav-item" href="case-studies/dashboard.html"><span>Dashboard</span><span class="tc-num">CASE 04</span></a>
-      <a class="sidebar-nav-item" href="case-studies/dailies-importer.html"><span>Dailies Importer</span><span class="tc-num">CASE 05</span></a>
-      <a class="sidebar-nav-item" href="case-studies/second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 06</span></a>
+      <details class="side-group">
+        <summary><span>Selected work</span><span class="tc-num">6 CASES</span></summary>
+        <a class="sidebar-nav-item" href="#work"><span>Best work</span><span class="tc-num">01:04:20:00</span></a>
+        <a class="sidebar-nav-item" href="case-studies/ledger.html"><span>Ledger</span><span class="tc-num">CASE 01</span></a>
+        <a class="sidebar-nav-item" href="case-studies/dental-catalog.html"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
+        <a class="sidebar-nav-item" href="case-studies/hq.html"><span>HQ</span><span class="tc-num">CASE 03</span></a>
+        <a class="sidebar-nav-item" href="case-studies/dashboard.html"><span>Dashboard</span><span class="tc-num">CASE 04</span></a>
+        <a class="sidebar-nav-item" href="case-studies/dailies-importer.html"><span>Dailies Importer</span><span class="tc-num">CASE 05</span></a>
+        <a class="sidebar-nav-item" href="case-studies/second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 06</span></a>
+      </details>
       <a class="sidebar-nav-item" href="#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
       <a class="sidebar-nav-item" href="#about"><span>About</span><span class="tc-num">01:15:00:00</span></a>
       <a class="sidebar-nav-item" href="#contact"><span>Contact</span><span class="tc-num">01:17:00:00</span></a>
     </nav>
 
-    <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">Message me on LinkedIn</a>
-    <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com">Email me</a>
+    <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>Message me on LinkedIn</a>
+    <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg>Email me</a>
 
     <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · REEL 01 OF 01</p>
   </div>
@@ -69,7 +72,16 @@
 </section>
 
 <div class="tc-live" aria-hidden="true"><span class="rec"></span><span>REC</span><b data-timecode>01:00:00:00</b><span>24 FPS</span></div>
-<div class="ruler" role="presentation" aria-hidden="true"><span class="playhead"></span></div>
+<nav class="ruler" data-ruler-nav aria-label="Timeline navigation">
+  <span class="playhead" aria-hidden="true"></span>
+  <a class="ruler-mark" href="#main" style="--x: 5%"><span>OPEN</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#make" style="--x: 17%"><span>WHAT I MAKE</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#work" style="--x: 33%"><span>WORK</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#method" style="--x: 49%"><span>METHOD</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#credits" style="--x: 65%"><span>CREDITS</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#about" style="--x: 81%"><span>ABOUT</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#contact" style="--x: 94%"><span>CONTACT</span><i aria-hidden="true"></i></a>
+</nav>
 
 <section id="make" aria-labelledby="make-title">
   <div class="wrap">
@@ -206,7 +218,7 @@
     <p class="credits-note">Thirty-plus productions as VFX Editor at Rising Sun Pictures, plus visual effects and camera department credits, filed into yearly dailies bins, the way the media lands. Verified on <a href="https://www.imdb.com/name/nm7834405/">IMDb</a>.</p>
         <div class="bins">
     <details class="bin" open>
-      <summary>2026_dailies<span class="bin-count">10 ITEMS</span></summary>
+      <summary>2026_dailies<span class="bin-count">10 ITEMS</span><span class="bin-lights" aria-hidden="true"><i></i><i></i><i></i></span></summary>
       <ul>
       <li><span class="title">Avengers: Doomsday</span><span class="yr">Disney</span></li>
       <li><span class="title">Mortal Kombat 2</span><span class="yr">Warner Bros.</span></li>
@@ -221,7 +233,7 @@
       </ul>
     </details>
     <details class="bin" open>
-      <summary>2025_dailies<span class="bin-count">8 ITEMS</span></summary>
+      <summary>2025_dailies<span class="bin-count">8 ITEMS</span><span class="bin-lights" aria-hidden="true"><i></i><i></i><i></i></span></summary>
       <ul>
       <li><span class="title">Wicked: For Good</span><span class="yr">Universal</span></li>
       <li><span class="title">Thunderbolts*</span><span class="yr">Disney</span></li>
@@ -234,7 +246,7 @@
       </ul>
     </details>
     <details class="bin" open>
-      <summary>2024_dailies<span class="bin-count">9 ITEMS</span></summary>
+      <summary>2024_dailies<span class="bin-count">9 ITEMS</span><span class="bin-lights" aria-hidden="true"><i></i><i></i><i></i></span></summary>
       <ul>
       <li><span class="title">Deadpool &amp; Wolverine</span><span class="yr">Disney</span></li>
       <li><span class="title">The Acolyte: Season 1</span><span class="yr">Disney+</span></li>
@@ -248,7 +260,7 @@
       </ul>
     </details>
     <details class="bin" open>
-      <summary>2022-23_dailies<span class="bin-count">7 ITEMS</span></summary>
+      <summary>2022-23_dailies<span class="bin-count">7 ITEMS</span><span class="bin-lights" aria-hidden="true"><i></i><i></i><i></i></span></summary>
       <ul>
       <li><span class="title">The Marvels</span><span class="yr">Disney</span></li>
       <li><span class="title">Ahsoka</span><span class="yr">Disney+</span></li>
@@ -268,8 +280,14 @@
     <p class="tc">TC 01:15:00:00 — OFF THE CLOCK</p>
     <h2 class="section-title" id="about-title">About me.</h2>
     <p>Brisbane-based, Griffith film school first, then three-plus years cutting VFX on tentpoles, now an M.S. in IT at QUT because the tools kept getting more interesting than the credits. Away from the timeline I build in a different medium: <strong>Lego</strong>, brick by brick, which is honestly the same job as conforming a cut — the Razor Crest's done, a Chopper droid's next, and a Dune Ornithopter holds the shelf. I'm a <strong>Star Wars</strong> and <strong>Lord of the Rings</strong> person (both trilogies get project-panel respect), an unapologetic <strong>macOS</strong> tinkerer currently wiring a house into Home Assistant and a hobbyist <strong>3D printer</strong> when a part just needs to exist, and I shoot <strong>film photography</strong> — frame-accurate at work, 36 exposures of patience on weekends.</p>
-    <ul class="tools" aria-label="Off the clock">
-      <li>Lego builder</li><li>Star Wars</li><li>Lord of the Rings</li><li>Home Assistant</li><li>3D printing</li><li>Film photography</li>
+    <!-- Portrait stub: swap in <figure class="shot"> with photo when Kai supplies one -->
+    <ul class="hobby-track" aria-label="Off the clock — timeline markers">
+      <li><button class="hobby-marker" type="button" aria-expanded="false"><span>LEGO</span></button><span class="hobby-note" hidden>Brick by brick: Razor Crest done, Chopper droid next, a Dune Ornithopter holds the shelf.</span></li>
+      <li><button class="hobby-marker" type="button" aria-expanded="false"><span>STAR WARS</span></button><span class="hobby-note" hidden>Project-panel respect for a galaxy far, far away — see also: the Lego bench.</span></li>
+      <li><button class="hobby-marker" type="button" aria-expanded="false"><span>LOTR</span></button><span class="hobby-note" hidden>Both trilogies, extended editions, obviously.</span></li>
+      <li><button class="hobby-marker" type="button" aria-expanded="false"><span>HOME ASSISTANT</span></button><span class="hobby-note" hidden>Wiring the house into Home Assistant, one stubborn device at a time.</span></li>
+      <li><button class="hobby-marker" type="button" aria-expanded="false"><span>3D PRINTING</span></button><span class="hobby-note" hidden>For when a part just needs to exist by tomorrow morning.</span></li>
+      <li><button class="hobby-marker" type="button" aria-expanded="false"><span>FILM PHOTO</span></button><span class="hobby-note" hidden>Frame-accurate at work; 36 exposures of patience on weekends.</span></li>
     </ul>
   </div>
 </section>
@@ -285,8 +303,8 @@
 <span class="pr">&gt;&gt;&gt;</span> kai_bin.contact()
 {<span class="st">'linkedin'</span>: <a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">in/kai-bin-wong</a>, <span class="st">'email'</span>: <a href="mailto:wongkaibin8080@gmail.com">wongkaibin8080@gmail.com</a>}  <span class="pr"># replies same day</span></pre>
     <div class="hero-cta">
-      <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">Message me on LinkedIn</a>
-      <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>Message me on LinkedIn</a>
+      <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg>Email me</a>
     </div>
   </div>
 </section>
@@ -294,7 +312,7 @@
 <footer class="site-foot">
   <div class="wrap">
     <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
-    <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/">IMDb</a> · <a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/">LinkedIn</a></span>
+    <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/" aria-label="IMDb profile"><svg class="icon" viewBox="0 0 44 24" style="width:2em" aria-hidden="true"><rect x="1" y="2" width="42" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="22" y="16.5" text-anchor="middle" font-family="inherit" font-size="10" font-weight="700" fill="currentColor">IMDb</text></svg></a><a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/" aria-label="LinkedIn profile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="mailto:wongkaibin8080@gmail.com" aria-label="Email Kai-Bin"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg></a></span>
     <span>CUT: KBW · REEL 01 OF 01</span>
   </div>
 </footer>
