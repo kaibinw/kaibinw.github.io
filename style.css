@@ -347,8 +347,17 @@ a:hover { color: var(--ink); }
     z-index: 15;
     background-color: var(--bg);
     height: 3.4rem;
+    display: flex;
+    justify-content: space-between;
   }
-  .ruler-mark { padding: 0 0.7rem 1.35rem; min-width: 2.75rem; position: relative; }
+  .ruler-mark { 
+    padding: 0 0.7rem 1.35rem; 
+    min-width: 2.75rem; 
+    position: relative; 
+    left: auto;
+    translate: 0 0;
+    flex: 1;
+  }
   .ruler-mark span { display: none; }
   .ruler-mark[aria-current] span {
     display: block;
