@@ -304,16 +304,21 @@ a:hover { color: var(--ink); }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Playhead animation boundaries perfectly matching the elements */
-  .ruler:not(.is-live) .playhead { animation: scrub 26s linear infinite alternate; }
-}
-.ruler.is-live .playhead { transition: left 0.25s ease-out; }
-@media (prefers-reduced-motion: reduce) {
-  .ruler.is-live .playhead { transition: none; }
+  .ruler .playhead { 
+    animation: scrub 26s linear infinite alternate; 
+  }
 }
 
+/*.ruler.is-live .playhead { transition: left 0.25s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .ruler.is-live .playhead { transition: none; }
+}*/
+
 /* Keyframes adjusted: 0% is OPEN, 100% is CONTACT */
-@keyframes scrub { from { left: 0%; } to { left: 100%; } }
+@keyframes scrub { 
+  from { left: 0%; } 
+  to { left: 100%; } 
+}
 
 /* nav markers on the ruler: a tick + always-visible mono label */
 .ruler-mark {
