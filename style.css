@@ -274,6 +274,8 @@ a:hover { color: var(--ink); }
 
 /* timeline ruler strip under the hero — doubles as section navigation */
 .ruler {
+  width: 100%;
+  box-sizing: border-box;
   height: 4.1rem;
   border-bottom: 1px solid var(--line);
   background:
@@ -282,8 +284,6 @@ a:hover { color: var(--ink); }
     repeating-linear-gradient(to right,
       var(--line) 0 1px, transparent 1px 2.5%) bottom / 100% 0.7rem no-repeat;
   position: relative;
-  display: flex;
-  justify-content: space-between;
 }
 .ruler .playhead {
   position: absolute;
@@ -292,6 +292,7 @@ a:hover { color: var(--ink); }
   width: 2px;
   background: var(--accent);
   pointer-events: none;
+  z-index: 5; /* Ensured playhead sits on top of text */
 }
 .ruler .playhead::before {
   content: "";
@@ -301,21 +302,25 @@ a:hover { color: var(--ink); }
   border: 7px solid transparent;
   border-top: 9px solid var(--accent);
 }
+
 @media (prefers-reduced-motion: no-preference) {
+  /* Playhead animation boundaries perfectly matching the elements */
   .ruler:not(.is-live) .playhead { animation: scrub 26s linear infinite alternate; }
 }
 .ruler.is-live .playhead { transition: left 0.25s ease-out; }
 @media (prefers-reduced-motion: reduce) {
   .ruler.is-live .playhead { transition: none; }
 }
-@keyframes scrub { from { left: 8%; } to { left: 88%; } }
+
+/* Keyframes adjusted: 0% is OPEN, 100% is CONTACT */
+@keyframes scrub { from { left: 0%; } to { left: 100%; } }
 
 /* nav markers on the ruler: a tick + always-visible mono label */
 .ruler-mark {
-  /*position: absolute;*/
+  position: absolute;
   bottom: 0;
-  /*left: var(--x);
-  translate: -50% 0;*/
+  left: var(--x);
+  translate: -50% 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -329,49 +334,54 @@ a:hover { color: var(--ink); }
   color: var(--muted);
   text-decoration: none;
   white-space: nowrap;
-  flex: 1;
   z-index: 2;
 }
+
 .ruler-mark i {
   width: 0.6rem; height: 0.6rem;
   background: var(--line-strong);
   clip-path: polygon(0 0, 100% 0, 100% 55%, 50% 100%, 0 55%);
   transition: background 0.15s ease-out;
 }
+
 .ruler-mark:hover, .ruler-mark:focus-visible { color: var(--ink); }
 .ruler-mark:hover i, .ruler-mark:focus-visible i { background: var(--accent); }
 .ruler-mark[aria-current] { color: var(--accent); }
 .ruler-mark[aria-current] i { background: var(--accent); }
+
 @media (max-width: 55.99em) {
-  /* mobile: the ruler is the primary nav — sticky, bigger touch targets,
-     only the active label shown so seven marks fit 375px */
+  /* mobile: the ruler is the primary nav — sticky, bigger touch targets */
   .ruler {
     position: sticky;
     top: 0;
     z-index: 15;
     background-color: var(--bg);
     height: 3.4rem;
+    
+    /* Use flexbox ONLY on mobile to evenly distribute icons */
     display: flex;
     justify-content: space-between;
   }
   .ruler-mark { 
-    padding: 0 0.7rem 1.35rem; 
-    min-width: 2.75rem; 
-    position: relative; 
+    position: relative;
     left: auto;
     translate: 0 0;
+    padding: 0 0.2rem 1.35rem; 
     flex: 1;
+    min-width: 0;
   }
-  .ruler-mark span { display: none; }
+  
+  /* FIX: Ensure mobile names stay visible below or above the ticks */
+  .ruler-mark span { 
+    display: block; 
+    font-size: 0.55rem;
+  }
+  
+  /* Remove absolute shifts that overlap text targets on small viewports */
   .ruler-mark[aria-current] span {
-    display: block;
-    position: absolute;
-    top: 0.5rem;
-    left: 50%;
-    translate: -50% 0;
+    position: static;
+    translate: 0 0;
   }
-  .ruler-mark:first-of-type[aria-current] span { left: 0; translate: 0; }
-  .ruler-mark:last-of-type[aria-current] span { left: auto; right: 0; translate: 0; }
 }
 
 /* ---- buttons ---- */
