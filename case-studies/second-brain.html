@@ -130,6 +130,38 @@ nothing deleted — one page marked superseded</pre>
       <figcaption>The two verbs of the vault: query (answer first, then the exact page and section it came from) and ingest (discussed, filed, indexed, logged). Every answer cites its source so trust is checkable.</figcaption>
     </figure>
 
+    <h2>It compounds the more you probe</h2>
+    <p>Most notes rot: written once, never revisited, quietly drifting out of date. This vault does the opposite, because <strong>using it is what maintains it</strong>. Every probe either gets answered from the wiki or exposes a gap, and a gap gets discussed and filed, so the next question on that thread lands warm. Ask about an area enough times and it stops being a lookup and becomes a cluster: a mature page cross-linked to everything around it, so an agent starts by reading the whole neighbourhood instead of one file.</p>
+    <p>That's the compounding. What started as a handful of stubs is now dozens of linked pages, and each answer arrives faster and better-connected than the last. <strong>The more it's probed, the more it's worth</strong> — the exact opposite of a wiki nobody has touched since the last show wrapped.</p>
+    <figure class="shot">
+      <div class="shot-frame" data-tabs data-state="t1">
+        <div class="shot-bar">ONE THREAD, PROBED OVER TIME<span class="shot-hint">SCRUB THE MONTHS</span></div>
+        <div class="shot-body">
+          <ul class="mock-chips">
+            <li><button class="on" data-tab="t1">Week 1</button></li>
+            <li><button data-tab="t2">Month 1</button></li>
+            <li><button data-tab="t3">Month 3</button></li>
+          </ul>
+          <div data-panels>
+<pre class="mock-term" data-panel="t1"><span class="cmd">▶ "How do the shelf NFC tags flip stock state?"</span>
+<span class="dim">searching index… no page yet</span>
+<span class="ok">gap logged</span> — discussed, then filed as a new stub
+one page in, zero links out</pre>
+<pre class="mock-term" data-panel="t2" hidden><span class="cmd">▶ "…and which automation fires off that boolean?"</span>
+answered from <span class="ok">pages/projects/dashboard</span> <span class="dim">('developing')</span>
+<span class="dim">Where this lives: § NFC layer</span>
+a few probes later, four linked pages</pre>
+<pre class="mock-term" data-panel="t3" hidden><span class="cmd">▶ "What's our whole household-buying flow?"</span>
+answered from a <span class="ok">'mature'</span> page, cross-linked to
+[[ledger]] · [[home-assistant]] · [[deal-agent]] · [[dashboard]]
+<span class="dim">warm start: the agent reads the cluster, not one file</span></pre>
+          </div>
+          <p class="mock-note">Every probe that misses becomes a page; every page that's probed grows links. Cold lookup in week one, a connected cluster by month three.</p>
+        </div>
+      </div>
+      <figcaption>Representative: one thread probed across three months. A gap becomes a stub, the stub grows links, and a warm cluster answers the next question with connected context instead of a cold lookup.</figcaption>
+    </figure>
+
     <h2 id="proof">What it demonstrates</h2>
     <ul>
       <li><strong>Context is infrastructure.</strong> The reason my agent sessions ship working software quickly is that they start warm: constraints, history, and conventions are one read away, not re-explained per session.</li>
