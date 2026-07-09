@@ -142,16 +142,16 @@ registry updated — next run appends from here</pre>
           <div data-panels>
             <div data-panel="paste">
 <pre class="mock-term"><span class="cmd">path</span>  P:\show\Shots\042\042_0080\Renders\2dRender\
-      cmp_wip\v0006\042_0080_cmp_wip_v0006.[1001-1096].exr</pre>
+      comp\v0006\042_0080_comp_v0006.[1001-1096].exr</pre>
               <div class="mock-row"><span class="label">Sequence</span><span class="num">042</span></div>
               <div class="mock-row"><span class="label">Shot</span><span class="num">042_0080</span></div>
-              <div class="mock-row"><span class="label">Identifier</span><span class="num">cmp_wip</span></div>
+              <div class="mock-row"><span class="label">Identifier</span><span class="num">comp</span></div>
               <div class="mock-row"><span class="label">Version</span><span class="num">v0006</span></div>
               <div class="mock-row"><span class="label">Format</span><span class="num">EXR sequence</span></div>
             </div>
             <div data-panel="placed" hidden>
 <pre class="mock-term"><span class="cmd">▶ Import into Resolve</span>
-imported cmp_wip v0006 → Shots/042/042_0080/cmp_wip
+imported comp v0006 → Shots/042/042_0080/comp
 <span class="ok">✓ layered on V3 @ 01:03:57:06</span>  <span class="dim">(record-in from the EDL)</span>
 first clear track — v0005 stays on V2, nothing overwritten</pre>
             </div>
@@ -166,7 +166,7 @@ first clear track — v0005 stays on V2, nothing overwritten</pre>
     </figure>
 
     <h2>Department import: the config that groups itself</h2>
-    <p>"What counts as a render worth importing" is different on every show, so nothing is hardcoded. The tool reads every render identifier it has ever seen and <strong>groups them by prefix into departments</strong> — anm_, lgt_, cmp_, edt_ — so you whitelist at the level you actually think in: turn on all of Compositing for EXR, leave Lighting movie files off, flip a single identifier when you must. Anything new it discovers arrives switched off, logged, and waiting for a human yes.</p>
+    <p>"What counts as a render worth importing" is different on every show, so nothing is hardcoded. The tool reads every render identifier it has ever seen and <strong>groups them by prefix into departments</strong> — anm_, lgt_, comp_, edit_ — so you whitelist at the level you actually think in: turn on all of Compositing for EXR, leave Lighting movie files off, flip a single identifier when you must. Anything new it discovers arrives switched off, logged, and waiting for a human yes.</p>
     <figure class="shot">
       <div class="shot-frame" data-filter-group>
         <div class="shot-bar">DEPARTMENT IMPORT · IDENTIFIERS GROUP THEMSELVES<span class="shot-hint">FILTER A DEPT</span></div>
@@ -175,16 +175,16 @@ first clear track — v0005 stays on V2, nothing overwritten</pre>
             <li><button class="on" data-filter="all">All</button></li>
             <li><button data-filter="anm">anm_ · Animation</button></li>
             <li><button data-filter="lgt">lgt_ · Lighting</button></li>
-            <li><button data-filter="cmp">cmp_ · Compositing</button></li>
-            <li><button data-filter="edt">edt_ · Editorial</button></li>
+            <li><button data-filter="comp">comp_ · Compositing</button></li>
+            <li><button data-filter="edit">edit_ · Editorial</button></li>
           </ul>
           <ul class="mock-feed">
             <li data-tag="anm"><span class="who">anm_</span><span>anm_blocking</span><span class="amt">EXR ✓ · MOV ✓</span></li>
             <li data-tag="lgt"><span class="who">lgt_</span><span>lgt_beauty</span><span class="amt">EXR ✓ · MOV —</span></li>
             <li data-tag="lgt"><span class="who">lgt_</span><span>lgt_dmp</span><span class="amt">EXR ✓ · MOV —</span></li>
-            <li data-tag="cmp"><span class="who">cmp_</span><span>cmp_wip</span><span class="amt">EXR ✓ · MOV ✓</span></li>
-            <li data-tag="cmp"><span class="who">cmp_</span><span>cmp_send</span><span class="amt">EXR — · MOV ✓</span></li>
-            <li data-tag="edt"><span class="who">edt_</span><span>edt_animatic</span><span class="amt">EXR — · MOV ✓</span></li>
+            <li data-tag="comp"><span class="who">comp_</span><span>comp_wip</span><span class="amt">EXR ✓ · MOV ✓</span></li>
+            <li data-tag="comp"><span class="who">comp_</span><span>comp_send</span><span class="amt">EXR — · MOV ✓</span></li>
+            <li data-tag="edit"><span class="who">edit_</span><span>edit</span><span class="amt">EXR — · MOV ✓</span></li>
             <li data-tag="fx"><span class="who">fx_</span><span>fx_smoke · new today</span><span class="amt">EXR — · MOV —</span></li>
           </ul>
           <p class="mock-note"><b>fx_smoke</b> showed up in this morning's scan and arrived <b>disabled</b> — a whole new department the tool refuses to import until you flip it on.</p>
@@ -205,9 +205,9 @@ first clear track — v0005 stays on V2, nothing overwritten</pre>
             <li><button data-tab="exr">EXR DWAA</button></li>
           </ul>
           <ul class="mock-feed">
-            <li><span class="who">042_0080</span><span>cmp_wip v006</span><span class="amt">01:03:57:06 – 01:04:01:11</span></li>
+            <li><span class="who">042_0080</span><span>comp v006</span><span class="amt">01:03:57:06 – 01:04:01:11</span></li>
             <li><span class="who">042_0110</span><span>lgt_beauty v003</span><span class="amt">01:04:01:12 – 01:04:06:20</span></li>
-            <li><span class="who">051_0020</span><span>cmp_send v012</span><span class="amt">01:07:14:00 – 01:07:19:08</span></li>
+            <li><span class="who">051_0020</span><span>comp_send v012</span><span class="amt">01:07:14:00 – 01:07:19:08</span></li>
           </ul>
           <div data-panels>
             <p class="mock-note" data-panel="review">Preset <b>H.264 review</b>: burn-in on, 1080p. Every range is pulled straight from the EDL record in/out — no trimming, no guessed handles.</p>
