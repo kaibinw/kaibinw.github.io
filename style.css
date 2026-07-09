@@ -179,6 +179,20 @@ a:hover { color: var(--ink); }
     border-top: 0;
   }
   .sidebar-nav-item { border-bottom: 0; padding: 0.25rem 0; }
+
+  /* Homepage only (it has the ruler nav): the ruler does the navigating,
+     so the banner collapses to wordmark + name and the hero owns the fold */
+  body:has(.ruler[data-ruler-nav]) .sidebar-nav,
+  body:has(.ruler[data-ruler-nav]) .sidebar-about .lead,
+  body:has(.ruler[data-ruler-nav]) .sidebar .btn { display: none; }
+  body:has(.ruler[data-ruler-nav]) .sidebar { padding-block: 0.9rem; }
+  body:has(.ruler[data-ruler-nav]) .sidebar-inner {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  body:has(.ruler[data-ruler-nav]) .sidebar-about h1 { font-size: 1.05rem; }
 }
 
 /* Desktop: fix the sidebar, hyde-style */
@@ -303,16 +317,18 @@ a:hover { color: var(--ink); }
   border-top: 9px solid var(--accent);
 }
 
+/* scrub is the JS-off fallback only: once mock.js takes over (.is-live) the
+   animation must stop, or it overrides the scroll-tracked inline left */
 @media (prefers-reduced-motion: no-preference) {
-  .ruler .playhead { 
-    animation: scrub 26s linear infinite alternate; 
+  .ruler:not(.is-live) .playhead {
+    animation: scrub 26s linear infinite alternate;
   }
 }
 
-/*.ruler.is-live .playhead { transition: left 0.25s ease-out; }
+.ruler.is-live .playhead { transition: left 0.25s ease-out; }
 @media (prefers-reduced-motion: reduce) {
   .ruler.is-live .playhead { transition: none; }
-}*/
+}
 
 /* Keyframes adjusted: 0% is OPEN, 100% is CONTACT */
 @keyframes scrub { 
@@ -353,6 +369,13 @@ a:hover { color: var(--ink); }
 .ruler-mark:hover i, .ruler-mark:focus-visible i { background: var(--accent); }
 .ruler-mark[aria-current] { color: var(--accent); }
 .ruler-mark[aria-current] i { background: var(--accent); }
+
+/* desktop: marks at 0% / 100% would half-clip when centred on their tick —
+   pin the end labels inside the strip instead */
+@media (min-width: 56em) {
+  .ruler-mark:first-of-type { translate: 0 0; align-items: flex-start; padding-left: 0.2rem; }
+  .ruler-mark:last-of-type { translate: -100% 0; align-items: flex-end; padding-right: 0.2rem; }
+}
 
 @media (max-width: 55.99em) {
   /* mobile: the ruler is the primary nav — sticky, bigger touch targets */
