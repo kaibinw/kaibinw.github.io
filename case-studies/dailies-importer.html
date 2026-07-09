@@ -99,7 +99,7 @@
     <table class="fact-table">
       <tr><th>Takes an EDL once</th><td>The cut comes in as an EDL a single time and becomes the master review timeline. That's the whole setup cost. From then on the tool maintains the timelines; nobody rebuilds them by hand again.</td></tr>
       <tr><th>Scan by department</th><td>Walks the show's render folders and classifies new media by which department published it: animation, lighting, compositing, matte painting, editorial temps. Frame sequences and movie files both.</td></tr>
-      <tr><th>Config as memory</th><td>Department render types live in a JSON config with an on/off toggle each. Newly discovered types are added <strong>disabled</strong>: the tool never imports something it hasn't been told to want.</td></tr>
+      <tr><th>Config as memory</th><td>Each department lives in a JSON config with an on/off toggle. Newly discovered departments are added <strong>disabled</strong>: the tool never imports something it hasn't been told to want.</td></tr>
       <tr><th>Append, don't rebuild</th><td>A timeline registry remembers which review timeline each department feeds. Every run appends only what's new — the hours of daily setup collapse into the seconds the import takes.</td></tr>
       <tr><th>Colour as language</th><td>Every imported clip gets a Resolve colour tag by department, so the timeline reads at a glance in review: who published it, and how far along it is.</td></tr>
     </table>
@@ -133,7 +133,7 @@ registry updated — next run appends from here</pre>
     </figure>
 
     <h2>Quick import: one render, placed on the right track</h2>
-    <p>Most of the day isn't a full scan. An artist pings that one shot is re-rendered and it needs to be in the review timeline <em>now</em>. Quick Import takes exactly one thing: the path. Paste a frame path or a version folder and it parses the sequence, shot, identifier, and version, sniffs EXR sequence versus movie file, and shows precisely what it's about to bring in before you commit to anything.</p>
+    <p>Most of the day isn't a full scan. An artist pings that one shot is re-rendered and it needs to be in the review timeline <em>now</em>. Quick Import takes exactly one thing: the path. Paste a frame path or a version folder and it parses the sequence, shot, department, and version, sniffs EXR sequence versus movie file, and shows precisely what it's about to bring in before you commit to anything.</p>
     <p>The part I lean on every day is what happens next. The tool looks the shot up in the EDL registry, reads its record-in, drops the clip onto the first clear video track at that exact timeline position, and stacks the new version as a layer above the old one. No scrubbing to find the shot, no manual trim: <strong>the EDL already told it where the shot lives</strong>.</p>
     <figure class="shot">
       <div class="shot-frame" data-tabs data-state="paste">
@@ -145,7 +145,7 @@ registry updated — next run appends from here</pre>
       comp\v0006\042_0080_comp_v0006.[1001-1096].exr</pre>
               <div class="mock-row"><span class="label">Sequence</span><span class="num">042</span></div>
               <div class="mock-row"><span class="label">Shot</span><span class="num">042_0080</span></div>
-              <div class="mock-row"><span class="label">Identifier</span><span class="num">comp</span></div>
+              <div class="mock-row"><span class="label">Department</span><span class="num">comp</span></div>
               <div class="mock-row"><span class="label">Version</span><span class="num">v0006</span></div>
               <div class="mock-row"><span class="label">Format</span><span class="num">EXR sequence</span></div>
             </div>
@@ -165,32 +165,30 @@ first clear track — v0005 stays on V2, nothing overwritten</pre>
       <figcaption>Quick Import, representative data: paste a path, confirm the parse, and the clip lands on the first clear track at the shot's record-in. Versions stack as layers; nothing is overwritten.</figcaption>
     </figure>
 
-    <h2>Department import: the config that groups itself</h2>
-    <p>"What counts as a render worth importing" is different on every show, so nothing is hardcoded. The tool reads every render identifier it has ever seen and <strong>groups them by prefix into departments</strong> — anm_, lgt_, comp_, edit_ — so you whitelist at the level you actually think in: turn on all of Compositing for EXR, leave Lighting movie files off, flip a single identifier when you must. Anything new it discovers arrives switched off, logged, and waiting for a human yes.</p>
+    <h2>Department import: the whitelist, by department</h2>
+    <p>"What counts as a render worth importing" is different on every show, so nothing is hardcoded. The tool sorts every render it has ever seen into <strong>departments</strong> — Animation, Lighting, Compositing, Editorial — so you whitelist at the level you actually think in: turn Compositing on for EXR, leave Lighting movie files off, per format. Anything new it discovers arrives as a department switched off, logged, and waiting for a human yes.</p>
     <figure class="shot">
       <div class="shot-frame" data-filter-group>
-        <div class="shot-bar">DEPARTMENT IMPORT · IDENTIFIERS GROUP THEMSELVES<span class="shot-hint">FILTER A DEPT</span></div>
+        <div class="shot-bar">DEPARTMENT IMPORT · ONE TOGGLE PER DEPARTMENT<span class="shot-hint">FILTER A DEPT</span></div>
         <div class="shot-body">
           <ul class="mock-chips">
             <li><button class="on" data-filter="all">All</button></li>
-            <li><button data-filter="anm">anm_ · Animation</button></li>
-            <li><button data-filter="lgt">lgt_ · Lighting</button></li>
-            <li><button data-filter="comp">comp_ · Compositing</button></li>
-            <li><button data-filter="edit">edit_ · Editorial</button></li>
+            <li><button data-filter="anm">Animation</button></li>
+            <li><button data-filter="lgt">Lighting</button></li>
+            <li><button data-filter="comp">Compositing</button></li>
+            <li><button data-filter="edit">Editorial</button></li>
           </ul>
           <ul class="mock-feed">
-            <li data-tag="anm"><span class="who">anm_</span><span>anm_blocking</span><span class="amt">EXR ✓ · MOV ✓</span></li>
-            <li data-tag="lgt"><span class="who">lgt_</span><span>lgt_beauty</span><span class="amt">EXR ✓ · MOV —</span></li>
-            <li data-tag="lgt"><span class="who">lgt_</span><span>lgt_dmp</span><span class="amt">EXR ✓ · MOV —</span></li>
-            <li data-tag="comp"><span class="who">comp_</span><span>comp_wip</span><span class="amt">EXR ✓ · MOV ✓</span></li>
-            <li data-tag="comp"><span class="who">comp_</span><span>comp_send</span><span class="amt">EXR — · MOV ✓</span></li>
-            <li data-tag="edit"><span class="who">edit_</span><span>edit</span><span class="amt">EXR — · MOV ✓</span></li>
-            <li data-tag="fx"><span class="who">fx_</span><span>fx_smoke · new today</span><span class="amt">EXR — · MOV —</span></li>
+            <li data-tag="anm"><span class="who">Animation</span><span>animation dailies · green</span><span class="amt">EXR ✓ · MOV ✓</span></li>
+            <li data-tag="lgt"><span class="who">Lighting</span><span>lighting dailies · yellow</span><span class="amt">EXR ✓ · MOV —</span></li>
+            <li data-tag="comp"><span class="who">Compositing</span><span>comp dailies · teal</span><span class="amt">EXR ✓ · MOV ✓</span></li>
+            <li data-tag="edit"><span class="who">Editorial</span><span>editorial dailies · blue</span><span class="amt">EXR — · MOV ✓</span></li>
+            <li data-tag="fx"><span class="who">FX</span><span>new today — disabled</span><span class="amt">EXR — · MOV —</span></li>
           </ul>
-          <p class="mock-note"><b>fx_smoke</b> showed up in this morning's scan and arrived <b>disabled</b> — a whole new department the tool refuses to import until you flip it on.</p>
+          <p class="mock-note"><b>FX</b> showed up in this morning's scan and arrived <b>disabled</b> — a whole new department the tool refuses to import until you flip it on.</p>
         </div>
       </div>
-      <figcaption>Every render identifier the tool has ever seen, grouped by prefix into departments (representative data). Whitelist a whole department or a single type, per format; new arrivals are off by default.</figcaption>
+      <figcaption>Every department the tool has ever seen (representative data). Whitelist a whole department, per format; new arrivals are off by default.</figcaption>
     </figure>
 
     <h2>On deck: an EDL-aware render tab</h2>
@@ -206,8 +204,8 @@ first clear track — v0005 stays on V2, nothing overwritten</pre>
           </ul>
           <ul class="mock-feed">
             <li><span class="who">042_0080</span><span>comp v006</span><span class="amt">01:03:57:06 – 01:04:01:11</span></li>
-            <li><span class="who">042_0110</span><span>lgt_beauty v003</span><span class="amt">01:04:01:12 – 01:04:06:20</span></li>
-            <li><span class="who">051_0020</span><span>comp_send v012</span><span class="amt">01:07:14:00 – 01:07:19:08</span></li>
+            <li><span class="who">042_0110</span><span>lighting v003</span><span class="amt">01:04:01:12 – 01:04:06:20</span></li>
+            <li><span class="who">051_0020</span><span>comp v012</span><span class="amt">01:07:14:00 – 01:07:19:08</span></li>
           </ul>
           <div data-panels>
             <p class="mock-note" data-panel="review">Preset <b>H.264 review</b>: burn-in on, 1080p. Every range is pulled straight from the EDL record in/out — no trimming, no guessed handles.</p>
