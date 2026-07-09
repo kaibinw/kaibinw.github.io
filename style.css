@@ -1140,9 +1140,7 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
   font-size: 0.82rem;
   border-top: 1px solid var(--line);
   padding-top: 0.65rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  text-wrap: pretty;
 }
 .slate-head .board-tc { letter-spacing: 0.06em; }
 
