@@ -59,7 +59,7 @@
 
 <main class="content" id="main">
 
-<div class="case-head">
+<div class="case-head" id="top">
   <div class="wrap">
     <a class="back" href="../index.html#work">← Back to selected work</a>
     <h1>Dental Catalog</h1>
@@ -80,9 +80,18 @@
   </div>
 </div>
 
+<nav class="ruler" data-ruler-nav aria-label="Case timeline navigation">
+  <span class="playhead" aria-hidden="true"></span>
+  <a class="ruler-mark" href="#top" style="--x: 0%"><span>SLATE</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#problem" style="--x: 25%"><span>PROBLEM</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#build" style="--x: 50%"><span>BUILD</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#proof" style="--x: 75%"><span>PROOF</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#next" style="--x: 100%"><span>NEXT</span><i aria-hidden="true"></i></a>
+</nav>
+
 <div class="case-body">
   <div class="wrap">
-    <h2>The studio problem</h2>
+    <h2 id="problem">The studio problem</h2>
     <p>Every facility owns a growing library of versioned imagery: plates, WIP renders, comp versions, reference stills, stacked up per shot across years of shows. Supervisors review by <strong>wiping between versions</strong>; coordinators label incoming turnover (plate, ref, grade, QC frame) by hand; and finding "the approved version from March against today's WIP" means archaeology in a file browser. The review tools that do this well are seat-licensed and cloud-tethered, which client security (TPN-style) and budget both push back on.</p>
     <p>The same shape at consumer scale: one practitioner, one growing image library, version-over-time comparison as the core workflow, and data that must never leave the building.</p>
 
@@ -97,7 +106,7 @@
     </table>
     <p>Those three constraints eliminated every off-the-shelf option and pointed directly at a single self-contained HTML file using the File System Access API.</p>
 
-    <h2>How it was built</h2>
+    <h2 id="build">How it was built</h2>
     <p>I didn't write a line of code. I stated the constraints and dropped in five patient folders as a proof of concept. The model recognised the dental photo naming conventions unprompted, inferring that <strong>front / right / upper</strong> mapped to specific clinical views, and proposed a labelling scheme matching how dentists actually work. From there, iteration through prompting:</p>
     <ul>
       <li><strong>Iteration 1:</strong> core browser with patient grid, session timeline, gallery.</li>
@@ -186,7 +195,7 @@
     <p>Before this project I had already proven the pattern on internal studio tooling: when a recurring "what's actually in this folder?" question was costing minutes every time, the answer was a <strong>two-minute tool</strong> — a folder walk plus a smart summary, about a hundred lines. Months later, a bigger visual inspection tool didn't start from scratch: it inherited the folder-walking, the naming-convention parser, and the caching from the quick tool, and added playback and a browsing UI on top.</p>
     <p>Dental Catalog followed the same arc deliberately. v1 was the smallest thing that answered the daily question (browse by patient, compare sessions). Because v1 was built cleanly, the v2 overhaul — full redesign plus the fingerprinting Sort Wizard — reused its bones instead of replacing them. <strong>Build the quick tool right and it becomes the foundation; every expansion after it gets faster.</strong></p>
 
-    <h2>What it demonstrates</h2>
+    <h2 id="proof">What it demonstrates</h2>
     <ul>
       <li><strong>Domain expertise drove the outcome, not coding expertise.</strong> I knew the problem and the constraints; the AI knew how to build. Neither alone ships this.</li>
       <li><strong>Iterative prompting compounds.</strong> The v2 image-fingerprinting Sort Wizard was unthinkable in week one; it became obvious only after watching real use of v1.</li>
@@ -200,7 +209,7 @@
   </div>
 </div>
 
-<div class="case-next">
+<div class="case-next" id="next">
   <div class="wrap">
     <p class="tc">NEXT REEL</p>
     <a href="hq.html">HQ →</a>
@@ -209,9 +218,8 @@
 
 <footer class="site-foot">
   <div class="wrap">
-    <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
     <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/" aria-label="IMDb profile"><svg class="icon" viewBox="0 0 44 24" style="width:2em" aria-hidden="true"><rect x="1" y="2" width="42" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="22" y="16.5" text-anchor="middle" font-family="inherit" font-size="10" font-weight="700" fill="currentColor">IMDb</text></svg></a><a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/" aria-label="LinkedIn profile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="mailto:wongkaibin8080@gmail.com" aria-label="Email Kai-Bin"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg></a></span>
-    <span>CUT: KBW · CASE 02 OF 06</span>
+    <span class="foot-cut"><b>CUT:</b> &copy; 2026 KBW</span>
   </div>
 </footer>
 

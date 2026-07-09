@@ -59,7 +59,7 @@
 
 <main class="content" id="main">
 
-<div class="case-head">
+<div class="case-head" id="top">
   <div class="wrap">
     <a class="back" href="../index.html#work">← Back to selected work</a>
     <h1>Ledger</h1>
@@ -80,9 +80,18 @@
   </div>
 </div>
 
+<nav class="ruler" data-ruler-nav aria-label="Case timeline navigation">
+  <span class="playhead" aria-hidden="true"></span>
+  <a class="ruler-mark" href="#top" style="--x: 0%"><span>SLATE</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#problem" style="--x: 25%"><span>PROBLEM</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#build" style="--x: 50%"><span>BUILD</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#proof" style="--x: 75%"><span>PROOF</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#next" style="--x: 100%"><span>NEXT</span><i aria-hidden="true"></i></a>
+</nav>
+
 <div class="case-body">
   <div class="wrap">
-    <h2>The studio problem</h2>
+    <h2 id="problem">The studio problem</h2>
     <p>Every show runs on a cost report that's already out of date. Departments burn bid-days that only surface at month end; overages on awarded work get discovered after the burn, not during it; and when two entities front costs for each other (a facility and its outpost, a show and its reshoot unit), reconciling who owes whom is a spreadsheet ritual nobody trusts. Line producers don't need more reports — they need <strong>actuals that move in real time, visible to everyone who can spend</strong>.</p>
     <p>Shrink that problem until it fits in a kitchen: it's still real money, real cost centres, and two people who both spend against the same budget. That's the version I could build for, live in production, with users who complain immediately.</p>
 
@@ -98,7 +107,7 @@
       <tr><th>Free to run</th><td>Vercel and Supabase free tiers cover two users indefinitely.</td></tr>
     </table>
 
-    <h2>How it was built: twelve sessions</h2>
+    <h2 id="build">How it was built: twelve sessions</h2>
     <p>I have scripting experience (Python, VFX pipeline tooling) but had never built a full-stack web app, written row-level security policies, or set up CI/CD. Every technical decision was made through conversation with Claude: I described what the household needed; the architecture, schema, components, and bug fixes came out of the dialogue. I reviewed, tested, and steered.</p>
     <table class="fact-table">
       <tr><th>Session 0–1</th><td>Design references and scoping. Data model, tech stack, and documentation decided before a single line of code.</td></tr>
@@ -284,7 +293,7 @@
       <figcaption>The monthly close: locked months make the ledger trustworthy as a record, and the PDF report (designed visually in Claude Design first) is the household's month-end artifact.</figcaption>
     </figure>
 
-    <h2>What it demonstrates</h2>
+    <h2 id="proof">What it demonstrates</h2>
     <ul>
       <li><strong>Agentic engineering scales past scripts.</strong> Managed database, auth, realtime subscriptions, and deployment pipelines are all reachable through disciplined conversation plus domain judgment.</li>
       <li><strong>Constraints first, code second.</strong> The five constraints above ruled out every off-the-shelf option and picked the stack before a line was written.</li>
@@ -299,7 +308,7 @@
   </div>
 </div>
 
-<div class="case-next">
+<div class="case-next" id="next">
   <div class="wrap">
     <p class="tc">NEXT REEL</p>
     <a href="dental-catalog.html">Dental Catalog →</a>
@@ -308,9 +317,8 @@
 
 <footer class="site-foot">
   <div class="wrap">
-    <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
     <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/" aria-label="IMDb profile"><svg class="icon" viewBox="0 0 44 24" style="width:2em" aria-hidden="true"><rect x="1" y="2" width="42" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="22" y="16.5" text-anchor="middle" font-family="inherit" font-size="10" font-weight="700" fill="currentColor">IMDb</text></svg></a><a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/" aria-label="LinkedIn profile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="mailto:wongkaibin8080@gmail.com" aria-label="Email Kai-Bin"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg></a></span>
-    <span>CUT: KBW · CASE 01 OF 06</span>
+    <span class="foot-cut"><b>CUT:</b> &copy; 2026 KBW</span>
   </div>
 </footer>
 

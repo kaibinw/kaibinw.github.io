@@ -59,7 +59,7 @@
 
 <main class="content" id="main">
 
-<div class="case-head">
+<div class="case-head" id="top">
   <div class="wrap">
     <a class="back" href="../index.html#work">← Back to selected work</a>
     <h1>HQ</h1>
@@ -80,9 +80,18 @@
   </div>
 </div>
 
+<nav class="ruler" data-ruler-nav aria-label="Case timeline navigation">
+  <span class="playhead" aria-hidden="true"></span>
+  <a class="ruler-mark" href="#top" style="--x: 0%"><span>SLATE</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#problem" style="--x: 25%"><span>PROBLEM</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#build" style="--x: 50%"><span>BUILD</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#proof" style="--x: 75%"><span>PROOF</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#next" style="--x: 100%"><span>NEXT</span><i aria-hidden="true"></i></a>
+</nav>
+
 <div class="case-body">
   <div class="wrap">
-    <h2>The studio problem</h2>
+    <h2 id="problem">The studio problem</h2>
     <p>Every pipeline accumulates powerful automation that only TDs can drive. A coordinator who needs a delivery re-verified, a QC pass re-run, or a status report generated has to <strong>file a ticket and wait for someone with a shell</strong>. The automation exists; the front door doesn't. What production actually needs is a wall of safe, curated buttons: one click, live output, an audit trail, and no way to break anything.</p>
     <p>My household has the same shape: powerful agentic automation over a knowledge vault, and users who will never open a terminal.</p>
 
@@ -97,7 +106,7 @@
       <tr><th>Nothing destructive one click away</th><td>Buttons only run additive automations; the vault's hard rules (never delete, always log) hold underneath.</td></tr>
     </table>
 
-    <h2>One click, visible consequence</h2>
+    <h2 id="build">One click, visible consequence</h2>
     <p>The Run tab is the point of the tool. Each button is a stored prompt sent to a headless agent working inside the vault; the output streams live into the panel, and the run lands in the session log like any other. Curating the buttons is editing a small JSON file.</p>
     <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
@@ -115,7 +124,7 @@ Checking stale pages… 2 marked developing &gt; 30 days
       <figcaption>Recreation of a Run-tab session with representative output: a stored prompt launching a headless agentic audit, streaming results as it works.</figcaption>
     </figure>
 
-    <h2>What it demonstrates</h2>
+    <h2 id="proof">What it demonstrates</h2>
     <ul>
       <li><strong>Agentic engineering as infrastructure, not novelty.</strong> The agent is a subprocess that any UI can wrap. HQ turns conversational automations into buttons a family member can press.</li>
       <li><strong>Constraints produce simplicity.</strong> "Zero dependencies" forced a single-file server; two years of npm churn will never touch it.</li>
@@ -129,7 +138,7 @@ Checking stale pages… 2 marked developing &gt; 30 days
   </div>
 </div>
 
-<div class="case-next">
+<div class="case-next" id="next">
   <div class="wrap">
     <p class="tc">NEXT REEL</p>
     <a href="dashboard.html">Household Dashboard →</a>
@@ -138,9 +147,8 @@ Checking stale pages… 2 marked developing &gt; 30 days
 
 <footer class="site-foot">
   <div class="wrap">
-    <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
     <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/" aria-label="IMDb profile"><svg class="icon" viewBox="0 0 44 24" style="width:2em" aria-hidden="true"><rect x="1" y="2" width="42" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="22" y="16.5" text-anchor="middle" font-family="inherit" font-size="10" font-weight="700" fill="currentColor">IMDb</text></svg></a><a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/" aria-label="LinkedIn profile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="mailto:wongkaibin8080@gmail.com" aria-label="Email Kai-Bin"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg></a></span>
-    <span>CUT: KBW · CASE 03 OF 06</span>
+    <span class="foot-cut"><b>CUT:</b> &copy; 2026 KBW</span>
   </div>
 </footer>
 
