@@ -59,7 +59,7 @@
 
 <main class="content" id="main">
 
-<div class="case-head">
+<div class="case-head" id="top">
   <div class="wrap">
     <a class="back" href="../index.html#work">← Back to selected work</a>
     <h1>Dailies Importer</h1>
@@ -80,13 +80,22 @@
   </div>
 </div>
 
+<nav class="ruler" data-ruler-nav aria-label="Case timeline navigation">
+  <span class="playhead" aria-hidden="true"></span>
+  <a class="ruler-mark" href="#top" style="--x: 0%"><span>SLATE</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#problem" style="--x: 25%"><span>PROBLEM</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#build" style="--x: 50%"><span>BUILD</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#proof" style="--x: 75%"><span>PROOF</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#next" style="--x: 100%"><span>NEXT</span><i aria-hidden="true"></i></a>
+</nav>
+
 <div class="case-body">
   <div class="wrap">
-    <h2>The studio problem</h2>
+    <h2 id="problem">The studio problem</h2>
     <p>Ask any VFX editor about their mornings. Overnight, artists publish renders into ShotGrid across hundreds of shots — animation blocking, lighting takes, comp versions, matte-painting passes — and before the day's first review, editorial has to find what's new, pull it in, and rebuild dailies timelines the supervisor can actually scrub. On a busy show that's <strong>hours of setup, every single day</strong>, multiplied by however many departments are reviewing. It's the most repetitive job in editorial and the most punishing to get wrong: a missed render is a shot that doesn't get reviewed, and everyone in the room notices.</p>
     <p>The fix isn't importing faster. It's never rebuilding: <strong>conform the cut once, then only ever append what changed</strong>.</p>
 
-    <h2>What it does</h2>
+    <h2 id="build">What it does</h2>
     <table class="fact-table">
       <tr><th>Takes an EDL once</th><td>The cut comes in as an EDL a single time and becomes the master review timeline. That's the whole setup cost. From then on the tool maintains the timelines; nobody rebuilds them by hand again.</td></tr>
       <tr><th>Scan by department</th><td>Walks the show's render folders and classifies new media by which department published it: animation, lighting, compositing, matte painting, editorial temps. Frame sequences and movie files both.</td></tr>
@@ -122,7 +131,7 @@ registry updated — next run appends from here</pre>
       <figcaption>A representative morning run: scan classifies overnight renders by department; import appends only the new items to their colour-coded review timelines.</figcaption>
     </figure>
 
-    <h2>What it demonstrates</h2>
+    <h2 id="proof">What it demonstrates</h2>
     <ul>
       <li><strong>Editorial knowledge is the spec.</strong> The department breakdown, the timeline structure, and the colour language encode how reviews actually run. A pipeline TD could write this script; only an editor would know what it should do.</li>
       <li><strong>Config-driven means show-portable.</strong> Point it at a different show root, hand it that show's EDL, let it discover the render types, toggle on what matters. Nothing is hardcoded to one production.</li>
@@ -136,7 +145,7 @@ registry updated — next run appends from here</pre>
   </div>
 </div>
 
-<div class="case-next">
+<div class="case-next" id="next">
   <div class="wrap">
     <p class="tc">NEXT REEL</p>
     <a href="second-brain.html">Second Brain →</a>
@@ -145,9 +154,8 @@ registry updated — next run appends from here</pre>
 
 <footer class="site-foot">
   <div class="wrap">
-    <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
     <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/" aria-label="IMDb profile"><svg class="icon" viewBox="0 0 44 24" style="width:2em" aria-hidden="true"><rect x="1" y="2" width="42" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="22" y="16.5" text-anchor="middle" font-family="inherit" font-size="10" font-weight="700" fill="currentColor">IMDb</text></svg></a><a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/" aria-label="LinkedIn profile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="mailto:wongkaibin8080@gmail.com" aria-label="Email Kai-Bin"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg></a></span>
-    <span>CUT: KBW · CASE 05 OF 06</span>
+    <span class="foot-cut"><b>CUT:</b> &copy; 2026 KBW</span>
   </div>
 </footer>
 

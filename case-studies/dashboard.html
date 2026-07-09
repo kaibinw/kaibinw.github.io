@@ -59,7 +59,7 @@
 
 <main class="content" id="main">
 
-<div class="case-head">
+<div class="case-head" id="top">
   <div class="wrap">
     <a class="back" href="../index.html#work">← Back to selected work</a>
     <h1>Household Dashboard</h1>
@@ -80,16 +80,25 @@
   </div>
 </div>
 
+<nav class="ruler" data-ruler-nav aria-label="Case timeline navigation">
+  <span class="playhead" aria-hidden="true"></span>
+  <a class="ruler-mark" href="#top" style="--x: 0%"><span>SLATE</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#problem" style="--x: 25%"><span>PROBLEM</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#build" style="--x: 50%"><span>BUILD</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#proof" style="--x: 75%"><span>PROOF</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#next" style="--x: 100%"><span>NEXT</span><i aria-hidden="true"></i></a>
+</nav>
+
 <div class="case-body">
   <div class="wrap">
-    <h2>The studio problem</h2>
+    <h2 id="problem">The studio problem</h2>
     <p>Ask a facility what it owns and where it's thin, and the answer lives in five places: floating license counts in a vendor portal (who's holding the Nuke seats right now?), render capacity in the farm manager, kit and drives in a spreadsheet someone updates quarterly, renewal dates in a producer's calendar, and pricing in whatever the reseller last quoted. Nobody sees <strong>"what's low, where, and what needs restocking"</strong> on one screen — so seats run out mid-crunch and renewals land as surprises.</p>
     <p>A household has the identical problem with smaller numbers: consumables run out, wanted purchases wait for the right price, and the budget lives in a different system from the shopping list.</p>
 
     <h2>The same problem at household scale</h2>
     <p>Household procurement is scattered state: consumable stock lives in your head, the wants list lives in Notion, spend history lives in Ledger, and deals live on forums you'd have to check daily. Buying well means joining all four at the moment of decision, which nobody does at 9pm on a Tuesday.</p>
 
-    <h2>The wiring</h2>
+    <h2 id="build">The wiring</h2>
     <table class="fact-table">
       <tr><th>Stock state</th><td>Home Assistant tracks consumables; NFC tags on the shelf mark things low with one phone tap.</td></tr>
       <tr><th>Wants list</th><td>Notion database of things worth waiting for a deal on, with target prices.</td></tr>
@@ -144,7 +153,7 @@
       <figcaption>Recreation of the morning summary with representative data: a stock alert from a shelf tap, an agent-flagged deal against the wants list, spend headroom from Ledger.</figcaption>
     </figure>
 
-    <h2>What it demonstrates</h2>
+    <h2 id="proof">What it demonstrates</h2>
     <ul>
       <li><strong>Agents as scheduled colleagues.</strong> The deal scan is a nightly agentic job with a narrow brief and a paper trail, the same pattern as an overnight render check.</li>
       <li><strong>Integration is the product.</strong> No single component is novel; the value is four systems joined exactly at the decision point.</li>
@@ -158,7 +167,7 @@
   </div>
 </div>
 
-<div class="case-next">
+<div class="case-next" id="next">
   <div class="wrap">
     <p class="tc">NEXT REEL</p>
     <a href="dailies-importer.html">Dailies Importer →</a>
@@ -167,9 +176,8 @@
 
 <footer class="site-foot">
   <div class="wrap">
-    <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
     <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/" aria-label="IMDb profile"><svg class="icon" viewBox="0 0 44 24" style="width:2em" aria-hidden="true"><rect x="1" y="2" width="42" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="22" y="16.5" text-anchor="middle" font-family="inherit" font-size="10" font-weight="700" fill="currentColor">IMDb</text></svg></a><a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/" aria-label="LinkedIn profile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="mailto:wongkaibin8080@gmail.com" aria-label="Email Kai-Bin"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg></a></span>
-    <span>CUT: KBW · CASE 04 OF 06</span>
+    <span class="foot-cut"><b>CUT:</b> &copy; 2026 KBW</span>
   </div>
 </footer>
 

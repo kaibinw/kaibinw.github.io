@@ -505,13 +505,16 @@ section + section { border-top: 1px solid var(--line); }
 .work-item.minor h3 { font-size: var(--step-1); }
 .work-item.minor .work-body p { font-size: 0.95rem; }
 
-/* compressed descriptions: three lines, the case study carries the depth */
+/* one-line descriptions: say what the tool does; depth lives in the case study */
 .work-body p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
   overflow: hidden;
+}
+@media (max-width: 42em) {
+  .work-body p { font-size: 0.9rem; }
 }
 
 /* ---- clapper slate (per-case sprinkle) ---- */
@@ -609,7 +612,18 @@ section + section { border-top: 1px solid var(--line); }
 }
 .contact-code .pr { color: var(--accent); }
 .contact-code .st { color: var(--primary-bright); }
-.contact-code a { color: var(--primary-bright); }
+.contact-code a { color: var(--primary-bright); word-break: break-all; }
+@media (max-width: 47.99em) {
+  /* fit the console on a phone: shrink type and let long lines wrap
+     rather than push a horizontal scrollbar */
+  .contact-code {
+    font-size: 0.72rem;
+    line-height: 1.75;
+    padding: 0.85rem 0.9rem;
+    white-space: pre-wrap;
+    overflow-x: hidden;
+  }
+}
 
 /* ---- credits end-crawl ---- */
 .credits { background: var(--surface); }
@@ -656,11 +670,19 @@ section + section { border-top: 1px solid var(--line); }
 .site-foot .wrap {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.75rem 1.5rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--muted);
+}
+.foot-cut { letter-spacing: 0.02em; }
+.foot-cut b { color: var(--accent); font-weight: 400; }
+@media (max-width: 55.99em) {
+  /* stack, and give the social icons a full spread-out row of their own */
+  .site-foot .wrap { flex-direction: column-reverse; align-items: center; text-align: center; }
+  .foot-links { width: 100%; justify-content: space-evenly; }
 }
 
 /* =========================================================
@@ -1047,8 +1069,9 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
   fill: currentColor;
   vertical-align: -0.12em;
 }
-.foot-links a { display: inline-flex; align-items: center; gap: 0.35rem; }
-.foot-links .icon { width: 1.05em; height: 1.05em; }
+.foot-links { display: flex; align-items: center; gap: 1.75rem; }
+.foot-links a { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem; }
+.foot-links .icon { width: 1.35em; height: 1.35em; }
 
 /* =========================================================
    Sidebar: Selected work as a master dropdown

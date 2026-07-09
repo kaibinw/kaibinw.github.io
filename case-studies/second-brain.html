@@ -59,7 +59,7 @@
 
 <main class="content" id="main">
 
-<div class="case-head">
+<div class="case-head" id="top">
   <div class="wrap">
     <a class="back" href="../index.html#work">← Back to selected work</a>
     <h1>Second Brain</h1>
@@ -80,13 +80,22 @@
   </div>
 </div>
 
+<nav class="ruler" data-ruler-nav aria-label="Case timeline navigation">
+  <span class="playhead" aria-hidden="true"></span>
+  <a class="ruler-mark" href="#top" style="--x: 0%"><span>SLATE</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#problem" style="--x: 25%"><span>PROBLEM</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#build" style="--x: 50%"><span>BUILD</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#proof" style="--x: 75%"><span>PROOF</span><i aria-hidden="true"></i></a>
+  <a class="ruler-mark" href="#next" style="--x: 100%"><span>NEXT</span><i aria-hidden="true"></i></a>
+</nav>
+
 <div class="case-body">
   <div class="wrap">
-    <h2>The studio problem</h2>
+    <h2 id="problem">The studio problem</h2>
     <p>Onboarding is the same conversation on repeat. Every new artist asks where the LUTs live, what the naming convention is, why the pipeline does that one weird thing; every answer lives in a senior's head, a Slack scrollback, or a wiki nobody has updated since the last show wrapped. When that senior leaves, the knowledge wraps with them. And now there's a second audience with exactly the same problem: <strong>AI agents need context the same way new hires do</strong> — stated once, kept current, findable.</p>
     <p>I built the household version: one vault that every agent session and every human question runs through.</p>
 
-    <h2>How it's structured</h2>
+    <h2 id="build">How it's structured</h2>
     <table class="fact-table">
       <tr><th>The wiki is the truth</th><td>Pages for every entity, project, and concept, all catalogued in a master index. If it isn't in the index, it doesn't exist yet — a logged gap beats an invented answer.</td></tr>
       <tr><th>Hard rules</th><td>Raw sources are immutable. Pages are never deleted, only superseded or archived. Every write updates the index and appends to an operations log. The audit trail can't lie.</td></tr>
@@ -121,7 +130,7 @@ nothing deleted — one page marked superseded</pre>
       <figcaption>The two verbs of the vault: query (answer first, then the exact page and section it came from) and ingest (discussed, filed, indexed, logged). Every answer cites its source so trust is checkable.</figcaption>
     </figure>
 
-    <h2>What it demonstrates</h2>
+    <h2 id="proof">What it demonstrates</h2>
     <ul>
       <li><strong>Context is infrastructure.</strong> The reason my agent sessions ship working software quickly is that they start warm: constraints, history, and conventions are one read away, not re-explained per session.</li>
       <li><strong>Conventions beat willpower.</strong> Never-delete, always-log, discuss-before-filing: the vault stays trustworthy because the rules are structural, the same way a studio's publish pipeline keeps artists from overwriting each other.</li>
@@ -135,7 +144,7 @@ nothing deleted — one page marked superseded</pre>
   </div>
 </div>
 
-<div class="case-next">
+<div class="case-next" id="next">
   <div class="wrap">
     <p class="tc">NEXT REEL</p>
     <a href="ledger.html">Ledger →</a>
@@ -144,9 +153,8 @@ nothing deleted — one page marked superseded</pre>
 
 <footer class="site-foot">
   <div class="wrap">
-    <span>© 2026 Kai-Bin Wong · Brisbane, Australia</span>
     <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/" aria-label="IMDb profile"><svg class="icon" viewBox="0 0 44 24" style="width:2em" aria-hidden="true"><rect x="1" y="2" width="42" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="22" y="16.5" text-anchor="middle" font-family="inherit" font-size="10" font-weight="700" fill="currentColor">IMDb</text></svg></a><a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/" aria-label="LinkedIn profile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="mailto:wongkaibin8080@gmail.com" aria-label="Email Kai-Bin"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg></a></span>
-    <span>CUT: KBW · CASE 06 OF 06</span>
+    <span class="foot-cut"><b>CUT:</b> &copy; 2026 KBW</span>
   </div>
 </footer>
 
