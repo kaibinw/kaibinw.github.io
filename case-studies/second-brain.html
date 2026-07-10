@@ -101,6 +101,7 @@
       <tr><th>Hard rules</th><td>Raw sources are immutable. Pages are never deleted, only superseded or archived. Every write updates the index and appends to an operations log. The audit trail can't lie.</td></tr>
       <tr><th>Ingest, don't dump</th><td>New material (a dev log, a URL, a day's notes) goes through a discuss-then-file workflow: takeaways agreed first, then filed, indexed, and logged.</td></tr>
       <tr><th>Status vocabulary</th><td>Every page carries a controlled status (stub → developing → mature → superseded…), so staleness is visible instead of silent.</td></tr>
+      <tr><th>Verify, don't guess</th><td>Before an agent acts on an assumption, it runs a small read-only check and records the result as confirmed or inferred. A belief that was never tested doesn't get to drive a build.</td></tr>
     </table>
 
     <h2>Agents as the operating staff</h2>
@@ -128,6 +129,33 @@ nothing deleted — one page marked superseded</pre>
         </div>
       </div>
       <figcaption>The two verbs of the vault: query (answer first, then the exact page and section it came from) and ingest (discussed, filed, indexed, logged). Every answer cites its source so trust is checkable.</figcaption>
+    </figure>
+
+    <h2>The loop that makes it hold</h2>
+    <p>Storage alone doesn't make a stateless agent reliable; the discipline around it does. Five layers turn a fresh session into something that behaves like a colleague who never forgets: a <strong>constitution</strong> every session reads first, the <strong>memory</strong> of the wiki and its logs, a <strong>navigation</strong> index that points to the right page fast, a <strong>verification</strong> habit that checks an assumption before acting on it, and a <strong>ratchet</strong> — every session ends with a handoff so the next one resumes instead of re-deriving.</p>
+    <p>The verification layer is the one that earns the most trust. A day's work usually opens by turning inferred beliefs into checked facts: a small read-only probe confirms a field name, a permission, an assumption baked into an old note — and only then does anything get built on top of it. Kept over time it becomes a track record: a running count of checks with no misses, because a guess never shipped as if it were a fact.</p>
+    <figure class="shot">
+      <div class="shot-frame" data-tabs data-state="check">
+        <div class="shot-bar">VERIFY BEFORE YOU BUILD<span class="shot-hint">TRY BOTH</span></div>
+        <div class="shot-body">
+          <div data-panels>
+<pre class="mock-term" data-panel="check"><span class="cmd">▶ assumption: "this step needs a paid licence"</span>
+<span class="dim">an old note calls it a hard lock — never actually tested</span>
+read-only check → <span class="ok">no licence gate found</span>
+belief re-tagged <span class="ok">[confirmed]</span>, not [inferred]
+the build proceeds on a fact, not a rumour</pre>
+<pre class="mock-term" data-panel="honest" hidden><span class="cmd">▶ assumption: "the folder is created on import"</span>
+read-only check → <span class="dim">inconclusive — the hook is a stub</span>
+<span class="ok">gap logged</span>, fix deferred, nothing invented
+the next session picks it up from the handoff</pre>
+          </div>
+          <div class="mock-actions">
+            <button class="mock-btn on" data-tab="check">Confirmed</button>
+            <button class="mock-btn ghost" data-tab="honest">Inconclusive</button>
+          </div>
+        </div>
+      </div>
+      <figcaption>Representative: the verification layer in two outcomes — an assumption confirmed before any build, and an inconclusive check logged honestly and handed off rather than guessed. Every claim is tagged confirmed or inferred.</figcaption>
     </figure>
 
     <h2>It compounds the more you probe</h2>
@@ -166,6 +194,7 @@ answered from a <span class="ok">'mature'</span> page, cross-linked to
     <ul>
       <li><strong>Context is infrastructure.</strong> The reason my agent sessions ship working software quickly is that they start warm: constraints, history, and conventions are one read away, not re-explained per session.</li>
       <li><strong>Conventions beat willpower.</strong> Never-delete, always-log, discuss-before-filing: the vault stays trustworthy because the rules are structural, the same way a studio's publish pipeline keeps artists from overwriting each other.</li>
+      <li><strong>Verification is a feature.</strong> Checking an assumption before building — and tagging what's confirmed versus inferred — is why the builds ship clean: nothing is constructed on a belief that was never tested, and an honest "inconclusive, deferred" beats an invented answer.</li>
       <li><strong>It compounds.</strong> HQ is its control panel, the case studies on this site were drafted from its pages, and every tool documented here made the next tool faster to build. A studio wiki run this way would do the same for every new hire and every agent the studio ever onboards.</li>
     </ul>
     <h3>Back to the studio problem</h3>
