@@ -40,3 +40,16 @@ python3 -m http.server 8080
 ## Deploy
 
 GitHub Pages serves the default branch. `.nojekyll` is already in the root. Nothing here is merged by automation; Kai merges.
+
+## Blog
+
+Posts are markdown files in `blog/posts/`. A zero-dependency script turns them into static pages, so every post gets its own URL and link preview.
+
+1. Copy `blog/posts/_template.md` to `blog/posts/<slug>.md` (the filename becomes the URL: `/blog/<slug>.html`).
+2. Fill in the frontmatter (`title`, `date: YYYY-MM-DD`, `summary`, optional `tags: [a, b]`, optional `draft: true`) and write the post. Images go in `blog/img/` and are referenced as `![alt](img/name.png)`.
+3. Run `node build-blog.mjs` (Node 18+). Add `--drafts` to preview drafts locally.
+4. Commit the markdown **and** the generated `blog/*.html` + `blog/feed.xml`, then push or open a PR.
+
+The build also refreshes the homepage's "Latest writing" section (the 3 newest posts, between the `blog:latest` markers in `index.html`), so commit `index.html` too.
+
+Files starting with `_` and posts with `draft: true` are skipped. Generated HTML is never edited by hand; deleting a post's `.md` and rebuilding removes its page.
