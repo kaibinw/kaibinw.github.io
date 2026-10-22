@@ -10,7 +10,7 @@
   --surface-2: oklch(0.19 0.012 242);
   --ink: oklch(0.94 0.005 242);
   --muted: oklch(0.73 0.02 242);
-  --primary: oklch(0.578 0.13 242);
+  --primary: oklch(0.54 0.13 242);
   --primary-bright: oklch(0.76 0.11 242);
   --accent: oklch(0.80 0.14 80);
   --line: oklch(0.27 0.012 242);
@@ -107,13 +107,13 @@ a:hover { color: var(--ink); }
   .wordmark .cursor { animation: none; }
 }
 
-.sidebar-about h1 {
+.sidebar-about .sidebar-name {
   font-size: clamp(1.7rem, 1.5rem + 1vw, 2.1rem);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
-.sidebar-about h1 a { color: var(--ink); text-decoration: none; }
-.sidebar-about h1 a:hover { color: var(--primary-bright); }
+.sidebar-about .sidebar-name a { color: var(--ink); text-decoration: none; }
+.sidebar-about .sidebar-name a:hover { color: var(--primary-bright); }
 .sidebar-about .lead {
   margin-top: 0.8rem;
   color: var(--muted);
@@ -170,7 +170,7 @@ a:hover { color: var(--ink); }
   .sidebar-inner { gap: 1.1rem; }
   .sidebar-meta, .sidebar-foot, .sidebar-nav-item .tc-num { display: none; }
   .sidebar .btn { padding: 0.6rem 1.1rem; font-size: 0.92rem; }
-  .sidebar-about h1 { font-size: 1.5rem; }
+  .sidebar-about .sidebar-name { font-size: 1.5rem; }
   .sidebar-about .lead { margin-top: 0.5rem; font-size: 0.92rem; }
   .sidebar-nav {
     flex-direction: row;
@@ -192,7 +192,7 @@ a:hover { color: var(--ink); }
     justify-content: space-between;
     gap: 1rem;
   }
-  body:has(.ruler[data-ruler-nav]) .sidebar-about h1 { font-size: 1.05rem; }
+  body:has(.ruler[data-ruler-nav]) .sidebar-about .sidebar-name { font-size: 1.05rem; }
 }
 
 /* Desktop: fix the sidebar, hyde-style */
@@ -447,6 +447,14 @@ section + section { border-top: 1px solid var(--line); }
   margin-bottom: clamp(1.75rem, 4vh, 3rem);
 }
 
+#method ul {
+  max-width: var(--measure);
+  padding-left: 1.2rem;
+  margin: 0 0 1em;
+}
+#method li { margin-bottom: 0.5em; text-wrap: pretty; }
+#method li strong { font-weight: 500; }
+
 /* ---- what I make: two asymmetric tracks, like V1/V2 ---- */
 .tracks { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
 @media (min-width: 72em) { .tracks { grid-template-columns: 1.2fr 1fr; } }
@@ -643,12 +651,6 @@ section + section { border-top: 1px solid var(--line); }
   border-bottom: 1px solid var(--line);
 }
 .crawl .title { display: block; font-weight: 500; }
-.crawl .studio {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--muted);
-}
 
 /* ---- contact ---- */
 .contact h2 {
@@ -764,6 +766,9 @@ section + section { border-top: 1px solid var(--line); }
   padding-right: 2rem;
 }
 .fact-table td { color: var(--muted); }
+@media (max-width: 40em) {
+  .fact-table th { white-space: normal; padding-right: 1rem; width: 36%; overflow-wrap: anywhere; }
+}
 .fact-table td strong { color: var(--ink); font-weight: 500; }
 
 .callout {
@@ -888,14 +893,8 @@ section + section { border-top: 1px solid var(--line); }
   padding: 0.15rem 0.5rem;
   border-radius: 3px;
 }
-.mock-compare::before { content: "2024-11 · DAY 1"; left: 0.6rem; }
-.mock-compare::after { content: "2026-05 · TRAY 22"; right: 0.6rem; }
-[data-state="s6"] .mock-compare::after { content: "2025-02 · TRAY 6"; }
-[data-state="s6"] .mock-compare .mock-handle { left: 30%; }
-[data-state="s14"] .mock-compare::after { content: "2025-08 · TRAY 14"; }
-[data-state="s14"] .mock-compare .mock-handle { left: 44%; }
-[data-state="s22"] .mock-compare::after { content: "2026-05 · TRAY 22"; }
-[data-state="s22"] .mock-compare .mock-handle { left: 55%; }
+.mock-compare::before { content: "SAMPLE · SET A"; left: 0.6rem; }
+.mock-compare::after { content: "SAMPLE · SET B"; right: 0.6rem; }
 .mock-handle {
   position: absolute;
   inset-block: 0;
@@ -956,7 +955,7 @@ section + section { border-top: 1px solid var(--line); }
   border: 1px solid var(--line-strong);
 }
 
-/* small tile grid (patient browser) */
+/* small tile grid */
 .mock-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
@@ -1234,3 +1233,11 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
   .hobby-marker span { display: none; }
   .hobby-marker { padding-inline: 0.85rem; }
 }
+
+/* real app screenshots (Ledger case study) */
+.app-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 1.25rem; margin: 1.75rem 0; }
+.app-shots.tablet-shots { grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); }
+.app-shot { margin: 0; }
+.app-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); }
+.app-shot figcaption { margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.45; color: var(--muted); }
+.app-shot figcaption b { color: var(--ink); font-weight: 600; }

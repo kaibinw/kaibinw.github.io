@@ -4,11 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HQ — Case Study · Kai-Bin Wong</title>
-<meta name="description" content="A zero-dependency local control panel that lets non-terminal users run agentic automations with one click. Single Node file, live streamed output.">
+<meta name="description" content="A local control panel in one Node file. One click runs a vault automation and streams the output.">
+<meta property="og:title" content="HQ — Case Study · Kai-Bin Wong">
+<meta property="og:description" content="A local control panel in one Node file. One click runs a vault automation and streams the output.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kaibinw.github.io/case-studies/hq.html">
+<meta property="og:image" content="https://kaibinw.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://kaibinw.github.io/case-studies/hq.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 rx=%223%22 fill=%22%23101114%22/><path d=%22M4 3v10M4 8l4-5M4 8l4 5%22 stroke=%22%23e8a33d%22 stroke-width=%221.6%22 fill=%22none%22/></svg>">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet"></noscript>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -20,8 +32,8 @@
     <a class="wordmark" href="../index.html">KBW<span class="cursor">_</span></a>
 
     <div class="sidebar-about">
-      <h1><a href="../index.html">Kai-Bin Wong</a></h1>
-      <p class="lead"><strong>VFX Editor</strong> in Brisbane, Australia. 30+ Hollywood credits — and I build the tools the cut runs on.</p>
+      <p class="sidebar-name"><a href="../index.html">Kai-Bin Wong</a></p>
+      <p class="lead"><strong>Senior VFX Editor</strong> in Brisbane, Australia. 30+ Hollywood credits — and I build the tools the cut runs on.</p>
     </div>
 
     <div class="sidebar-meta">
@@ -36,14 +48,13 @@
     <nav class="sidebar-nav" aria-label="Site">
       <a class="sidebar-nav-item" href="../index.html"><span>Home</span><span class="tc-num">01:00:00:00</span></a>
       <details class="side-group" open>
-        <summary><span>Selected work</span><span class="tc-num">6 CASES</span></summary>
+        <summary><span>Selected work</span><span class="tc-num">5 CASES</span></summary>
         <a class="sidebar-nav-item" href="../index.html#work"><span>Best work</span><span class="tc-num">01:04:20:00</span></a>
       <a class="sidebar-nav-item" href="ledger.html"><span>Ledger</span><span class="tc-num">CASE 01</span></a>
       <a class="sidebar-nav-item" href="dental-catalog.html"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
       <a class="sidebar-nav-item active" href="hq.html" aria-current="page"><span>HQ</span><span class="tc-num">CASE 03</span></a>
-      <a class="sidebar-nav-item" href="dashboard.html"><span>Dashboard</span><span class="tc-num">CASE 04</span></a>
-      <a class="sidebar-nav-item" href="dailies-importer.html"><span>Dailies Importer</span><span class="tc-num">CASE 05</span></a>
-      <a class="sidebar-nav-item" href="second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 06</span></a>
+      <a class="sidebar-nav-item" href="dailies-importer.html"><span>Dailies Importer</span><span class="tc-num">CASE 04</span></a>
+      <a class="sidebar-nav-item" href="second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 05</span></a>
       </details>
       <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#about"><span>About</span><span class="tc-num">01:15:00:00</span></a>
@@ -53,7 +64,7 @@
     <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>Message me on LinkedIn</a>
     <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg>Email me</a>
 
-    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 03 OF 06</p>
+    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 03 OF 05</p>
   </div>
 </aside>
 
@@ -91,23 +102,19 @@
 
 <div class="case-body">
   <div class="wrap">
-    <h2 id="problem">The studio problem</h2>
-    <p>Every pipeline accumulates powerful automation that only TDs can drive. A coordinator who needs a delivery re-verified, a QC pass re-run, or a status report generated has to <strong>file a ticket and wait for someone with a shell</strong>. The automation exists; the front door doesn't. What production actually needs is a wall of safe, curated buttons: one click, live output, an audit trail, and no way to break anything.</p>
-    <p>My household has the same shape: powerful agentic automation over a knowledge vault, and users who will never open a terminal.</p>
-
-    <h2>The same problem at household scale</h2>
-    <p>My second brain is a markdown vault operated through agentic sessions: ingest notes, audit the wiki, sort daily files. That works brilliantly if you live in a terminal, and not at all if you don't. The people who share the household don't open shells. The automations needed a front door: something a non-terminal user can open in a browser and press one button.</p>
+    <h2 id="problem">Problem</h2>
+    <p>The vault's automations only run from a terminal, and the people who share the house won't open one. They needed a browser button that runs one job and shows the output.</p>
 
     <h2>Constraints set before building</h2>
     <table class="fact-table">
       <tr><th>Zero dependencies</th><td>One Node file, no node_modules, nothing to install or update. Any Node ≥18 runs it.</td></tr>
       <tr><th>The vault is the database</th><td>No copy of the data anywhere. The panel renders the markdown files directly and writes checkbox ticks straight back to them.</td></tr>
-      <tr><th>Local only</th><td>Binds to the local machine, never the network. Personal notes stay personal.</td></tr>
+      <tr><th>Local only</th><td>Binds to 127.0.0.1. The page is not served on the network.</td></tr>
       <tr><th>Nothing destructive one click away</th><td>Buttons only run additive automations; the vault's hard rules (never delete, always log) hold underneath.</td></tr>
     </table>
 
-    <h2 id="build">One click, visible consequence</h2>
-    <p>The Run tab is the point of the tool. Each button is a stored prompt sent to a headless agent working inside the vault; the output streams live into the panel, and the run lands in the session log like any other. Curating the buttons is editing a small JSON file.</p>
+    <h2 id="build">What I built</h2>
+    <p>Each button sends a stored prompt to a headless agent in the vault. Output streams into the panel, and the run is logged. The button list is a JSON file.</p>
     <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
         <div class="shot-bar"><span data-cycle='["HQ · RUN · AUDIT THE WIKI","HQ · RUN · STREAMING LIVE OUTPUT","HQ · RUN · LOGGED TO SESSIONS"]'>HQ · RUN · AUDIT THE WIKI</span></div>
@@ -121,19 +128,14 @@ Checking stale pages… 2 marked developing &gt; 30 days
 <span class="ok">✓ Report written to logs — 3 items need a decision</span></pre>
         </div>
       </div>
-      <figcaption>Recreation of a Run-tab session with representative output: a stored prompt launching a headless agentic audit, streaming results as it works.</figcaption>
+      <figcaption>A stored prompt runs a headless audit and streams the result.</figcaption>
     </figure>
 
-    <h2 id="proof">What it demonstrates</h2>
+    <h2 id="proof">What it shows</h2>
     <ul>
-      <li><strong>Agentic engineering as infrastructure, not novelty.</strong> The agent is a subprocess that any UI can wrap. HQ turns conversational automations into buttons a family member can press.</li>
-      <li><strong>Constraints produce simplicity.</strong> "Zero dependencies" forced a single-file server; two years of npm churn will never touch it.</li>
-      <li><strong>Editorial discipline transfers.</strong> The panel reads like a logbook because vault operations, like cut changes, deserve an audit trail.</li>
-    </ul>
-    <h3>Back to the studio problem</h3>
-    <ul>
-      <li><strong>The ticket-and-wait queue disappears.</strong> A coordinator pressing "re-verify this delivery" and watching the output stream in is exactly HQ's Run tab with different button labels; the TD's time goes back to building, not operating.</li>
-      <li><strong>Safe by construction, not by trust.</strong> Curated buttons over additive-only automations, with every run logged, is how you hand production real pipeline power without handing them a shell.</li>
+      <li>The agent is a subprocess, so a browser button can run it.</li>
+      <li>One Node file and no packages, so nothing drifts out of date.</li>
+      <li>Buttons only run additive work, and every run is logged.</li>
     </ul>
   </div>
 </div>
@@ -141,7 +143,7 @@ Checking stale pages… 2 marked developing &gt; 30 days
 <div class="case-next" id="next">
   <div class="wrap">
     <p class="tc">NEXT REEL</p>
-    <a href="dashboard.html">Household Dashboard →</a>
+    <a href="dailies-importer.html">Dailies Importer →</a>
   </div>
 </div>
 

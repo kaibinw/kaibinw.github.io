@@ -4,11 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ledger — Case Study · Kai-Bin Wong</title>
-<meta name="description" content="A real-time couples budgeting app built through agentic engineering: Next.js, Supabase, Vercel. Shipped and in daily use within a week.">
+<meta name="description" content="A shared household budget for two people and two cards. Next.js, Supabase, and Vercel, in active use since May 2026.">
+<meta property="og:title" content="Ledger — Case Study · Kai-Bin Wong">
+<meta property="og:description" content="A shared household budget for two people and two cards. Next.js, Supabase, and Vercel, in active use since May 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kaibinw.github.io/case-studies/ledger.html">
+<meta property="og:image" content="https://kaibinw.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://kaibinw.github.io/case-studies/ledger.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 rx=%223%22 fill=%22%23101114%22/><path d=%22M4 3v10M4 8l4-5M4 8l4 5%22 stroke=%22%23e8a33d%22 stroke-width=%221.6%22 fill=%22none%22/></svg>">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet"></noscript>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -20,8 +32,8 @@
     <a class="wordmark" href="../index.html">KBW<span class="cursor">_</span></a>
 
     <div class="sidebar-about">
-      <h1><a href="../index.html">Kai-Bin Wong</a></h1>
-      <p class="lead"><strong>VFX Editor</strong> in Brisbane, Australia. 30+ Hollywood credits — and I build the tools the cut runs on.</p>
+      <p class="sidebar-name"><a href="../index.html">Kai-Bin Wong</a></p>
+      <p class="lead"><strong>Senior VFX Editor</strong> in Brisbane, Australia. 30+ Hollywood credits — and I build the tools the cut runs on.</p>
     </div>
 
     <div class="sidebar-meta">
@@ -36,14 +48,13 @@
     <nav class="sidebar-nav" aria-label="Site">
       <a class="sidebar-nav-item" href="../index.html"><span>Home</span><span class="tc-num">01:00:00:00</span></a>
       <details class="side-group" open>
-        <summary><span>Selected work</span><span class="tc-num">6 CASES</span></summary>
+        <summary><span>Selected work</span><span class="tc-num">5 CASES</span></summary>
         <a class="sidebar-nav-item" href="../index.html#work"><span>Best work</span><span class="tc-num">01:04:20:00</span></a>
       <a class="sidebar-nav-item active" href="ledger.html" aria-current="page"><span>Ledger</span><span class="tc-num">CASE 01</span></a>
       <a class="sidebar-nav-item" href="dental-catalog.html"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
       <a class="sidebar-nav-item" href="hq.html"><span>HQ</span><span class="tc-num">CASE 03</span></a>
-      <a class="sidebar-nav-item" href="dashboard.html"><span>Dashboard</span><span class="tc-num">CASE 04</span></a>
-      <a class="sidebar-nav-item" href="dailies-importer.html"><span>Dailies Importer</span><span class="tc-num">CASE 05</span></a>
-      <a class="sidebar-nav-item" href="second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 06</span></a>
+      <a class="sidebar-nav-item" href="dailies-importer.html"><span>Dailies Importer</span><span class="tc-num">CASE 04</span></a>
+      <a class="sidebar-nav-item" href="second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 05</span></a>
       </details>
       <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#about"><span>About</span><span class="tc-num">01:15:00:00</span></a>
@@ -53,7 +64,7 @@
     <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>Message me on LinkedIn</a>
     <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg>Email me</a>
 
-    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 01 OF 06</p>
+    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 01 OF 05</p>
   </div>
 </aside>
 
@@ -72,7 +83,7 @@
         <div class="board-row">
           <span><b>ROLE</b> Product, design, engineering direction</span>
           <span><b>STACK</b> Next.js · Supabase · Vercel</span>
-          <span><b>STATUS</b> In production since May 2026</span>
+          <span><b>STATUS</b> In active use since May 2026</span>
         </div>
         <p class="board-desc">A full-stack, real-time budgeting app for two people and one household, in daily use within a week.</p>
       </div>
@@ -91,103 +102,150 @@
 
 <div class="case-body">
   <div class="wrap">
-    <h2 id="problem">The studio problem</h2>
-    <p>Every show runs on a cost report that's already out of date. Departments burn bid-days that only surface at month end; overages on awarded work get discovered after the burn, not during it; and when two entities front costs for each other (a facility and its outpost, a show and its reshoot unit), reconciling who owes whom is a spreadsheet ritual nobody trusts. Line producers don't need more reports — they need <strong>actuals that move in real time, visible to everyone who can spend</strong>.</p>
-    <p>Shrink that problem until it fits in a kitchen: it's still real money, real cost centres, and two people who both spend against the same budget. That's the version I could build for, live in production, with users who complain immediately.</p>
-
-    <h2>The same problem at household scale</h2>
-    <p>Two people, one shared household, two credit cards, and a month-end ritual of copy-pasting PocketSmith data into a spreadsheet. It was hard to see which card was used at entry time and harder to track who paid us back. The paid options (YNAB, PocketSmith premium) had too much overhead or missed the exact feature set: shared real-time entry, household-level budgets, per-category alerts.</p>
+    <h2 id="problem">Problem</h2>
+    <p>Two people, one household, two credit cards, and a month-end of pasting PocketSmith into a spreadsheet. We couldn't see which card paid, or who was owed. Paid apps missed shared real-time entry, household budgets, and per-category alerts.</p>
 
     <h2>Constraints set before building</h2>
     <table class="fact-table">
       <tr><th>Two users, one household</th><td>All data belongs to the household; a partner's entries appear instantly.</td></tr>
       <tr><th>Real-time sync</th><td>Both people see the same numbers without refreshing. That's the whole point.</td></tr>
-      <tr><th>No bank sync</th><td>Manual entry keeps spending intentional and removes the security overhead of connected accounts.</td></tr>
+      <tr><th>No bank sync</th><td>Manual entry only. No bank login is stored. Row-level security on every table limits a household to its own rows.</td></tr>
       <tr><th>Mobile-first PWA</th><td>Both users live on phones; the app installs to the home screen.</td></tr>
       <tr><th>Free to run</th><td>Vercel and Supabase free tiers cover two users indefinitely.</td></tr>
     </table>
 
-    <h2 id="build">How it was built: twelve sessions</h2>
-    <p>I have scripting experience (Python, VFX pipeline tooling) but had never built a full-stack web app, written row-level security policies, or set up CI/CD. Every technical decision was made through conversation with Claude: I described what the household needed; the architecture, schema, components, and bug fixes came out of the dialogue. I reviewed, tested, and steered.</p>
+    <h2 id="build">What I built</h2>
+    <p>Twelve sessions. I had scripted pipeline tools, not a full-stack app. I described what the household needed, then reviewed, tested, and steered.</p>
     <table class="fact-table">
-      <tr><th>Session 0–1</th><td>Design references and scoping. Data model, tech stack, and documentation decided before a single line of code.</td></tr>
-      <tr><th>Session 2</th><td>Supabase schema deployed: <strong>7 tables, RLS policies, realtime subscriptions</strong>. Login, dashboard, transaction entry, and live sync working the same day.</td></tr>
-      <tr><th>Session 3</th><td>Six features in one sitting: PWA install, category drill-down, budget alerts, custom categories, CSV export, and a hand-rolled SVG donut chart. No chart library.</td></tr>
-      <tr><th>Session 4</th><td>Dark mode: a full CSS custom-property token system, three-way theme preference, and a Python bulk migration that removed every hardcoded hex in one pass. My wife onboarded that night.</td></tr>
-      <tr><th>Sessions 5–6</th><td>Per-card tracking (three cards, colour badges everywhere), recurring bills page with <strong>27 bills seeded</strong>, keyword auto-matching, and smart suggestions that came from watching her actually use it.</td></tr>
-      <tr><th>Sessions 7–9</th><td>People page with per-person net spend, payback tracking (who fronted what, what came back), and a two-page PDF report designed visually in Claude Design before implementation.</td></tr>
-      <tr><th>Session 10</th><td>Nine features in one day, including a monthly close system with locked months and a jsPDF export that survives iOS Safari.</td></tr>
-      <tr><th>Sessions 11–12</th><td>Mobile UI polish across every view, then a pure product-design session: a consent-based budget-adjustment system scoped, schema migration written, no code. A meeting, a design doc, and a review in one conversation.</td></tr>
+      <tr><th>Sessions 0–2</th><td>Design references, the data model, and docs before code. Then 7 tables with row-level security on every table, and realtime: login, dashboard, entry, and live sync the same day.</td></tr>
+      <tr><th>Sessions 3–6</th><td>PWA, drill-down, alerts, custom categories, CSV export, and a hand-rolled SVG donut. Dark mode, per-card tracking, 27 seeded bills, and keyword matching. The second person onboarded in session 4.</td></tr>
+      <tr><th>Sessions 7–12</th><td>People and payback tracking, a two-page PDF, monthly close with locked months, and mobile polish. Then a design session for consent-based budget adjustments: live in production, off by default (opt-in in Settings).</td></tr>
     </table>
     <div class="callout">
-      <p><strong>Hours per session, not weeks — roughly 8,000 lines deployed.</strong> In production since 2026-05-13 with two daily users, and still growing. Sprint reviews and architecture calls ran through a multi-tier agent protocol: one agent strategises, another breaks work into surgical tasks, a third executes, and consultant agents advise into a shared think-tank log. The review that took Ledger from 8/10 to 9/10 also deleted 682 lines of dead code.</p>
+      <p><strong>Hours per session, not weeks.</strong> In production since 2026-05-13, with two daily users.</p>
     </div>
 
     <h2>The dark mode story</h2>
-    <p>Dark mode wasn't in the spec; it emerged because a budgeting PWA gets used in bed at night. The catch: the whole codebase used inline hex colours, so theme classes couldn't work without a rewrite. The fix was a design-token system plus a Python migration script that handled every quote variant in a single pass across eight files. Zero hardcoded palette values remain; the theme switches with one attribute. The pattern was worth keeping, so it's documented as a standalone concept in my knowledge base.</p>
+    <p>Dark mode wasn't in the spec: a token system plus a Python migration removed every hardcoded hex, so the theme switches with one attribute.</p>
 
     <h2>Design is part of the stack</h2>
-    <p>Pages with real visual complexity (the history page's radial donut, the two-page PDF report) were designed in <strong>Claude Design first</strong>: it produces a self-contained HTML mockup with real colours and real data structures, iterated until right, then handed to the coding session as the spec. One person, one toolchain, no designer-to-engineer handoff loss. That two-step workflow is now how every visually heavy feature gets built, including parts of this site.</p>
+    <p>Visually heavy pages were mocked up in Claude Design, then handed to the coding session as the spec.</p>
+
+    <h2 id="screens">The app on iPhone and iPad</h2>
+    <p>Screens from the iOS app, running the seeded demo household (Alex and Sam). Merchants are real Australian brands; the people and amounts are invented. The totals differ by screen on purpose: Overview tracks the six flexible pots, Budget lists every category including bills, and Transactions totals every payment.</p>
+    <div class="app-shots">
+      <figure class="app-shot phone-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-iphone-overview.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-iphone-overview.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger overview on iPhone for October 2026: Travel is over budget, with ease-back suggestions from Groceries, Transport &amp; Fuel and Kids &amp; Pets, above the category cards (demo data)">
+      </picture>
+      <figcaption><b>Overview.</b> Six flexible pots, $2,620 budgeted. Travel is deliberately over budget in this demo so the ease-back suggestions show.</figcaption>
+    </figure>
+      <figure class="app-shot phone-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-iphone-transactions.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-iphone-transactions.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger transactions list on iPhone for October 2026, grouped by day, each row showing who paid and which card (demo data)">
+      </picture>
+      <figcaption><b>Transactions.</b> Grouped by day, with who paid and which card.</figcaption>
+    </figure>
+      <figure class="app-shot phone-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-iphone-bills.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-iphone-bills.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger bills screen on iPhone: 16 of 21 bills paid this month, listed by due date with the card each is paid from (demo data)">
+      </picture>
+      <figcaption><b>Bills.</b> 16 of 21 bills paid, listed by due date.</figcaption>
+    </figure>
+      <figure class="app-shot phone-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-iphone-budget.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-iphone-budget.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger budget screen on iPhone: $6,370 allocated across October categories, with Groceries set to Ease back and Dining Out Protected (demo data)">
+      </picture>
+      <figcaption><b>Budget.</b> All nine categories, $6,370 allocated, bills included. Each pot is Ease back, Protected or Off.</figcaption>
+    </figure>
+    </div>
+    <div class="app-shots tablet-shots">
+      <figure class="app-shot tablet-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-ipad-overview.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-ipad-overview.jpg" width="1400" height="1737" loading="lazy" decoding="async" alt="Ledger overview on iPad: month total, per-person spend, category pie chart, recent transactions and ease-back suggestions (demo data)">
+      </picture>
+      <figcaption><b>Overview.</b> On iPad the overview adds the per-person split and recent transactions.</figcaption>
+    </figure>
+      <figure class="app-shot tablet-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-ipad-transactions.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-ipad-transactions.jpg" width="1400" height="1737" loading="lazy" decoding="async" alt="Ledger transactions on iPad: the full month of payments beside a category breakdown and per-person totals (demo data)">
+      </picture>
+      <figcaption><b>Transactions.</b> Every payment for the month, bills included: $7,740, against $4,340.72 on Overview, which counts only the six flexible pots.</figcaption>
+    </figure>
+      <figure class="app-shot tablet-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-ipad-budget.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-ipad-budget.jpg" width="1400" height="1737" loading="lazy" decoding="async" alt="Ledger budget on iPad: the nine categories with their ease-back settings beside the allocation pie chart (demo data)">
+      </picture>
+      <figcaption><b>Budget.</b> The same budget as on iPhone, with the allocation pie beside it.</figcaption>
+    </figure>
+    </div>
 
     <h2>What it looks like, feature by feature</h2>
-    <p>Recreations built from the app's own design language, with representative data.</p>
+    <p>Same layout as the app. Merchants, people, and amounts below are invented sample data.</p>
     <figure class="shot phone">
       <div class="shot-frame" aria-hidden="true">
-        <div class="shot-bar">LEDGER · JULY 2026 · HOUSEHOLD<span class="bar-tc" data-timecode>01:00:00:00</span></div>
+        <div class="shot-bar">LEDGER · SAMPLE DATA<span class="bar-tc" data-timecode>01:00:00:00</span></div>
         <div class="shot-body">
           <div class="mock-row">
             <span class="label">Groceries</span>
-            <span class="num"><strong>$612</strong> / $800</span>
-            <span class="mock-bar"><i style="width:77%"></i></span>
+            <span class="num"><strong>$80</strong> / $100</span>
+            <span class="mock-bar"><i style="width:80%"></i></span>
           </div>
           <div class="mock-row">
             <span class="label">Dining out</span>
-            <span class="num"><strong>$284</strong> / $300</span>
-            <span class="mock-bar hot"><i style="width:95%"></i></span>
+            <span class="num"><strong>$90</strong> / $100</span>
+            <span class="mock-bar hot"><i style="width:90%"></i></span>
           </div>
           <div class="mock-row">
             <span class="label">Fuel</span>
-            <span class="num"><strong>$118</strong> / $250</span>
-            <span class="mock-bar"><i style="width:47%"></i></span>
+            <span class="num"><strong>$40</strong> / $100</span>
+            <span class="mock-bar"><i style="width:40%"></i></span>
           </div>
           <ul class="mock-feed">
-            <li><span class="who">K</span><span>Coles — weekly shop</span><span class="amt">$187.40</span></li>
-            <li><span class="who">J</span><span>Sushi train · payback pending</span><span class="amt">$42.50</span></li>
-            <li><span class="who">K</span><span>BP Ultimate</span><span class="amt">$81.20</span></li>
+            <li><span class="who">A</span><span>Sample Grocer</span><span class="amt">$40</span></li>
+            <li><span class="who">B</span><span>Sample Cafe · payback pending</span><span class="amt">$20</span></li>
+            <li><span class="who">A</span><span>Sample Fuel</span><span class="amt">$10</span></li>
           </ul>
         </div>
       </div>
-      <figcaption>The dashboard: shared category budgets, entries from both users syncing live, payback flag on a fronted expense.</figcaption>
+      <figcaption>Shared budgets, live entries from both people, and a payback flag.</figcaption>
     </figure>
 
     <figure class="shot">
       <div class="shot-frame" data-filter-group>
-        <div class="shot-bar">CARDS · WHICH PLASTIC PAID<span class="shot-hint">CLICK A CARD</span></div>
+        <div class="shot-bar">CARDS · SAMPLE DATA<span class="shot-hint">CLICK A CARD</span></div>
         <div class="shot-body">
           <ul class="mock-chips">
             <li><button class="on" data-filter="all">All cards</button></li>
-            <li><button data-filter="amex">Amex — $1,204</button></li>
-            <li><button data-filter="wpc">Westpac — $486</button></li>
-            <li><button data-filter="mego">ME Go — $118</button></li>
+            <li><button data-filter="c1">Card 1 — $60</button></li>
+            <li><button data-filter="c2">Card 2 — $40</button></li>
+            <li><button data-filter="c3">Card 3 — $10</button></li>
           </ul>
           <ul class="mock-feed">
-            <li data-tag="amex"><span class="who">AMEX</span><span>Woolworths</span><span class="amt">$96.30</span></li>
-            <li data-tag="amex"><span class="who">AMEX</span><span>Sushi train · payback pending</span><span class="amt">$42.50</span></li>
-            <li data-tag="wpc"><span class="who">WPC</span><span>Chemist Warehouse · parents</span><span class="amt">$54.00</span></li>
-            <li data-tag="wpc"><span class="who">WPC</span><span>Bunnings</span><span class="amt">$31.80</span></li>
-            <li data-tag="mego"><span class="who">MEGO</span><span>Translink</span><span class="amt">$9.60</span></li>
+            <li data-tag="c1"><span class="who">C1</span><span>Sample Market</span><span class="amt">$40</span></li>
+            <li data-tag="c1"><span class="who">C1</span><span>Sample Cafe · payback pending</span><span class="amt">$20</span></li>
+            <li data-tag="c2"><span class="who">C2</span><span>Sample Shop · outside household</span><span class="amt">$30</span></li>
+            <li data-tag="c2"><span class="who">C2</span><span>Sample Hardware</span><span class="amt">$10</span></li>
+            <li data-tag="c3"><span class="who">C3</span><span>Sample Transit</span><span class="amt">$10</span></li>
           </ul>
         </div>
       </div>
-      <figcaption>Per-card tracking, filterable live: every transaction carries a card badge, and the People page nets out per-person spend. Purchases made for my parents get their own tag and are excluded from household splits — a rule no off-the-shelf app had.</figcaption>
+      <figcaption>Filter by card. A non-household tag stays out of the split. Sample amounts.</figcaption>
     </figure>
 
     <figure class="shot">
       <div class="shot-frame" data-tabs data-state="all">
-        <div class="shot-bar">HISTORY · JULY BY CATEGORY<span class="shot-hint">CLICK A SEGMENT LABEL</span></div>
+        <div class="shot-bar">HISTORY · SAMPLE DATA<span class="shot-hint">CLICK A SEGMENT LABEL</span></div>
         <div class="shot-body">
           <div class="mock-donut">
-            <svg width="150" height="150" viewBox="0 0 130 130" role="img" aria-label="July spend by category donut chart">
+            <svg width="150" height="150" viewBox="0 0 130 130" role="img" aria-label="Sample spend by category donut chart">
               <g transform="rotate(-90 65 65)">
                 <circle class="ring g-groceries" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.578 0.13 242)" stroke-width="16" stroke-dasharray="124.2 202.5" stroke-dashoffset="0"/>
                 <circle class="ring g-bills" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.76 0.11 242)" stroke-width="16" stroke-dasharray="88.2 238.5" stroke-dashoffset="-124.2"/>
@@ -195,8 +253,8 @@
                 <circle class="ring g-fuel" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.75 0.14 150)" stroke-width="16" stroke-dasharray="32.7 294" stroke-dashoffset="-261.4"/>
                 <circle class="ring g-other" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.36 0.02 242)" stroke-width="16" stroke-dasharray="32.7 294" stroke-dashoffset="-294.1"/>
               </g>
-              <text class="donut-label" x="65" y="60" text-anchor="middle">JULY</text>
-              <text class="donut-value" x="65" y="78" text-anchor="middle">$3,214</text>
+              <text class="donut-label" x="65" y="60" text-anchor="middle">SAMPLE</text>
+              <text class="donut-value" x="65" y="78" text-anchor="middle">$1,000</text>
             </svg>
             <div>
               <ul class="mock-chips">
@@ -208,76 +266,76 @@
                 <li><button data-tab="other">other</button></li>
               </ul>
               <div data-panels>
-                <p class="mock-note" data-panel="all">Whole month: <b>$3,214</b> across 5 categories, 2 people, 3 cards.</p>
-                <p class="mock-note" data-panel="groceries" hidden>Groceries: <b>$1,222 · 38%</b> — $612 of it this half, tracking under.</p>
-                <p class="mock-note" data-panel="bills" hidden>Bills: <b>$868 · 27%</b> — 24 of 27 recurring bills matched automatically.</p>
-                <p class="mock-note" data-panel="dining" hidden>Dining out: <b>$482 · 15%</b> — over budget; reactive draw suggested.</p>
-                <p class="mock-note" data-panel="fuel" hidden>Fuel: <b>$321 · 10%</b> — $132 headroom, top donor candidate.</p>
-                <p class="mock-note" data-panel="other" hidden>Other: <b>$321 · 10%</b> — includes two payback-pending entries.</p>
+                <p class="mock-note" data-panel="all">Sample month: <b>$1,000</b> across 5 categories, 2 people, 3 cards.</p>
+                <p class="mock-note" data-panel="groceries" hidden>Groceries: <b>$380 · 38%</b>. Sample figure.</p>
+                <p class="mock-note" data-panel="bills" hidden>Bills: <b>$270 · 27%</b> — 24 of 27 sample bills matched.</p>
+                <p class="mock-note" data-panel="dining" hidden>Dining out: <b>$150 · 15%</b> — over the sample cap.</p>
+                <p class="mock-note" data-panel="fuel" hidden>Fuel: <b>$100 · 10%</b>.</p>
+                <p class="mock-note" data-panel="other" hidden>Other: <b>$100 · 10%</b> — includes a payback-pending entry.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <figcaption>The history donut is hand-rolled SVG — no chart library — exactly like the one in the app. Click a category to isolate its segment.</figcaption>
+      <figcaption>Hand-rolled SVG, no chart library. Click a category to isolate its segment.</figcaption>
     </figure>
 
     <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
-        <div class="shot-bar"><span data-cycle='["RECURRING BILLS · 27 SEEDED · AUTO-MATCH","RECURRING BILLS · 24 MATCHED · 3 DUE"]'>RECURRING BILLS · 27 SEEDED · AUTO-MATCH</span></div>
+        <div class="shot-bar"><span data-cycle='["SAMPLE BILLS · 27 SEEDED · AUTO-MATCH","SAMPLE BILLS · 24 MATCHED · 3 DUE"]'>SAMPLE BILLS · 27 SEEDED · AUTO-MATCH</span></div>
         <div class="shot-body">
           <ul class="mock-feed">
-            <li><span class="who">PAID</span><span>Netflix · matched 03 Jul</span><span class="amt">$22.99</span></li>
-            <li><span class="who">PAID</span><span>Car insurance · matched 05 Jul</span><span class="amt">$104.20</span></li>
-            <li><span class="who">DUE</span><span>Electricity · expected by 14 Jul</span><span class="amt">~$180</span></li>
+            <li><span class="who">PAID</span><span>Sample Stream · matched 03 Jul</span><span class="amt">$10</span></li>
+            <li><span class="who">PAID</span><span>Sample Cover · matched 05 Jul</span><span class="amt">$40</span></li>
+            <li><span class="who">DUE</span><span>Sample Power · expected by 14 Jul</span><span class="amt">$50</span></li>
           </ul>
-          <p class="mock-note"><b>Bill match</b> — "AGL ENERGY" looks like <strong>Electricity</strong>. Mark it paid?</p>
+          <p class="mock-note"><b>Bill match</b> — "POWER CO" looks like <strong>Sample Power</strong>. Mark it paid?</p>
         </div>
       </div>
-      <figcaption>The bills engine matches incoming transactions to seeded bills by keyword and nudges after save. The smart-suggestion behaviour came from watching my wife use the app, not from a spec.</figcaption>
+      <figcaption>Keyword matching against seeded bills, and a nudge after save from watching real use.</figcaption>
     </figure>
 
     <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
-        <div class="shot-bar">LOG EXPENSE · APPLE SHORTCUT</div>
+        <div class="shot-bar">LOG EXPENSE · SAMPLE</div>
         <div class="shot-body">
-<pre class="mock-term"><span class="cmd">Merchant?</span>  Coles
-<span class="cmd">Amount?</span>    187.40
+<pre class="mock-term"><span class="cmd">Merchant?</span>  Sample Grocer
+<span class="cmd">Amount?</span>    40.00
 <span class="cmd">Category?</span>  Groceries          <span class="dim">(list pulled from /api/shortcut/categories)</span>
-<span class="cmd">Paid by?</span>   KB
-<span class="dim">POST /api/shortcut/add-transaction · x-shortcut-secret ✓</span>
-<span class="ok">✓ Logged: Coles $187.40 → Groceries (KB) — visible on both phones now</span></pre>
+<span class="cmd">Paid by?</span>   A
+<span class="dim">POST /api/shortcut/add-transaction · auth header checked</span>
+<span class="ok">✓ Logged: Sample Grocer $40.00 → Groceries (A)</span></pre>
         </div>
       </div>
-      <figcaption>Logging from the iPhone action button without opening the app: an Apple Shortcut walks four prompts and fires an authenticated API route. The categories endpoint keeps the menu in sync with the app.</figcaption>
+      <figcaption>An Apple Shortcut logs an expense from the action button, without opening the app.</figcaption>
     </figure>
 
     <figure class="shot">
       <div class="shot-frame" data-tabs data-state="pending">
-        <div class="shot-bar">REACTIVE BUDGET<span class="shot-badge">DESIGNED · IN BUILD</span></div>
+        <div class="shot-bar">REACTIVE BUDGET<span class="shot-badge">LIVE · opt-in</span></div>
         <div class="shot-body">
           <div class="mock-row">
             <span class="label">Dining out</span>
-            <span class="num"><strong>$334</strong> / $300 · over by $34</span>
+            <span class="num"><strong>$130</strong> / $100 · over by $30</span>
             <span class="mock-bar hot"><i style="width:100%"></i></span>
           </div>
           <ul class="mock-feed">
-            <li><span class="who">1</span><span>Draw from Fuel · $132 headroom</span><span class="amt">suggested</span></li>
-            <li><span class="who">2</span><span>Draw from Entertainment · $56 headroom</span><span class="amt">option</span></li>
+            <li><span class="who">1</span><span>Draw from Fuel · $40 headroom</span><span class="amt">suggested</span></li>
+            <li><span class="who">2</span><span>Draw from Entertainment · $20 headroom</span><span class="amt">option</span></li>
           </ul>
           <div class="mock-actions">
-            <button class="mock-btn" data-tab="draw">Draw $34 from Fuel</button>
+            <button class="mock-btn" data-tab="draw">Draw $30 from Fuel</button>
             <button class="mock-btn ghost" data-tab="ack">Acknowledge overspend</button>
             <button class="mock-btn ghost" data-tab="pending">Reset</button>
           </div>
           <div data-panels>
             <p class="mock-note" data-panel="pending">Waiting on a decision. Nothing moves without consent: the app suggests, <b>you approve</b>.</p>
-            <p class="mock-note" data-panel="draw" hidden>Drawn. Effective cap: <b>$300 + $34 from Fuel</b> · paired rows written to <strong>budget_adjustments</strong> (draw-out on Fuel, draw-in on Dining), undo writes an offsetting row.</p>
-            <p class="mock-note" data-panel="ack" hidden>Acknowledged. Cap stays $300; the overspend is <b>logged, not hidden</b> — it shows in the month-end PDF as an accepted overage.</p>
+            <p class="mock-note" data-panel="draw" hidden>Drawn. Effective cap: <b>$100 + $30 from Fuel</b> · paired rows written to <strong>budget_adjustments</strong> (draw-out on Fuel, draw-in on Dining), undo writes an offsetting row.</p>
+            <p class="mock-note" data-panel="ack" hidden>Acknowledged. Cap stays $100; the overspend is <b>logged, not hidden</b> — it shows in the month-end PDF as an accepted overage.</p>
           </div>
         </div>
       </div>
-      <figcaption>Reactive budget, the next release: overruns resolved by consent, never automatically. Try the buttons — the three outcomes are the real state machine. Donor categories are suggested by priority order; adjustments are immutable paired rows so the audit trail can't lie. Schema is live in production; UI is in build.</figcaption>
+      <figcaption>LIVE · opt-in</figcaption>
     </figure>
 
     <figure class="shot">
@@ -287,23 +345,17 @@
           <ul class="mock-chips">
             <li class="on">JUNE LOCKED</li><li>PDF report · 2 pages</li><li>paybacks table</li><li>CSV per-person totals</li>
           </ul>
-          <p class="mock-note">June is locked — entries are read-only. Either user can unlock. <b>Lock &amp; Save</b> exports the A4 PDF (jsPDF, iOS-Safari safe).</p>
+          <p class="mock-note">June is locked — entries are read-only. Either user can unlock. <b>Lock &amp; Save</b> exports the A4 PDF (jsPDF, works in iOS Safari).</p>
         </div>
       </div>
-      <figcaption>The monthly close: locked months make the ledger trustworthy as a record, and the PDF report (designed visually in Claude Design first) is the household's month-end artifact.</figcaption>
+      <figcaption>Locked months, then a two-page PDF. Either person can unlock.</figcaption>
     </figure>
 
-    <h2 id="proof">What it demonstrates</h2>
+    <h2 id="proof">What it shows</h2>
     <ul>
-      <li><strong>Agentic engineering scales past scripts.</strong> Managed database, auth, realtime subscriptions, and deployment pipelines are all reachable through disciplined conversation plus domain judgment.</li>
-      <li><strong>Constraints first, code second.</strong> The five constraints above ruled out every off-the-shelf option and picked the stack before a line was written.</li>
-      <li><strong>Real users are the bar.</strong> The app replaced a genuinely painful workflow for two people who use it every day.</li>
-      <li><strong>The best features were discovered, not planned.</strong> Payback tracking, the smart bill suggestions, and the token-based dark mode all emerged from watching real use. The spreadsheet never could say who owed what; Ledger closes that loop with per-person net spend and a paybacks table in the PDF report.</li>
-    </ul>
-    <h3>Back to the studio problem</h3>
-    <ul>
-      <li><strong>Live actuals are buildable in-house.</strong> Realtime entries against shared budgets, per-spender attribution, and locked months are exactly the cost-report mechanics a show needs; the household version proves the pattern end to end on free-tier infrastructure.</li>
-      <li><strong>Reconciliation stops being a ritual.</strong> Ledger's payback tracking is the two-entities-fronting-costs problem in miniature: every fronted cost carries who paid, and the month-end report nets it out automatically instead of by spreadsheet archaeology.</li>
+      <li>The constraints ruled out off-the-shelf apps and picked the stack before any code.</li>
+      <li>Two people use it every day in place of the spreadsheet.</li>
+      <li>Payback tracking, bill suggestions, and dark mode came from watching real use.</li>
     </ul>
   </div>
 </div>

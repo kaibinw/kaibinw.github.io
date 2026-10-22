@@ -4,11 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dailies Importer — Case Study · Kai-Bin Wong</title>
-<meta name="description" content="A DaVinci Resolve script that scans a show's shot tree, takes the cut's EDL once, then imports overnight renders by department and appends them to dailies timelines with colour coding.">
+<meta name="description" content="A DaVinci Resolve script that conforms the cut once, then appends overnight renders to dailies timelines.">
+<meta property="og:title" content="Dailies Importer — Case Study · Kai-Bin Wong">
+<meta property="og:description" content="A DaVinci Resolve script that conforms the cut once, then appends overnight renders to dailies timelines.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kaibinw.github.io/case-studies/dailies-importer.html">
+<meta property="og:image" content="https://kaibinw.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://kaibinw.github.io/case-studies/dailies-importer.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 rx=%223%22 fill=%22%23101114%22/><path d=%22M4 3v10M4 8l4-5M4 8l4 5%22 stroke=%22%23e8a33d%22 stroke-width=%221.6%22 fill=%22none%22/></svg>">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" rel="stylesheet"></noscript>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -20,8 +32,8 @@
     <a class="wordmark" href="../index.html">KBW<span class="cursor">_</span></a>
 
     <div class="sidebar-about">
-      <h1><a href="../index.html">Kai-Bin Wong</a></h1>
-      <p class="lead"><strong>VFX Editor</strong> in Brisbane, Australia. 30+ Hollywood credits — and I build the tools the cut runs on.</p>
+      <p class="sidebar-name"><a href="../index.html">Kai-Bin Wong</a></p>
+      <p class="lead"><strong>Senior VFX Editor</strong> in Brisbane, Australia. 30+ Hollywood credits — and I build the tools the cut runs on.</p>
     </div>
 
     <div class="sidebar-meta">
@@ -36,14 +48,13 @@
     <nav class="sidebar-nav" aria-label="Site">
       <a class="sidebar-nav-item" href="../index.html"><span>Home</span><span class="tc-num">01:00:00:00</span></a>
       <details class="side-group" open>
-        <summary><span>Selected work</span><span class="tc-num">6 CASES</span></summary>
+        <summary><span>Selected work</span><span class="tc-num">5 CASES</span></summary>
         <a class="sidebar-nav-item" href="../index.html#work"><span>Best work</span><span class="tc-num">01:04:20:00</span></a>
       <a class="sidebar-nav-item" href="ledger.html"><span>Ledger</span><span class="tc-num">CASE 01</span></a>
       <a class="sidebar-nav-item" href="dental-catalog.html"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
       <a class="sidebar-nav-item" href="hq.html"><span>HQ</span><span class="tc-num">CASE 03</span></a>
-      <a class="sidebar-nav-item" href="dashboard.html"><span>Dashboard</span><span class="tc-num">CASE 04</span></a>
-      <a class="sidebar-nav-item active" href="dailies-importer.html" aria-current="page"><span>Dailies Importer</span><span class="tc-num">CASE 05</span></a>
-      <a class="sidebar-nav-item" href="second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 06</span></a>
+      <a class="sidebar-nav-item active" href="dailies-importer.html" aria-current="page"><span>Dailies Importer</span><span class="tc-num">CASE 04</span></a>
+      <a class="sidebar-nav-item" href="second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 05</span></a>
       </details>
       <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#about"><span>About</span><span class="tc-num">01:15:00:00</span></a>
@@ -53,7 +64,7 @@
     <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>Message me on LinkedIn</a>
     <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg>Email me</a>
 
-    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 05 OF 06</p>
+    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · CASE 04 OF 05</p>
   </div>
 </aside>
 
@@ -72,7 +83,7 @@
         <div class="board-row">
           <span><b>ROLE</b> Design, build, daily operation</span>
           <span><b>STACK</b> Python · Resolve scripting API · JSON configs</span>
-          <span><b>STATUS</b> In daily studio use</span>
+          <span><b>STATUS</b> In active use</span>
         </div>
         <p class="board-desc">Hours of daily dailies-timeline setup in Resolve, collapsed to one click: EDL once, then append-only mornings.</p>
       </div>
@@ -91,19 +102,18 @@
 
 <div class="case-body">
   <div class="wrap">
-    <h2 id="problem">The studio problem</h2>
-    <p>Ask any VFX editor about their mornings. Overnight, artists publish renders into ShotGrid across hundreds of shots — animation blocking, lighting takes, comp versions, matte-painting passes — and before the day's first review, editorial has to find what's new, pull it in, and rebuild dailies timelines the supervisor can actually scrub. On a busy show that's <strong>hours of setup, every single day</strong>, multiplied by however many departments are reviewing. It's the most repetitive job in editorial and the most punishing to get wrong: a missed render is a shot that doesn't get reviewed, and everyone in the room notices.</p>
-    <p>The fix isn't importing faster. It's never rebuilding: <strong>conform the cut once, then only ever append what changed</strong>.</p>
+    <h2 id="problem">Problem</h2>
+    <p>Overnight renders land across hundreds of shots, and I was rebuilding dailies timelines before the first review. On a busy show that was hours, every morning. Conform the cut once, then only append what changed.</p>
 
-    <h2 id="build">What it does</h2>
+    <h2 id="build">What I built</h2>
     <table class="fact-table">
-      <tr><th>Takes an EDL once</th><td>The cut comes in as an EDL a single time and becomes the master review timeline. That's the whole setup cost. From then on the tool maintains the timelines; nobody rebuilds them by hand again.</td></tr>
-      <tr><th>Scan by department</th><td>Walks the show's render folders and classifies new media by which department published it: animation, lighting, compositing, matte painting, editorial temps. Frame sequences and movie files both.</td></tr>
-      <tr><th>Config as memory</th><td>Each department lives in a JSON config with an on/off toggle. Newly discovered departments are added <strong>disabled</strong>: the tool never imports something it hasn't been told to want.</td></tr>
-      <tr><th>Append, don't rebuild</th><td>A timeline registry remembers which review timeline each department feeds. Every run appends only what's new — the hours of daily setup collapse into the seconds the import takes.</td></tr>
-      <tr><th>Colour as language</th><td>Every imported clip gets a Resolve colour tag by department, so the timeline reads at a glance in review: who published it, and how far along it is.</td></tr>
+      <tr><th>Takes an EDL once</th><td>The cut comes in once and becomes the master review timeline. After that the tool maintains it.</td></tr>
+      <tr><th>Scan by department</th><td>Walks the render folders and sorts new media by department: animation, lighting, compositing, matte painting, editorial temps.</td></tr>
+      <tr><th>Config as memory</th><td>Each department is a JSON config with a toggle. Newly discovered departments are added disabled.</td></tr>
+      <tr><th>Append, don't rebuild</th><td>A registry remembers which timeline each department feeds. Every run appends only what's new.</td></tr>
+      <tr><th>Colour as language</th><td>Each clip gets a Resolve colour by department, so the timeline reads at a glance in review.</td></tr>
     </table>
-    <p>Under the hood it's three panels over one shared config and one EDL registry: a <strong>Scan &amp; Import</strong> for the overnight batch, a <strong>Quick Import</strong> for the single render an artist just published, and a <strong>Department Import</strong> that governs what any scan is allowed to touch. An EDL-aware render panel is the next one being built.</p>
+    <p>Four panels share that config and one EDL registry: Scan &amp; Import, Quick Import, Department Import, and an EDL-aware Render panel.</p>
 
     <h2>The morning batch: scan and append</h2>
     <figure class="shot">
@@ -129,12 +139,11 @@ registry updated — next run appends from here</pre>
           </div>
         </div>
       </div>
-      <figcaption>A representative morning run: scan classifies overnight renders by department; import appends only the new items to their colour-coded review timelines.</figcaption>
+      <figcaption>Scan by department, then append only the new clips to colour-coded timelines.</figcaption>
     </figure>
 
     <h2>Quick import: one render, placed on the right track</h2>
-    <p>Most of the day isn't a full scan. An artist pings that one shot is re-rendered and it needs to be in the review timeline <em>now</em>. Quick Import takes exactly one thing: the path. Paste a frame path or a version folder and it parses the sequence, shot, department, and version, sniffs EXR sequence versus movie file, and shows precisely what it's about to bring in before you commit to anything.</p>
-    <p>The part I lean on every day is what happens next. The tool looks the shot up in the EDL registry, reads its record-in, drops the clip onto the first clear video track at that exact timeline position, and stacks the new version as a layer above the old one. No scrubbing to find the shot, no manual trim: <strong>the EDL already told it where the shot lives</strong>.</p>
+    <p>Most of the day is one re-rendered shot. Paste a path, confirm the parse, and the clip lands on the first clear track at the EDL record-in, stacked above the old version.</p>
     <figure class="shot">
       <div class="shot-frame" data-tabs data-state="paste">
         <div class="shot-bar">QUICK IMPORT · ONE PATH IN<span class="shot-hint">STEP IT</span></div>
@@ -162,11 +171,11 @@ first clear track — v0005 stays on V2, nothing overwritten</pre>
           </div>
         </div>
       </div>
-      <figcaption>Quick Import, representative data: paste a path, confirm the parse, and the clip lands on the first clear track at the shot's record-in. Versions stack as layers; nothing is overwritten.</figcaption>
+      <figcaption>Paste a path. The clip lands at the shot's record-in, stacked, and nothing is overwritten.</figcaption>
     </figure>
 
     <h2>Department import: the whitelist, by department</h2>
-    <p>"What counts as a render worth importing" is different on every show, so nothing is hardcoded. The tool sorts every render it has ever seen into <strong>departments</strong> — Animation, Lighting, Compositing, Editorial — so you whitelist at the level you actually think in: turn Compositing on for EXR, leave Lighting movie files off, per format. Anything new it discovers arrives as a department switched off, logged, and waiting for a human yes.</p>
+    <p>Nothing is hardcoded per show. Each department is whitelisted per format, and a new one arrives switched off until you turn it on.</p>
     <figure class="shot">
       <div class="shot-frame" data-filter-group>
         <div class="shot-bar">DEPARTMENT IMPORT · ONE TOGGLE PER DEPARTMENT<span class="shot-hint">FILTER A DEPT</span></div>
@@ -188,14 +197,14 @@ first clear track — v0005 stays on V2, nothing overwritten</pre>
           <p class="mock-note"><b>FX</b> showed up in this morning's scan and arrived <b>disabled</b> — a whole new department the tool refuses to import until you flip it on.</p>
         </div>
       </div>
-      <figcaption>Every department the tool has ever seen (representative data). Whitelist a whole department, per format; new arrivals are off by default.</figcaption>
+      <figcaption>Whitelist a department per format. Anything new arrives switched off.</figcaption>
     </figure>
 
-    <h2>On deck: an EDL-aware render tab</h2>
-    <p>The same registry that places clips knows every shot's in and out to the frame, which makes the obvious next panel almost free. Pick an export preset and the render tab dials each shot's range straight from the EDL — no trimming, no guessed handles — then queues them all at once and hands the batch to Resolve's own render engine. Multiple shots, multiple presets, one click. Designed and being built; the EDL parsing and placement it stands on already ship.</p>
+    <h2>An EDL-aware render tab</h2>
+    <p>The registry already has every shot's in and out. Pick a preset, queue the batch, and hand it to Resolve.</p>
     <figure class="shot">
       <div class="shot-frame" data-tabs data-state="review">
-        <div class="shot-bar">RENDER · THE EDL ALREADY KNOWS THE IN AND OUT<span class="shot-badge">DESIGNED · IN BUILD</span></div>
+        <div class="shot-bar">RENDER · THE EDL ALREADY KNOWS THE IN AND OUT<span class="shot-badge">LIVE</span></div>
         <div class="shot-body">
           <ul class="mock-chips">
             <li><button class="on" data-tab="review">Review H.264</button></li>
@@ -218,20 +227,14 @@ first clear track — v0005 stays on V2, nothing overwritten</pre>
           </div>
         </div>
       </div>
-      <figcaption>The planned render panel (schema in place, UI in build): choose a preset, and each shot's in and out come from the EDL the tool already parsed. Queue many at once and hand off to Resolve's render engine.</figcaption>
+      <figcaption>Ranges come from the EDL; the batch goes to Resolve.</figcaption>
     </figure>
 
-    <h2 id="proof">What it demonstrates</h2>
+    <h2 id="proof">What it shows</h2>
     <ul>
-      <li><strong>Editorial knowledge is the spec.</strong> The department breakdown, the timeline structure, and the colour language encode how reviews actually run. A pipeline TD could write this script; only an editor would know what it should do.</li>
-      <li><strong>Config-driven means show-portable.</strong> Point it at a different show root, hand it that show's EDL, let it discover the render types, toggle on what matters. Nothing is hardcoded to one production.</li>
-      <li><strong>Trust through restraint.</strong> Unknown media is surfaced but never auto-imported, and reruns are idempotent. The tool earns its place in a daily-deadline workflow by being boring and predictable.</li>
-      <li><strong>One good data model pays off more than once.</strong> The EDL registry was built to place clips on the right track. That same record in/out is what makes instant version-layering work and what makes a frame-accurate render tab nearly free. Get the spine right and the features get cheap.</li>
-    </ul>
-    <h3>Back to the studio problem</h3>
-    <ul>
-      <li><strong>The morning scramble is already solved — this one is studio work.</strong> The hours-per-day setup cost in the opening isn't hypothetical; this tool removed it from a working editorial department, and a missed render now surfaces as a flagged unknown instead of an empty slot in review.</li>
-      <li><strong>Portability is the proof.</strong> Because the show root, the EDL, and the render types are all config, the same core answers the next show's morning too; the setup cost of the whole system is one EDL.</li>
+      <li>Department split, timeline shape, and colour tags follow how reviews actually run.</li>
+      <li>Show root, EDL, and render types are config, so the next show starts from one EDL.</li>
+      <li>Unknown media is flagged and never auto-imported.</li>
     </ul>
   </div>
 </div>
