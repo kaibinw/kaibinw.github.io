@@ -890,7 +890,8 @@ section + section { border-top: 1px solid var(--line); }
   padding: 0.15rem 0.5rem;
   border-radius: 3px;
 }
-.mock-compare::before { content: "2024-11 · DAY 1"; left: 0.6rem; }
+.mock-compare::before { content: "SAMPLE · SET A"; left: 0.6rem; }
+.mock-compare::after { content: "SAMPLE · SET B"; right: 0.6rem; }
 .mock-handle {
   position: absolute;
   inset-block: 0;
