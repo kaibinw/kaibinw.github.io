@@ -1234,10 +1234,16 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
   .hobby-marker { padding-inline: 0.85rem; }
 }
 
-/* real app screenshots (Ledger case study) */
-.app-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 1.25rem; margin: 1.75rem 0; }
-.app-shots.tablet-shots { grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); }
+/* real app screenshots paired with the interactive samples (Ledger case study) */
+.shot-pair { display: grid; gap: 1rem 1.75rem; margin: 2.25rem 0; align-items: start; }
+.shot-pair > .shot { margin: 0; max-width: none; }
 .app-shot { margin: 0; }
+.shot-pair .app-shot { max-width: 15rem; }
+.app-shot.tablet-shot { max-width: 46rem; margin: 1rem 0 2.25rem; }
 .app-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); }
 .app-shot figcaption { margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.45; color: var(--muted); }
-.app-shot figcaption b { color: var(--ink); font-weight: 600; }
+.app-shot figcaption b { color: var(--accent); font-weight: 600; }
+@media (min-width: 64em) {
+  .shot-pair.phone-pair { grid-template-columns: minmax(0, 1fr) 14rem; }
+  .shot-pair.phone-pair .app-shot { max-width: none; }
+}

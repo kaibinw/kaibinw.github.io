@@ -131,64 +131,9 @@
     <h2>Design is part of the stack</h2>
     <p>Visually heavy pages were mocked up in Claude Design, then handed to the coding session as the spec.</p>
 
-    <h2 id="screens">The app on iPhone and iPad</h2>
-    <p>Screens from the iOS app, running the seeded demo household (Alex and Sam). Merchants are real Australian brands; the people and amounts are invented. The totals differ by screen on purpose: Overview tracks the six flexible pots, Budget lists every category including bills, and Transactions totals every payment.</p>
-    <div class="app-shots">
-      <figure class="app-shot phone-shot">
-      <picture>
-        <source srcset="../assets/ledger/ledger-iphone-overview.webp" type="image/webp">
-        <img src="../assets/ledger/ledger-iphone-overview.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger overview on iPhone for October 2026: Travel is over budget, with ease-back suggestions from Groceries, Transport &amp; Fuel and Kids &amp; Pets, above the category cards (demo data)">
-      </picture>
-      <figcaption><b>Overview.</b> Six flexible pots, $2,620 budgeted. Travel is deliberately over budget in this demo so the ease-back suggestions show.</figcaption>
-    </figure>
-      <figure class="app-shot phone-shot">
-      <picture>
-        <source srcset="../assets/ledger/ledger-iphone-transactions.webp" type="image/webp">
-        <img src="../assets/ledger/ledger-iphone-transactions.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger transactions list on iPhone for October 2026, grouped by day, each row showing who paid and which card (demo data)">
-      </picture>
-      <figcaption><b>Transactions.</b> Grouped by day, with who paid and which card.</figcaption>
-    </figure>
-      <figure class="app-shot phone-shot">
-      <picture>
-        <source srcset="../assets/ledger/ledger-iphone-bills.webp" type="image/webp">
-        <img src="../assets/ledger/ledger-iphone-bills.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger bills screen on iPhone: 16 of 21 bills paid this month, listed by due date with the card each is paid from (demo data)">
-      </picture>
-      <figcaption><b>Bills.</b> 16 of 21 bills paid, listed by due date.</figcaption>
-    </figure>
-      <figure class="app-shot phone-shot">
-      <picture>
-        <source srcset="../assets/ledger/ledger-iphone-budget.webp" type="image/webp">
-        <img src="../assets/ledger/ledger-iphone-budget.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger budget screen on iPhone: $6,370 allocated across October categories, with Groceries set to Ease back and Dining Out Protected (demo data)">
-      </picture>
-      <figcaption><b>Budget.</b> All nine categories, $6,370 allocated, bills included. Each pot is Ease back, Protected or Off.</figcaption>
-    </figure>
-    </div>
-    <div class="app-shots tablet-shots">
-      <figure class="app-shot tablet-shot">
-      <picture>
-        <source srcset="../assets/ledger/ledger-ipad-overview.webp" type="image/webp">
-        <img src="../assets/ledger/ledger-ipad-overview.jpg" width="1400" height="1737" loading="lazy" decoding="async" alt="Ledger overview on iPad: month total, per-person spend, category pie chart, recent transactions and ease-back suggestions (demo data)">
-      </picture>
-      <figcaption><b>Overview.</b> On iPad the overview adds the per-person split and recent transactions.</figcaption>
-    </figure>
-      <figure class="app-shot tablet-shot">
-      <picture>
-        <source srcset="../assets/ledger/ledger-ipad-transactions.webp" type="image/webp">
-        <img src="../assets/ledger/ledger-ipad-transactions.jpg" width="1400" height="1737" loading="lazy" decoding="async" alt="Ledger transactions on iPad: the full month of payments beside a category breakdown and per-person totals (demo data)">
-      </picture>
-      <figcaption><b>Transactions.</b> Every payment for the month, bills included: $7,740, against $4,340.72 on Overview, which counts only the six flexible pots.</figcaption>
-    </figure>
-      <figure class="app-shot tablet-shot">
-      <picture>
-        <source srcset="../assets/ledger/ledger-ipad-budget.webp" type="image/webp">
-        <img src="../assets/ledger/ledger-ipad-budget.jpg" width="1400" height="1737" loading="lazy" decoding="async" alt="Ledger budget on iPad: the nine categories with their ease-back settings beside the allocation pie chart (demo data)">
-      </picture>
-      <figcaption><b>Budget.</b> The same budget as on iPhone, with the allocation pie beside it.</figcaption>
-    </figure>
-    </div>
-
     <h2>What it looks like, feature by feature</h2>
-    <p>Same layout as the app. Merchants, people, and amounts below are invented sample data.</p>
+    <p>Each interactive sample sits next to the real screen it describes, from the iOS app running a seeded demo household (Alex and Sam). Merchants are real Australian brands; the people and amounts are invented. Totals differ by screen on purpose: Overview tracks the six flexible pots, Budget lists every category including bills, and Transactions totals every payment.</p>
+    <div class="shot-pair phone-pair">
     <figure class="shot phone">
       <div class="shot-frame" aria-hidden="true">
         <div class="shot-bar">LEDGER · SAMPLE DATA<span class="bar-tc" data-timecode>01:00:00:00</span></div>
@@ -217,7 +162,16 @@
       </div>
       <figcaption>Shared budgets, live entries from both people, and a payback flag.</figcaption>
     </figure>
+    <figure class="app-shot phone-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-iphone-overview.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-iphone-overview.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger overview on iPhone for October 2026: Travel is over budget, with ease-back suggestions from Groceries, Transport &amp; Fuel and Kids &amp; Pets, above the category cards (demo data)">
+      </picture>
+      <figcaption><b>In the app.</b> Overview: the six flexible pots against their $2,620 budget. Travel is over on purpose, so the ease-back suggestions show.</figcaption>
+    </figure>
+    </div>
 
+    <div class="shot-pair phone-pair">
     <figure class="shot">
       <div class="shot-frame" data-filter-group>
         <div class="shot-bar">CARDS · SAMPLE DATA<span class="shot-hint">CLICK A CARD</span></div>
@@ -239,6 +193,14 @@
       </div>
       <figcaption>Filter by card. A non-household tag stays out of the split. Sample amounts.</figcaption>
     </figure>
+    <figure class="app-shot phone-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-iphone-transactions.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-iphone-transactions.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger transactions list on iPhone for October 2026, grouped by day, each row showing who paid and which card (demo data)">
+      </picture>
+      <figcaption><b>In the app.</b> Transactions: grouped by day, with who paid and which card.</figcaption>
+    </figure>
+    </div>
 
     <figure class="shot">
       <div class="shot-frame" data-tabs data-state="all">
@@ -279,7 +241,15 @@
       </div>
       <figcaption>Hand-rolled SVG, no chart library. Click a category to isolate its segment.</figcaption>
     </figure>
+    <figure class="app-shot tablet-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-ipad-transactions.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-ipad-transactions.jpg" width="1400" height="1737" loading="lazy" decoding="async" alt="Ledger transactions on iPad: the full month of payments beside a category breakdown and per-person totals (demo data)">
+      </picture>
+      <figcaption><b>In the app.</b> Transactions on iPad: the category breakdown beside every payment. The $7,740 counts all payments, bills included; Overview's $4,340.72 counts only the six flexible pots.</figcaption>
+    </figure>
 
+    <div class="shot-pair phone-pair">
     <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
         <div class="shot-bar"><span data-cycle='["SAMPLE BILLS · 27 SEEDED · AUTO-MATCH","SAMPLE BILLS · 24 MATCHED · 3 DUE"]'>SAMPLE BILLS · 27 SEEDED · AUTO-MATCH</span></div>
@@ -294,6 +264,14 @@
       </div>
       <figcaption>Keyword matching against seeded bills, and a nudge after save from watching real use.</figcaption>
     </figure>
+    <figure class="app-shot phone-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-iphone-bills.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-iphone-bills.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger bills screen on iPhone: 16 of 21 bills paid this month, listed by due date with the card each is paid from (demo data)">
+      </picture>
+      <figcaption><b>In the app.</b> Bills: 16 of 21 paid, listed by due date.</figcaption>
+    </figure>
+    </div>
 
     <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
@@ -310,6 +288,7 @@
       <figcaption>An Apple Shortcut logs an expense from the action button, without opening the app.</figcaption>
     </figure>
 
+    <div class="shot-pair phone-pair">
     <figure class="shot">
       <div class="shot-frame" data-tabs data-state="pending">
         <div class="shot-bar">REACTIVE BUDGET<span class="shot-badge">LIVE · opt-in</span></div>
@@ -336,6 +315,21 @@
         </div>
       </div>
       <figcaption>LIVE · opt-in</figcaption>
+    </figure>
+    <figure class="app-shot phone-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-iphone-budget.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-iphone-budget.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger budget screen on iPhone: $6,370 allocated across October categories, with Groceries set to Ease back and Dining Out Protected (demo data)">
+      </picture>
+      <figcaption><b>In the app.</b> Budget: all nine categories, $6,370 allocated, bills included. Each pot is Ease back, Protected or Off.</figcaption>
+    </figure>
+    </div>
+    <figure class="app-shot tablet-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-ipad-overview.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-ipad-overview.jpg" width="1400" height="1737" loading="lazy" decoding="async" alt="Ledger overview on iPad with an ease-back panel: Travel is $2,600 over, with suggested amounts to take from Groceries, Transport &amp; Fuel and Kids &amp; Pets (demo data)">
+      </picture>
+      <figcaption><b>In the app.</b> The ease-back panel on iPad's Overview: what the over-spend looks like out of the other pots. Nothing moves until you approve.</figcaption>
     </figure>
 
     <figure class="shot">
