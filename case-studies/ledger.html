@@ -273,6 +273,7 @@
     </figure>
     </div>
 
+    <div class="shot-pair phone-pair">
     <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
         <div class="shot-bar">LOG EXPENSE · SAMPLE</div>
@@ -285,36 +286,46 @@
 <span class="ok">✓ Logged: Sample Grocer $40.00 → Groceries (A)</span></pre>
         </div>
       </div>
-      <figcaption>An Apple Shortcut logs an expense from the action button, without opening the app.</figcaption>
+      <figcaption>One way in: an Apple Shortcut logs an expense from the action button, without opening the app.</figcaption>
     </figure>
+    <figure class="app-shot phone-shot">
+      <picture>
+        <source media="(prefers-reduced-motion: reduce)" srcset="../assets/ledger/ledger-add-expense-still.webp" type="image/webp">
+        <source media="(prefers-reduced-motion: reduce)" srcset="../assets/ledger/ledger-add-expense-still.jpg" type="image/jpeg">
+        <img src="../assets/ledger/ledger-add-expense.gif" width="400" height="710" loading="lazy" decoding="async" alt="Animated demo of adding an expense in the Ledger iOS app: tap plus, choose Expense, type Aldi, take the suggested category and card, enter 42.60, choose Sam as the payer and save. Groceries and the Transactions list update (demo data)">
+      </picture>
+      <figcaption><b>In the app.</b> The other way in: the add form. Aldi was logged before, so the app offers the same category and card. Demo data.</figcaption>
+    </figure>
+    </div>
 
     <div class="shot-pair phone-pair">
     <figure class="shot">
       <div class="shot-frame" data-tabs data-state="pending">
-        <div class="shot-bar">REACTIVE BUDGET<span class="shot-badge">LIVE · opt-in</span></div>
+        <div class="shot-bar">REACTIVE BUDGET · EASE BACK<span class="shot-badge">TRIAL · opt-in</span></div>
         <div class="shot-body">
           <div class="mock-row">
-            <span class="label">Dining out</span>
+            <span class="label">Sample month</span>
             <span class="num"><strong>$130</strong> / $100 · over by $30</span>
             <span class="mock-bar hot"><i style="width:100%"></i></span>
           </div>
           <ul class="mock-feed">
-            <li><span class="who">1</span><span>Draw from Fuel · $40 headroom</span><span class="amt">suggested</span></li>
-            <li><span class="who">2</span><span>Draw from Entertainment · $20 headroom</span><span class="amt">option</span></li>
+            <li><span class="who">1</span><span>Fuel plan for next month · −$20</span><span class="amt">shared</span></li>
+            <li><span class="who">2</span><span>Entertainment plan for next month · −$10</span><span class="amt">shared</span></li>
+            <li><span class="who">P</span><span>Rent · Protected, left out unless you add it</span><span class="amt">excluded</span></li>
           </ul>
           <div class="mock-actions">
-            <button class="mock-btn" data-tab="draw">Draw $30 from Fuel</button>
-            <button class="mock-btn ghost" data-tab="ack">Acknowledge overspend</button>
-            <button class="mock-btn ghost" data-tab="pending">Reset</button>
+            <button class="mock-btn" data-tab="eased">Ease back $30 for next month</button>
+            <button class="mock-btn ghost" data-tab="protected">Add a protected pot</button>
+            <button class="mock-btn ghost" data-tab="pending">Undo / reset</button>
           </div>
           <div data-panels>
-            <p class="mock-note" data-panel="pending">Waiting on a decision. Nothing moves without consent: the app suggests, <b>you approve</b>.</p>
-            <p class="mock-note" data-panel="draw" hidden>Drawn. Effective cap: <b>$100 + $30 from Fuel</b> · paired rows written to <strong>budget_adjustments</strong> (draw-out on Fuel, draw-in on Dining), undo writes an offsetting row.</p>
-            <p class="mock-note" data-panel="ack" hidden>Acknowledged. Cap stays $100; the overspend is <b>logged, not hidden</b> — it shows in the month-end PDF as an accepted overage.</p>
+            <p class="mock-note" data-panel="pending">A what-if, so nothing moves yet. Ease back takes an overspend off <b>next month's</b> plans of other pots. You pick the amount and which pots share it, one month at a time.</p>
+            <p class="mock-note" data-panel="eased" hidden>Easing back <b>$30</b> for next month, nothing still to go. Fuel's plan is $20 lower and Entertainment's $10 lower, so the plan still adds up. <strong>Saved on this device only</strong> while we try it. Undo puts it all back.</p>
+            <p class="mock-note" data-panel="protected" hidden>Rent is Protected, so it never donates unless you choose it. Add it and the $30 is shared across three pots instead of two. Your call, every time.</p>
           </div>
         </div>
       </div>
-      <figcaption>LIVE · opt-in</figcaption>
+      <figcaption>TRIAL · opt-in. The app suggests, you approve; nothing changes without a decision.</figcaption>
     </figure>
     <figure class="app-shot phone-shot">
       <picture>
@@ -332,6 +343,7 @@
       <figcaption><b>In the app.</b> The ease-back panel on iPad's Overview: what the over-spend looks like out of the other pots. Nothing moves until you approve.</figcaption>
     </figure>
 
+    <div class="shot-pair phone-pair">
     <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
         <div class="shot-bar">MONTH END · CLOSE THE BOOKS</div>
@@ -343,6 +355,21 @@
         </div>
       </div>
       <figcaption>Locked months, then a two-page PDF. Either person can unlock.</figcaption>
+    </figure>
+    <figure class="app-shot phone-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-iphone-history.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-iphone-history.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger History screen on iPhone for September 2026: spending by category as a donut chart with a Lock month button, over-budget and income summaries, and each person's total (demo data)">
+      </picture>
+      <figcaption><b>In the app.</b> History for a month: the breakdown by category, who spent what, and the Lock month button.</figcaption>
+    </figure>
+    </div>
+    <figure class="app-shot tablet-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-ipad-history.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-ipad-history.jpg" width="1400" height="1618" loading="lazy" decoding="async" alt="Ledger History on iPad for September 2026: spending by category beside a pie chart, totals against budget and income, each person's total, paybacks recovered and per-card totals (demo data)">
+      </picture>
+      <figcaption><b>In the app.</b> On iPad the month also lists paybacks recovered and totals by card, ready for the close.</figcaption>
     </figure>
 
     <h2 id="proof">What it shows</h2>
