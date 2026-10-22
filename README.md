@@ -1,30 +1,35 @@
-# kai-bin.wong — personal site
+# kaibinw.github.io
 
-Static portfolio. HTML and CSS, no build step, for GitHub Pages.
+Personal portfolio for Kai-Bin Wong, VFX Editor. Static HTML and CSS, no build step, served by GitHub Pages at <https://kaibinw.github.io/>.
 
 ## Structure
 
 ```
-index.html
+index.html                       home: credits, selected work, method
 style.css
-mock.js
-case-studies/ledger.html
-case-studies/image-catalog.html
-case-studies/hq.html
-case-studies/dashboard.html
+mock.js                          small helpers for the mock screenshots
+og.png                           1200x630 link preview image
+favicon.ico, favicon.svg, apple-touch-icon.png
 case-studies/dailies-importer.html
+case-studies/ledger.html
+case-studies/dental-catalog.html
+case-studies/hq.html
 case-studies/second-brain.html
+case-studies/dashboard.html      parked, listed on the minor list only
 ```
 
-## Pages
+## Content rules
 
-- Home — credits, selected work, method
-- Ledger — shared household budget (Next.js, Supabase, Vercel), in active use
-- Image Catalog — local folder catalog: tags, filters, and a wipe compare in one HTML file
-- HQ — local one-click control panel for a markdown vault
-- Household Dashboard — parked. Stock, wants, and spend on one screen. Not a featured case.
-- Dailies Importer — Resolve script that appends overnight renders, in active use
-- Second Brain — markdown vault read by people and by agents
+- Featured, in order: Dailies Importer, Ledger, Dental Catalog, HQ, Second Brain. Household Dashboard, ICC reports and Editorial pipeline tooling sit on the minor list.
+- Studio pipeline work is shown as methodology only. No studio material.
+- No patient data, photos or practice names. Dental Catalog mocks use sample folder names such as SAMPLE A and SET 01.
+- Figures in the mocks are sample data: merchant names, people and amounts are invented.
+- No unverifiable metrics (line counts, user counts) and no absolute privacy claims.
+- Contact links are LinkedIn and email, in `index.html`.
+
+## Every page carries
+
+`og:title`, `og:description`, `og:type`, `og:url`, `og:image`, `twitter:card=summary_large_image`, a canonical link, and the favicon set. Keep these in step when adding a page. There is one `h1` per page; the sidebar name is not a heading.
 
 ## Local preview
 
@@ -34,15 +39,4 @@ python3 -m http.server 8080
 
 ## Deploy
 
-GitHub Pages serves this repo from the default branch at `https://kaibinw.github.io/`. `.nojekyll` is already in the root.
-
-## Sharing
-
-Each page sets `og:title` and `og:description`. `og:image` is omitted until a 1200×630 `og.png` is added at the site root.
-
-## Content notes
-
-- Featured case studies: Ledger, Image Catalog, HQ, Dailies Importer, and Second Brain. Household Dashboard is parked and listed only on the minor list.
-- Figures are labeled sample data. Merchant names, people, and amounts in the mocks are invented. The Image Catalog grid uses folder names such as SAMPLE A and SET 01.
-- Ledger names concrete controls: manual entry, no stored bank login, and row-level security on every table.
-- Contact links: LinkedIn and email, in `index.html`.
+GitHub Pages serves the default branch. `.nojekyll` is already in the root. Nothing here is merged by automation; Kai merges.

@@ -10,7 +10,7 @@
   --surface-2: oklch(0.19 0.012 242);
   --ink: oklch(0.94 0.005 242);
   --muted: oklch(0.73 0.02 242);
-  --primary: oklch(0.578 0.13 242);
+  --primary: oklch(0.54 0.13 242);
   --primary-bright: oklch(0.76 0.11 242);
   --accent: oklch(0.80 0.14 80);
   --line: oklch(0.27 0.012 242);
@@ -107,13 +107,13 @@ a:hover { color: var(--ink); }
   .wordmark .cursor { animation: none; }
 }
 
-.sidebar-about h1 {
+.sidebar-about .sidebar-name {
   font-size: clamp(1.7rem, 1.5rem + 1vw, 2.1rem);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
-.sidebar-about h1 a { color: var(--ink); text-decoration: none; }
-.sidebar-about h1 a:hover { color: var(--primary-bright); }
+.sidebar-about .sidebar-name a { color: var(--ink); text-decoration: none; }
+.sidebar-about .sidebar-name a:hover { color: var(--primary-bright); }
 .sidebar-about .lead {
   margin-top: 0.8rem;
   color: var(--muted);
@@ -170,7 +170,7 @@ a:hover { color: var(--ink); }
   .sidebar-inner { gap: 1.1rem; }
   .sidebar-meta, .sidebar-foot, .sidebar-nav-item .tc-num { display: none; }
   .sidebar .btn { padding: 0.6rem 1.1rem; font-size: 0.92rem; }
-  .sidebar-about h1 { font-size: 1.5rem; }
+  .sidebar-about .sidebar-name { font-size: 1.5rem; }
   .sidebar-about .lead { margin-top: 0.5rem; font-size: 0.92rem; }
   .sidebar-nav {
     flex-direction: row;
@@ -192,7 +192,7 @@ a:hover { color: var(--ink); }
     justify-content: space-between;
     gap: 1rem;
   }
-  body:has(.ruler[data-ruler-nav]) .sidebar-about h1 { font-size: 1.05rem; }
+  body:has(.ruler[data-ruler-nav]) .sidebar-about .sidebar-name { font-size: 1.05rem; }
 }
 
 /* Desktop: fix the sidebar, hyde-style */
@@ -766,6 +766,9 @@ section + section { border-top: 1px solid var(--line); }
   padding-right: 2rem;
 }
 .fact-table td { color: var(--muted); }
+@media (max-width: 40em) {
+  .fact-table th { white-space: normal; padding-right: 1rem; width: 36%; overflow-wrap: anywhere; }
+}
 .fact-table td strong { color: var(--ink); font-weight: 500; }
 
 .callout {
