@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dental Catalog — Case Study · Kai-Bin Wong</title>
-<meta name="description" content="One HTML file that catalogues a folder of images: tags, filters, and a local wipe compare. The page does not upload.">
-<meta property="og:title" content="Dental Catalog — Case Study · Kai-Bin Wong">
-<meta property="og:description" content="One HTML file that catalogues a folder of images: tags, filters, and a local wipe compare. The page does not upload.">
+<title>Image Catalog — Case Study · Kai-Bin Wong</title>
+<meta name="description" content="One HTML file that catalogues a folder of images: tags, filters, and a local wipe compare. Designed to run locally; files stay on the drive.">
+<meta property="og:title" content="Image Catalog — Case Study · Kai-Bin Wong">
+<meta property="og:description" content="One HTML file that catalogues a folder of images: tags, filters, and a local wipe compare. Designed to run locally; files stay on the drive.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +42,7 @@
         <summary><span>Selected work</span><span class="tc-num">5 CASES</span></summary>
         <a class="sidebar-nav-item" href="../index.html#work"><span>Best work</span><span class="tc-num">01:04:20:00</span></a>
       <a class="sidebar-nav-item" href="ledger.html"><span>Ledger</span><span class="tc-num">CASE 01</span></a>
-      <a class="sidebar-nav-item active" href="dental-catalog.html" aria-current="page"><span>Dental Catalog</span><span class="tc-num">CASE 02</span></a>
+      <a class="sidebar-nav-item active" href="image-catalog.html" aria-current="page"><span>Image Catalog</span><span class="tc-num">CASE 02</span></a>
       <a class="sidebar-nav-item" href="hq.html"><span>HQ</span><span class="tc-num">CASE 03</span></a>
       <a class="sidebar-nav-item" href="dailies-importer.html"><span>Dailies Importer</span><span class="tc-num">CASE 04</span></a>
       <a class="sidebar-nav-item" href="second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 05</span></a>
@@ -64,7 +64,7 @@
 <div class="case-head" id="top">
   <div class="wrap">
     <a class="back" href="../index.html#work">← Back to selected work</a>
-    <h1>Dental Catalog</h1>
+    <h1>Image Catalog</h1>
     <div class="slate-head">
       <div class="sticks"></div>
       <div class="board">
@@ -76,7 +76,7 @@
           <span><b>STACK</b> Single HTML file · File System Access API</span>
           <span><b>STATUS</b> v2 in daily use</span>
         </div>
-        <p class="board-desc">One HTML file that catalogues a folder of images: tags, filters, and a local wipe compare. The page does not upload.</p>
+        <p class="board-desc">One HTML file that catalogues a folder of images: tags, filters, and a local wipe compare. Designed to run locally; files stay on the drive.</p>
       </div>
     </div>
   </div>
@@ -99,16 +99,12 @@
     <h2>Constraints set before building</h2>
     <table class="fact-table">
       <tr><th>One file</th><td>A single HTML file. It runs in the browser from the drive it sits on.</td></tr>
-      <tr><th>User-granted folder</th><td>The File System Access API reads only the folder the user picks. The page does not upload those files.</td></tr>
+      <tr><th>User-granted folder</th><td>The File System Access API reads only the folder the user picks. Designed to run locally; those files stay on the drive.</td></tr>
       <tr><th>Tags stay local</th><td>Labels are written beside the files. There is no account and no backend.</td></tr>
     </table>
 
     <h2 id="build">What I built</h2>
     <p>The page lists the granted folders as a grid and filters them by tag. A wipe compares two images in the set. A Sort Wizard samples pixel luminance with the Canvas API, suggests a label, batch-accepts the confident matches, and asks on the rest.</p>
-    <div class="callout">
-      <p><strong>2,313 lines shipped. Zero written by hand.</strong></p>
-    </div>
-
     <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
         <div class="shot-bar">FOLDER GRID · SAMPLE DATA</div>
@@ -172,7 +168,7 @@
     <h2 id="proof">What it shows</h2>
     <ul>
       <li>Cataloguing, tagging, and filtering run in one HTML file.</li>
-      <li>The page reads a user-granted folder and does not upload it.</li>
+      <li>The page reads a user-granted folder. It is designed to run locally, and the files stay on the drive.</li>
       <li>The Sort Wizard suggests labels locally and asks when it is not confident.</li>
     </ul>
   </div>

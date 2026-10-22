@@ -9,7 +9,7 @@ index.html
 style.css
 mock.js
 case-studies/ledger.html
-case-studies/dental-catalog.html
+case-studies/image-catalog.html
 case-studies/hq.html
 case-studies/dashboard.html
 case-studies/dailies-importer.html
@@ -20,7 +20,7 @@ case-studies/second-brain.html
 
 - Home — credits, selected work, method
 - Ledger — shared household budget (Next.js, Supabase, Vercel), in active use
-- Dental Catalog — local folder catalog: tags, filters, and a wipe compare in one HTML file
+- Image Catalog — local folder catalog: tags, filters, and a wipe compare in one HTML file
 - HQ — local one-click control panel for a markdown vault
 - Household Dashboard — parked. Stock, wants, and spend on one screen. Not a featured case.
 - Dailies Importer — Resolve script that appends overnight renders, in active use
@@ -42,7 +42,7 @@ Each page sets `og:title` and `og:description`. `og:image` is omitted until a 12
 
 ## Content notes
 
-- Featured case studies: Ledger, Dental Catalog, HQ, Dailies Importer, and Second Brain. Household Dashboard is parked and listed only on the minor list.
-- Figures are labeled sample data. Merchant names, people, and amounts in the mocks are invented. The Dental Catalog grid uses folder names such as SAMPLE A and SET 01.
+- Featured case studies: Ledger, Image Catalog, HQ, Dailies Importer, and Second Brain. Household Dashboard is parked and listed only on the minor list.
+- Figures are labeled sample data. Merchant names, people, and amounts in the mocks are invented. The Image Catalog grid uses folder names such as SAMPLE A and SET 01.
 - Ledger names concrete controls: manual entry, no stored bank login, and row-level security on every table.
 - Contact links: LinkedIn and email, in `index.html`.
