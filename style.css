@@ -1233,3 +1233,11 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
   .hobby-marker span { display: none; }
   .hobby-marker { padding-inline: 0.85rem; }
 }
+
+/* real app screenshots (Ledger case study) */
+.app-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 1.25rem; margin: 1.75rem 0; }
+.app-shots.tablet-shots { grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); }
+.app-shot { margin: 0; }
+.app-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); }
+.app-shot figcaption { margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.45; color: var(--muted); }
+.app-shot figcaption b { color: var(--ink); font-weight: 600; }
