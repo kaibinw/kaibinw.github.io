@@ -136,31 +136,36 @@
     <div class="shot-pair phone-pair">
     <figure class="shot phone">
       <div class="shot-frame" aria-hidden="true">
-        <div class="shot-bar">LEDGER · SAMPLE DATA<span class="bar-tc" data-timecode>01:00:00:00</span></div>
+        <div class="shot-bar">OVERVIEW · OCTOBER · SAMPLE DATA<span class="bar-tc" data-timecode>01:00:00:00</span></div>
         <div class="shot-body">
           <div class="mock-row">
             <span class="label">Groceries</span>
-            <span class="num"><strong>$80</strong> / $100</span>
-            <span class="mock-bar"><i style="width:80%"></i></span>
+            <span class="num"><strong>$678.81</strong> / $950</span>
+            <span class="mock-bar"><i style="width:71%"></i></span>
           </div>
           <div class="mock-row">
-            <span class="label">Dining out</span>
-            <span class="num"><strong>$90</strong> / $100</span>
-            <span class="mock-bar hot"><i style="width:90%"></i></span>
+            <span class="label">Dining Out</span>
+            <span class="num"><strong>$239.05</strong> / $350</span>
+            <span class="mock-bar"><i style="width:68%"></i></span>
           </div>
           <div class="mock-row">
-            <span class="label">Fuel</span>
-            <span class="num"><strong>$40</strong> / $100</span>
-            <span class="mock-bar"><i style="width:40%"></i></span>
+            <span class="label">Transport &amp; Fuel</span>
+            <span class="num"><strong>$160.83</strong> / $380</span>
+            <span class="mock-bar"><i style="width:42%"></i></span>
+          </div>
+          <div class="mock-row">
+            <span class="label">Travel</span>
+            <span class="num"><strong>$3,000.00</strong> / $400</span>
+            <span class="mock-bar hot"><i style="width:100%"></i></span>
           </div>
           <ul class="mock-feed">
-            <li><span class="who">A</span><span>Sample Grocer</span><span class="amt">$40</span></li>
-            <li><span class="who">B</span><span>Sample Cafe · payback pending</span><span class="amt">$20</span></li>
-            <li><span class="who">A</span><span>Sample Fuel</span><span class="amt">$10</span></li>
+            <li><span class="who">ALEX</span><span>Mobile - Alex · Everyday Visa</span><span class="amt">$39.00</span></li>
+            <li><span class="who">SAM</span><span>Amazon Prime · Everyday Visa</span><span class="amt">$9.99</span></li>
+            <li><span class="who">SAM</span><span>Kmart homewares · Everyday Visa</span><span class="amt">$146.45</span></li>
           </ul>
         </div>
       </div>
-      <figcaption>Shared budgets, live entries from both people, and a payback flag.</figcaption>
+      <figcaption>The Overview's pots, with the same sample amounts, and live entries from both people. Travel is over on purpose.</figcaption>
     </figure>
     <figure class="app-shot phone-shot">
       <picture>
@@ -174,24 +179,26 @@
     <div class="shot-pair phone-pair">
     <figure class="shot">
       <div class="shot-frame" data-filter-group>
-        <div class="shot-bar">CARDS · SAMPLE DATA<span class="shot-hint">CLICK A CARD</span></div>
+        <div class="shot-bar">TRANSACTIONS · BY CARD · SAMPLE DATA<span class="shot-hint">CLICK A CARD</span></div>
         <div class="shot-body">
           <ul class="mock-chips">
             <li><button class="on" data-filter="all">All cards</button></li>
-            <li><button data-filter="c1">Card 1 — $60</button></li>
-            <li><button data-filter="c2">Card 2 — $40</button></li>
-            <li><button data-filter="c3">Card 3 — $10</button></li>
+            <li><button data-filter="visa">Everyday Visa</button></li>
+            <li><button data-filter="amex">Rewards Amex</button></li>
+            <li><button data-filter="debit">Joint Debit</button></li>
           </ul>
           <ul class="mock-feed">
-            <li data-tag="c1"><span class="who">C1</span><span>Sample Market</span><span class="amt">$40</span></li>
-            <li data-tag="c1"><span class="who">C1</span><span>Sample Cafe · payback pending</span><span class="amt">$20</span></li>
-            <li data-tag="c2"><span class="who">C2</span><span>Sample Shop · outside household</span><span class="amt">$30</span></li>
-            <li data-tag="c2"><span class="who">C2</span><span>Sample Hardware</span><span class="amt">$10</span></li>
-            <li data-tag="c3"><span class="who">C3</span><span>Sample Transit</span><span class="amt">$10</span></li>
+            <li data-tag="visa"><span class="who">ALEX</span><span>Mobile - Alex · 19 Oct</span><span class="amt">$39.00</span></li>
+            <li data-tag="visa"><span class="who">SAM</span><span>Amazon Prime · 18 Oct</span><span class="amt">$9.99</span></li>
+            <li data-tag="visa"><span class="who">ALEX</span><span>Coles · 17 Oct</span><span class="amt">$86.10</span></li>
+            <li data-tag="debit"><span class="who">SAM</span><span>Gas · 16 Oct</span><span class="amt">$52.32</span></li>
+            <li data-tag="amex"><span class="who">SAM</span><span>Petbarn · 13 Oct</span><span class="amt">$58.80</span></li>
+            <li data-tag="debit"><span class="who">SAM</span><span>Home &amp; Contents Insurance · 13 Oct</span><span class="amt">$96.00</span></li>
+            <li data-tag="amex"><span class="who">SAM</span><span>Birthday present · 12 Oct</span><span class="amt">$42.36</span></li>
           </ul>
         </div>
       </div>
-      <figcaption>Filter by card. A non-household tag stays out of the split. Sample amounts.</figcaption>
+      <figcaption>Filter by card. Every row shows who paid and which card. Sample amounts.</figcaption>
     </figure>
     <figure class="app-shot phone-shot">
       <picture>
@@ -201,46 +208,6 @@
       <figcaption><b>In the app.</b> Transactions: grouped by day, with who paid and which card.</figcaption>
     </figure>
     </div>
-
-    <figure class="shot">
-      <div class="shot-frame" data-tabs data-state="all">
-        <div class="shot-bar">HISTORY · SAMPLE DATA<span class="shot-hint">CLICK A SEGMENT LABEL</span></div>
-        <div class="shot-body">
-          <div class="mock-donut">
-            <svg width="150" height="150" viewBox="0 0 130 130" role="img" aria-label="Sample spend by category donut chart">
-              <g transform="rotate(-90 65 65)">
-                <circle class="ring g-groceries" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.578 0.13 242)" stroke-width="16" stroke-dasharray="124.2 202.5" stroke-dashoffset="0"/>
-                <circle class="ring g-bills" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.76 0.11 242)" stroke-width="16" stroke-dasharray="88.2 238.5" stroke-dashoffset="-124.2"/>
-                <circle class="ring g-dining" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.80 0.14 80)" stroke-width="16" stroke-dasharray="49 277.7" stroke-dashoffset="-212.4"/>
-                <circle class="ring g-fuel" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.75 0.14 150)" stroke-width="16" stroke-dasharray="32.7 294" stroke-dashoffset="-261.4"/>
-                <circle class="ring g-other" cx="65" cy="65" r="52" fill="none" stroke="oklch(0.36 0.02 242)" stroke-width="16" stroke-dasharray="32.7 294" stroke-dashoffset="-294.1"/>
-              </g>
-              <text class="donut-label" x="65" y="60" text-anchor="middle">SAMPLE</text>
-              <text class="donut-value" x="65" y="78" text-anchor="middle">$1,000</text>
-            </svg>
-            <div>
-              <ul class="mock-chips">
-                <li><button class="on" data-tab="all">all</button></li>
-                <li><button data-tab="groceries">groceries</button></li>
-                <li><button data-tab="bills">bills</button></li>
-                <li><button data-tab="dining">dining</button></li>
-                <li><button data-tab="fuel">fuel</button></li>
-                <li><button data-tab="other">other</button></li>
-              </ul>
-              <div data-panels>
-                <p class="mock-note" data-panel="all">Sample month: <b>$1,000</b> across 5 categories, 2 people, 3 cards.</p>
-                <p class="mock-note" data-panel="groceries" hidden>Groceries: <b>$380 · 38%</b>. Sample figure.</p>
-                <p class="mock-note" data-panel="bills" hidden>Bills: <b>$270 · 27%</b> — 24 of 27 sample bills matched.</p>
-                <p class="mock-note" data-panel="dining" hidden>Dining out: <b>$150 · 15%</b> — over the sample cap.</p>
-                <p class="mock-note" data-panel="fuel" hidden>Fuel: <b>$100 · 10%</b>.</p>
-                <p class="mock-note" data-panel="other" hidden>Other: <b>$100 · 10%</b> — includes a payback-pending entry.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <figcaption>Hand-rolled SVG, no chart library. Click a category to isolate its segment.</figcaption>
-    </figure>
     <figure class="app-shot tablet-shot">
       <picture>
         <source srcset="../assets/ledger/ledger-ipad-transactions.webp" type="image/webp">
@@ -251,15 +218,78 @@
 
     <div class="shot-pair phone-pair">
     <figure class="shot">
+      <div class="shot-frame" data-tabs data-state="all">
+        <div class="shot-bar">HISTORY · SEPTEMBER · SAMPLE DATA<span class="shot-hint">CLICK A CATEGORY</span></div>
+        <div class="shot-body">
+          <div class="mock-donut">
+            <svg width="170" height="170" viewBox="0 0 130 130" role="img" aria-label="Sample September spend by category donut chart">
+              <g transform="rotate(-90 65 65)">
+                <circle class="ring g-groceries" cx="65" cy="65" r="52" fill="none" stroke="#4caf7d" stroke-width="16" stroke-dasharray="68.2 258.5" stroke-dashoffset="0.0"/>
+                <circle class="ring g-dining" cx="65" cy="65" r="52" fill="none" stroke="#f59e0b" stroke-width="16" stroke-dasharray="19.3 307.4" stroke-dashoffset="-69.1"/>
+                <circle class="ring g-transport" cx="65" cy="65" r="52" fill="none" stroke="#3b82f6" stroke-width="16" stroke-dasharray="16.0 310.7" stroke-dashoffset="-89.3"/>
+                <circle class="ring g-health" cx="65" cy="65" r="52" fill="none" stroke="#ef4444" stroke-width="16" stroke-dasharray="12.4 314.3" stroke-dashoffset="-106.3"/>
+                <circle class="ring g-travel" cx="65" cy="65" r="52" fill="none" stroke="#06b6d4" stroke-width="16" stroke-dasharray="15.7 311.0" stroke-dashoffset="-119.6"/>
+                <circle class="ring g-home" cx="65" cy="65" r="52" fill="none" stroke="#8b5cf6" stroke-width="16" stroke-dasharray="150.8 175.9" stroke-dashoffset="-136.2"/>
+                <circle class="ring g-subs" cx="65" cy="65" r="52" fill="none" stroke="#ec4899" stroke-width="16" stroke-dasharray="5.6 321.2" stroke-dashoffset="-287.8"/>
+                <circle class="ring g-insurance" cx="65" cy="65" r="52" fill="none" stroke="#64748b" stroke-width="16" stroke-dasharray="25.5 301.2" stroke-dashoffset="-294.3"/>
+                <circle class="ring g-kids" cx="65" cy="65" r="52" fill="none" stroke="#f97316" stroke-width="16" stroke-dasharray="5.1 321.6" stroke-dashoffset="-320.7"/>
+              </g>
+              <text class="donut-label" x="65" y="60" text-anchor="middle">TOTAL</text>
+              <text class="donut-value" x="65" y="78" text-anchor="middle">$7,312.25</text>
+            </svg>
+            <div>
+              <ul class="mock-chips">
+                <li><button class="on" data-tab="all">all</button></li>
+                <li><button data-tab="groceries">groceries</button></li>
+                <li><button data-tab="dining">dining out</button></li>
+                <li><button data-tab="transport">transport</button></li>
+                <li><button data-tab="health">health</button></li>
+                <li><button data-tab="travel">travel</button></li>
+                <li><button data-tab="home">home</button></li>
+                <li><button data-tab="subs">subs</button></li>
+                <li><button data-tab="insurance">insurance</button></li>
+                <li><button data-tab="kids">kids &amp; pets</button></li>
+              </ul>
+              <div data-panels>
+                <p class="mock-note" data-panel="all"><b>$7,312.25</b> spent in September across 9 categories: <b>+$942.25 over</b> the $6,370 budget, against $11,820 income. Paybacks recovered: <b>+$61.40</b>.</p>
+                <p class="mock-note" data-panel="groceries" hidden>Groceries: <b>$1,546.22 · 21%</b>, <b>$596.22 over</b> its $950 budget.</p>
+                <p class="mock-note" data-panel="dining" hidden>Dining Out: <b>$453.10 · 6%</b>, <b>$103.10 over</b> its $350 budget.</p>
+                <p class="mock-note" data-panel="transport" hidden>Transport &amp; Fuel: <b>$378.90 · 5%</b>, $1.10 under its $380 budget.</p>
+                <p class="mock-note" data-panel="health" hidden>Health: <b>$297.83 · 4%</b>, <b>$77.83 over</b> its $220 budget.</p>
+                <p class="mock-note" data-panel="travel" hidden>Travel: <b>$371.05 · 5%</b>, $28.95 under its $400 budget.</p>
+                <p class="mock-note" data-panel="home" hidden>Home &amp; Utilities: <b>$3,394.57 · 46%</b>, <b>$394.57 over</b> its $3,000 budget.</p>
+                <p class="mock-note" data-panel="subs" hidden>Subscriptions: <b>$144.85 · 2%</b>, $5.15 under its $150 budget.</p>
+                <p class="mock-note" data-panel="insurance" hidden>Insurance: <b>$591.00 · 8%</b>, $9.00 under its $600 budget.</p>
+                <p class="mock-note" data-panel="kids" hidden>Kids &amp; Pets: <b>$134.73 · 2%</b>, $185.27 under its $320 budget.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Hand-rolled SVG, no chart library. Click a category to isolate its segment. Colours and amounts match the app's History screen.</figcaption>
+    </figure>
+    <figure class="app-shot phone-shot">
+      <picture>
+        <source srcset="../assets/ledger/ledger-iphone-history.webp" type="image/webp">
+        <img src="../assets/ledger/ledger-iphone-history.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger History screen on iPhone for September 2026: spending by category as a donut chart with a Lock month button, over-budget and income summaries, and each person's total (demo data)">
+      </picture>
+      <figcaption><b>In the app.</b> History for September: the same donut by category, who spent what, and the Lock month button.</figcaption>
+    </figure>
+    </div>
+
+    <div class="shot-pair phone-pair">
+    <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
-        <div class="shot-bar"><span data-cycle='["SAMPLE BILLS · 27 SEEDED · AUTO-MATCH","SAMPLE BILLS · 24 MATCHED · 3 DUE"]'>SAMPLE BILLS · 27 SEEDED · AUTO-MATCH</span></div>
+        <div class="shot-bar"><span data-cycle='["BILLS · 16 OF 21 PAID · $147.40 TO COME","BILLS · SAVING A MATCHING EXPENSE…"]'>BILLS · 16 OF 21 PAID · $147.40 TO COME</span></div>
         <div class="shot-body">
           <ul class="mock-feed">
-            <li><span class="who">PAID</span><span>Sample Stream · matched 03 Jul</span><span class="amt">$10</span></li>
-            <li><span class="who">PAID</span><span>Sample Cover · matched 05 Jul</span><span class="amt">$40</span></li>
-            <li><span class="who">DUE</span><span>Sample Power · expected by 14 Jul</span><span class="amt">$50</span></li>
+            <li><span class="who">PAID</span><span>Rent · Joint Debit · matched 01 Oct</span><span class="amt">$2,350.00</span></li>
+            <li><span class="who">PAID</span><span>Netflix · Everyday Visa · matched 03 Oct</span><span class="amt">$22.99</span></li>
+            <li><span class="who">PAID</span><span>Spotify Family · Everyday Visa · matched 07 Oct</span><span class="amt">$17.99</span></li>
+            <li><span class="who">DUE</span><span>Kayo Sports · Rewards Amex · due 24 Oct</span><span class="amt">$25.00</span></li>
+            <li><span class="who">DUE</span><span>Xbox Game Pass · Rewards Amex · due 27 Oct</span><span class="amt">$16.95</span></li>
           </ul>
-          <p class="mock-note"><b>Bill match</b> — "POWER CO" looks like <strong>Sample Power</strong>. Mark it paid?</p>
+          <p class="mock-note"><b>🔁 Looks like your Kayo Sports bill</b> — Mark it as paid for October 2026? <strong>Skip</strong> · <strong>✓ Mark paid</strong></p>
         </div>
       </div>
       <figcaption>Keyword matching against seeded bills, and a nudge after save from watching real use.</figcaption>
@@ -276,14 +306,14 @@
     <div class="shot-pair phone-pair">
     <figure class="shot">
       <div class="shot-frame" aria-hidden="true">
-        <div class="shot-bar">LOG EXPENSE · SAMPLE</div>
+        <div class="shot-bar">LOG EXPENSE · SHORTCUT · SAMPLE</div>
         <div class="shot-body">
-<pre class="mock-term"><span class="cmd">Merchant?</span>  Sample Grocer
-<span class="cmd">Amount?</span>    40.00
+<pre class="mock-term"><span class="cmd">Merchant?</span>  Aldi
+<span class="cmd">Amount?</span>    42.60
 <span class="cmd">Category?</span>  Groceries          <span class="dim">(list pulled from /api/shortcut/categories)</span>
-<span class="cmd">Paid by?</span>   A
+<span class="cmd">Paid by?</span>   Sam
 <span class="dim">POST /api/shortcut/add-transaction · auth header checked</span>
-<span class="ok">✓ Logged: Sample Grocer $40.00 → Groceries (A)</span></pre>
+<span class="ok">✓ Logged: Aldi $42.60 → Groceries (Sam)</span></pre>
         </div>
       </div>
       <figcaption>One way in: an Apple Shortcut logs an expense from the action button, without opening the app.</figcaption>
@@ -304,24 +334,38 @@
         <div class="shot-bar">REACTIVE BUDGET · EASE BACK<span class="shot-badge">TRIAL · opt-in</span></div>
         <div class="shot-body">
           <div class="mock-row">
-            <span class="label">Sample month</span>
-            <span class="num"><strong>$130</strong> / $100 · over by $30</span>
+            <span class="label">October · Travel</span>
+            <span class="num"><strong>$3,000</strong> / $400 · <b>$2,600 over</b></span>
             <span class="mock-bar hot"><i style="width:100%"></i></span>
           </div>
-          <ul class="mock-feed">
-            <li><span class="who">1</span><span>Fuel plan for next month · −$20</span><span class="amt">shared</span></li>
-            <li><span class="who">2</span><span>Entertainment plan for next month · −$10</span><span class="amt">shared</span></li>
-            <li><span class="who">P</span><span>Rent · Protected, left out unless you add it</span><span class="amt">excluded</span></li>
-          </ul>
+          <div data-panels>
+            <div data-panel="pending">
+              <p class="mock-note"><b>Ease back from</b> next month's plans, a what-if until you approve:</p>
+              <ul class="mock-feed">
+                <li><span class="who">●</span><span>Groceries</span><span class="amt">−$271</span></li>
+                <li><span class="who">●</span><span>Transport &amp; Fuel</span><span class="amt">−$219</span></li>
+                <li><span class="who">●</span><span>Kids &amp; Pets</span><span class="amt">−$159</span></li>
+                <li><span class="who">P</span><span>Dining Out · Protected, left out unless you add it</span><span class="amt">excluded</span></li>
+              </ul>
+              <p class="mock-note"><b>$1,951 more than your pots hold.</b> Ease back one month at a time.</p>
+            </div>
+            <div data-panel="eased" hidden>
+              <p class="mock-note"><b>Easing back $830 for Nov</b>, $1,770 still to go.</p>
+              <ul class="mock-feed">
+                <li><span class="who">●</span><span>Groceries</span><span class="amt">−$478</span></li>
+                <li><span class="who">●</span><span>Transport &amp; Fuel</span><span class="amt">−$191</span></li>
+                <li><span class="who">●</span><span>Kids &amp; Pets</span><span class="amt">−$161</span></li>
+              </ul>
+              <p class="mock-note"><strong>Ease back more ›</strong> or <strong>View or undo ›</strong>. Saved on this device only while we try it.</p>
+            </div>
+            <div data-panel="protected" hidden>
+              <p class="mock-note">Dining Out is <b>Protected</b>, so it never donates unless you choose it. Add it and the amount is shared across four pots instead of three. Your call, every time. Each pot is <b>Ease back</b>, <b>Protected</b> or <b>Off</b> on the Budget screen.</p>
+            </div>
+          </div>
           <div class="mock-actions">
-            <button class="mock-btn" data-tab="eased">Ease back $30 for next month</button>
+            <button class="mock-btn" data-tab="eased">Ease back $830</button>
             <button class="mock-btn ghost" data-tab="protected">Add a protected pot</button>
             <button class="mock-btn ghost" data-tab="pending">Undo / reset</button>
-          </div>
-          <div data-panels>
-            <p class="mock-note" data-panel="pending">A what-if, so nothing moves yet. Ease back takes an overspend off <b>next month's</b> plans of other pots. You pick the amount and which pots share it, one month at a time.</p>
-            <p class="mock-note" data-panel="eased" hidden>Easing back <b>$30</b> for next month, nothing still to go. Fuel's plan is $20 lower and Entertainment's $10 lower, so the plan still adds up. <strong>Saved on this device only</strong> while we try it. Undo puts it all back.</p>
-            <p class="mock-note" data-panel="protected" hidden>Rent is Protected, so it never donates unless you choose it. Add it and the $30 is shared across three pots instead of two. Your call, every time.</p>
           </div>
         </div>
       </div>
@@ -343,33 +387,36 @@
       <figcaption><b>In the app.</b> The ease-back panel on iPad's Overview: what the over-spend looks like out of the other pots. Nothing moves until you approve.</figcaption>
     </figure>
 
-    <div class="shot-pair phone-pair">
     <figure class="shot">
-      <div class="shot-frame" aria-hidden="true">
-        <div class="shot-bar">MONTH END · CLOSE THE BOOKS</div>
+      <div class="shot-frame" data-tabs data-state="open">
+        <div class="shot-bar">MONTH END · SEPTEMBER · SAMPLE DATA<span class="shot-hint">TRY THE BUTTONS</span></div>
         <div class="shot-body">
-          <ul class="mock-chips">
-            <li class="on">JUNE LOCKED</li><li>PDF report · 2 pages</li><li>paybacks table</li><li>CSV per-person totals</li>
+          <ul class="mock-feed">
+            <li><span class="who">TOTAL</span><span>Spent in September · +$942.25 over the $6,370 budget</span><span class="amt">$7,312.25</span></li>
+            <li><span class="who">IN</span><span>Income</span><span class="amt">+$11,820.00</span></li>
+            <li><span class="who">PAY</span><span>Paybacks recovered</span><span class="amt">+$61.40</span></li>
+            <li><span class="who">CARD</span><span>Joint Debit · Everyday Visa · Rewards Amex</span><span class="amt">3 cards</span></li>
           </ul>
-          <p class="mock-note">June is locked — entries are read-only. Either user can unlock. <b>Lock &amp; Save</b> exports the A4 PDF (jsPDF, works in iOS Safari).</p>
+          <div data-panels>
+            <p class="mock-note" data-panel="open">September is open: entries can still change.</p>
+            <p class="mock-note" data-panel="locked" hidden><b>🔒 Locked · Tap to unlock.</b> September's entries are read-only. Either person can unlock.</p>
+            <p class="mock-note" data-panel="pdf" hidden>The PDF is A4, two pages: the category breakdown, paybacks and per-card totals (jsPDF, works in iOS Safari).</p>
+          </div>
+          <div class="mock-actions">
+            <button class="mock-btn" data-tab="locked">🔓 Lock month</button>
+            <button class="mock-btn ghost" data-tab="pdf">PDF</button>
+            <button class="mock-btn ghost" data-tab="open">Unlock</button>
+          </div>
         </div>
       </div>
-      <figcaption>Locked months, then a two-page PDF. Either person can unlock.</figcaption>
+      <figcaption>Lock the month, then export the PDF. Either person can unlock.</figcaption>
     </figure>
-    <figure class="app-shot phone-shot">
-      <picture>
-        <source srcset="../assets/ledger/ledger-iphone-history.webp" type="image/webp">
-        <img src="../assets/ledger/ledger-iphone-history.jpg" width="800" height="1420" loading="lazy" decoding="async" alt="Ledger History screen on iPhone for September 2026: spending by category as a donut chart with a Lock month button, over-budget and income summaries, and each person's total (demo data)">
-      </picture>
-      <figcaption><b>In the app.</b> History for a month: the breakdown by category, who spent what, and the Lock month button.</figcaption>
-    </figure>
-    </div>
     <figure class="app-shot tablet-shot">
       <picture>
         <source srcset="../assets/ledger/ledger-ipad-history.webp" type="image/webp">
         <img src="../assets/ledger/ledger-ipad-history.jpg" width="1400" height="1618" loading="lazy" decoding="async" alt="Ledger History on iPad for September 2026: spending by category beside a pie chart, totals against budget and income, each person's total, paybacks recovered and per-card totals (demo data)">
       </picture>
-      <figcaption><b>In the app.</b> On iPad the month also lists paybacks recovered and totals by card, ready for the close.</figcaption>
+      <figcaption><b>In the app.</b> The close on iPad: totals against budget and income, paybacks recovered and totals by card. Lock month sits in the header above (see the iPhone History screen).</figcaption>
     </figure>
 
     <h2 id="proof">What it shows</h2>

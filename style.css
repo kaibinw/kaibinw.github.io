@@ -1033,12 +1033,16 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
 .mock-donut { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
 .mock-donut svg { flex: none; }
 .mock-donut .ring { transition: opacity 0.2s ease-out; }
-.mock-donut[data-state]:not([data-state="all"]) .ring { opacity: 0.25; }
-.mock-donut[data-state="groceries"] .ring.g-groceries,
-.mock-donut[data-state="dining"] .ring.g-dining,
-.mock-donut[data-state="fuel"] .ring.g-fuel,
-.mock-donut[data-state="bills"] .ring.g-bills,
-.mock-donut[data-state="other"] .ring.g-other { opacity: 1; }
+[data-state]:not([data-state="all"]) .mock-donut .ring { opacity: 0.25; }
+[data-state="groceries"] .mock-donut .ring.g-groceries,
+[data-state="dining"] .mock-donut .ring.g-dining,
+[data-state="transport"] .mock-donut .ring.g-transport,
+[data-state="health"] .mock-donut .ring.g-health,
+[data-state="travel"] .mock-donut .ring.g-travel,
+[data-state="home"] .mock-donut .ring.g-home,
+[data-state="subs"] .mock-donut .ring.g-subs,
+[data-state="insurance"] .mock-donut .ring.g-insurance,
+[data-state="kids"] .mock-donut .ring.g-kids { opacity: 1; }
 .mock-donut .donut-label { font-family: var(--font-mono); font-size: 0.72rem; fill: var(--muted); }
 .mock-donut .donut-value { font-family: var(--font-mono); font-size: 0.95rem; fill: var(--ink); }
 
