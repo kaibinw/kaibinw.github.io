@@ -36,7 +36,7 @@ GitHub Pages serves this repo from the default branch at `https://kaibinw.github
 
 ## Sharing
 
-Each page sets `og:title`, `og:description`, and `og:image`. The image URL is `https://kaibinw.github.io/og.png`. Add a 1200×630 `og.png` at the site root before posting to LinkedIn.
+Each page sets `og:title` and `og:description`. `og:image` is omitted until a 1200×630 `og.png` is added at the site root.
 
 ## Content notes
 

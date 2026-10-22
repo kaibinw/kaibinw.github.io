@@ -651,12 +651,6 @@ section + section { border-top: 1px solid var(--line); }
   border-bottom: 1px solid var(--line);
 }
 .crawl .title { display: block; font-weight: 500; }
-.crawl .studio {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--muted);
-}
 
 /* ---- contact ---- */
 .contact h2 {
@@ -897,13 +891,6 @@ section + section { border-top: 1px solid var(--line); }
   border-radius: 3px;
 }
 .mock-compare::before { content: "2024-11 · DAY 1"; left: 0.6rem; }
-.mock-compare::after { content: "2026-05 · TRAY 22"; right: 0.6rem; }
-[data-state="s6"] .mock-compare::after { content: "2025-02 · TRAY 6"; }
-[data-state="s6"] .mock-compare .mock-handle { left: 30%; }
-[data-state="s14"] .mock-compare::after { content: "2025-08 · TRAY 14"; }
-[data-state="s14"] .mock-compare .mock-handle { left: 44%; }
-[data-state="s22"] .mock-compare::after { content: "2026-05 · TRAY 22"; }
-[data-state="s22"] .mock-compare .mock-handle { left: 55%; }
 .mock-handle {
   position: absolute;
   inset-block: 0;
