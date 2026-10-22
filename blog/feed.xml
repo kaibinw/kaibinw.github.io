@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>Kai-Bin Wong — Blog</title>
+<link>https://kaibinw.github.io/blog/</link>
+<description>Notes from a VFX editor who ships software.</description>
+<item><title>My AI wrote the code. Three other AIs tried to stop it shipping.</title><link>https://kaibinw.github.io/blog/my-ai-wrote-the-code.html</link><guid>https://kaibinw.github.io/blog/my-ai-wrote-the-code.html</guid><pubDate>Wed, 21 Oct 2026 14:00:00 GMT</pubDate><description>I built the bots first and the org chart second. This is the log from the morning that went wrong, and the chart I put in place at 11:26.</description></item>
+</channel>
+</rss>
