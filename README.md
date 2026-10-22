@@ -13,9 +13,9 @@ favicon.ico, favicon.svg, apple-touch-icon.png
 case-studies/dailies-importer.html
 case-studies/ledger.html
 case-studies/dental-catalog.html
-case-studies/hq.html
+case-studies/hq.html             parked: unlinked, noindex
 case-studies/second-brain.html
-case-studies/dashboard.html      parked, listed on the minor list only
+case-studies/dashboard.html      parked: unlinked, noindex
 ```
 
 ## Content rules
