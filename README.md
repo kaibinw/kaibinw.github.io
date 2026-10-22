@@ -50,4 +50,6 @@ Posts are markdown files in `blog/posts/`. A zero-dependency script turns them i
 3. Run `node build-blog.mjs` (Node 18+). Add `--drafts` to preview drafts locally.
 4. Commit the markdown **and** the generated `blog/*.html` + `blog/feed.xml`, then push or open a PR.
 
+The build also refreshes the homepage's "Latest writing" section (the 3 newest posts, between the `blog:latest` markers in `index.html`), so commit `index.html` too.
+
 Files starting with `_` and posts with `draft: true` are skipped. Generated HTML is never edited by hand; deleting a post's `.md` and rebuilding removes its page.
