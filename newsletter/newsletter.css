@@ -1,0 +1,29 @@
+/* Newsletter sign-up. Self-contained so it never touches style.css; loaded only by /newsletter/ pages
+   and, when the newsletter is switched on, by blog posts. Uses the tokens from style.css. */
+.nl {
+  max-width: var(--measure);
+  margin: 2.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  border-radius: 4px;
+}
+.nl-inline { padding-block: 1rem; }
+.nl .nl-title { margin: 0 0 0.25rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+.nl .nl-sub { margin: 0 0 1rem; color: var(--muted); }
+.nl-form { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-end; margin-top: 0.75rem; }
+.nl-label { flex: 0 0 100%; font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+.nl-form input[type="email"] {
+  flex: 1 1 14rem;
+  min-width: 0;
+  padding: 0.7rem 0.9rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+}
+.nl-form input[type="email"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.nl .nl-fine { margin: 0.9rem 0 0; font-size: 0.82rem; color: var(--muted); }
+.nl-page .nl-sub { margin-bottom: 0; }

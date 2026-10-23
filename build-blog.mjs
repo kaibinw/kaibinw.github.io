@@ -187,7 +187,7 @@ function sidebar(active) {
 }
 const footer = () => grab(/<footer class="site-foot">[\s\S]*?<\/footer>/, 'footer');
 
-function page({ title, description, url, type = 'website', image = `${SITE}/og.png`, body }) {
+function page({ title, description, url, type = 'website', image = `${SITE}/og.png`, head = '', body }) {
   return `<!DOCTYPE html>
 ${MARK}
 <html lang="en">
@@ -211,7 +211,7 @@ ${MARK}
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../style.css">${head}
 </head>
 <body>
 
@@ -247,6 +247,22 @@ for (const f of readdirSync(OUT)) {
   if (f.endsWith('.html') && readFileSync(join(OUT, f), 'utf8').includes(MARK)) unlinkSync(join(OUT, f));
 }
 
+// optional newsletter sign-up forms: nothing changes unless newsletter/config.json has "enabled": true
+let signup = null;
+const nlConfigPath = join(ROOT, 'newsletter', 'config.json');
+if (existsSync(nlConfigPath)) {
+  const cfg = JSON.parse(readFileSync(nlConfigPath, 'utf8'));
+  if (cfg.enabled) signup = { cfg, form: (await import('./newsletter/form.mjs')).signupForm };
+}
+const NL_HEAD = signup ? '\n<link rel="stylesheet" href="../newsletter/newsletter.css">' : '';
+// inline form after the TL;DR list, end-of-post call to action; a post opts out with `newsletter: false`
+function withSignup(p) {
+  if (!signup || p.newsletter === 'false') return p.html;
+  const tldr = p.html.match(/<h2 id="tl-dr">[\s\S]*?<\/ul>/);
+  const html = tldr ? p.html.replace(tldr[0], () => `${tldr[0]}\n${signup.form(signup.cfg, 'inline')}`) : p.html;
+  return `${html}\n${signup.form(signup.cfg, 'end')}`;
+}
+
 const kindLine = (p) => [fmtDate(p.date), `${p.minutes} MIN READ`, ...p.tags.map((t) => t.toUpperCase())].join(' · ');
 
 posts.forEach((p, idx) => {
@@ -259,6 +275,7 @@ posts.forEach((p, idx) => {
     description: p.summary,
     url: `${SITE}/blog/${p.slug}.html`,
     type: 'article',
+    head: NL_HEAD,
     image: p.image ? (/^https?:/.test(p.image) ? p.image : `${SITE}/blog/${p.image}`) : undefined,
     body: `<div class="case-head" id="top">
   <div class="wrap">
@@ -271,7 +288,7 @@ posts.forEach((p, idx) => {
 
 <article class="case-body post-body">
   <div class="wrap">
-${p.html}
+${withSignup(p)}
   </div>
 </article>
 
