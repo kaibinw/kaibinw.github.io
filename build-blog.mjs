@@ -232,7 +232,7 @@ function sidebar(active) {
 }
 const footer = () => grab(/<footer class="site-foot">[\s\S]*?<\/footer>/, 'footer');
 
-function page({ title, description, url, type = 'website', image = `${SITE}/og.png`, body }) {
+function page({ title, description, url, type = 'website', image = `${SITE}/og.png`, head = '', body }) {
   return `<!DOCTYPE html>
 ${MARK}
 <html lang="en">
@@ -256,7 +256,7 @@ ${MARK}
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../style.css">${head}
 </head>
 <body>
 
@@ -287,6 +287,49 @@ const posts = existsSync(POSTS)
 
 mkdirSync(OUT, { recursive: true });
 
+// optional newsletter sign-up forms: nothing changes unless newsletter/config.json has "enabled": true
+// (config is read before the output is cleared; a missing or invalid file keeps the dormant path)
+let signup = null;
+const nlConfigPath = join(ROOT, 'newsletter', 'config.json');
+if (existsSync(nlConfigPath)) {
+  try {
+    const cfg = JSON.parse(readFileSync(nlConfigPath, 'utf8'));
+    const { signupForm, formReady } = await import('./newsletter/form.mjs');
+    if (cfg.enabled && formReady(cfg)) signup = { cfg, form: signupForm };
+    else if (cfg.enabled) console.warn('newsletter: enabled but formAction is not an absolute https: URL; no forms injected');
+  } catch (e) {
+    console.warn(`newsletter: config.json unreadable (${e.message}); building without sign-up forms`);
+  }
+}
+const NL_HEAD = signup ? '\n<link rel="stylesheet" href="../newsletter/newsletter.css">' : '';
+
+// end index of the list that directly follows the TL;DR heading (nesting-aware), or -1 if the heading
+// is not immediately followed by a <ul>/<ol>
+function tldrListEnd(html) {
+  const h = html.match(/<h2 id="tl-?dr"[^>]*>[\s\S]*?<\/h2>\s*/i);
+  if (!h) return -1;
+  const start = h.index + h[0].length;
+  const open = html.slice(start).match(/^<(ul|ol)\b[^>]*>/);
+  if (!open) return -1;
+  const tag = open[1], re = new RegExp(`<(/?)${tag}\\b[^>]*>`, 'g');
+  re.lastIndex = start;
+  let depth = 0, m;
+  while ((m = re.exec(html))) {
+    depth += m[1] ? -1 : 1;
+    if (depth === 0) return m.index + m[0].length;
+  }
+  return -1;
+}
+
+// inline form after the TL;DR list, end-of-post call to action; a post opts out with `newsletter: false`
+function withSignup(p) {
+  if (!signup || p.newsletter === 'false') return p.html;
+  const end = tldrListEnd(p.html);
+  if (end < 0) console.warn(`newsletter: ${p.slug}: no list directly after the TL;DR heading; inline form skipped`);
+  const html = end < 0 ? p.html : `${p.html.slice(0, end)}\n${signup.form(signup.cfg, 'inline')}${p.html.slice(end)}`;
+  return `${html}\n${signup.form(signup.cfg, 'end')}`;
+}
+
 // clear previously generated pages (only files carrying our marker) so deleted posts disappear
 for (const f of readdirSync(OUT)) {
   if (f.endsWith('.html') && readFileSync(join(OUT, f), 'utf8').includes(MARK)) unlinkSync(join(OUT, f));
@@ -304,6 +347,7 @@ posts.forEach((p, idx) => {
     description: p.summary,
     url: `${SITE}/blog/${p.slug}.html`,
     type: 'article',
+    head: NL_HEAD,
     image: p.image ? (/^https?:/.test(p.image) ? p.image : `${SITE}/blog/${p.image}`) : undefined,
     body: `<div class="case-head" id="top">
   <div class="wrap">
@@ -316,7 +360,7 @@ posts.forEach((p, idx) => {
 
 <article class="case-body post-body">
   <div class="wrap">
-${p.html}
+${withSignup(p)}
   </div>
 </article>
 

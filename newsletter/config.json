@@ -1,0 +1,8 @@
+{
+  "enabled": false,
+  "provider": "PASTE_PROVIDER_NAME_HERE",
+  "formAction": "PASTE_FORM_ACTION_URL_HERE",
+  "emailField": "email",
+  "hiddenFields": {},
+  "consentText": "Your address goes to the email provider only to send you new posts from Kai-Bin Wong. You confirm by email first, and can unsubscribe in one click."
+}
