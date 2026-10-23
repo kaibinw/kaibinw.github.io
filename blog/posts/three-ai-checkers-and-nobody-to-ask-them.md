@@ -1,6 +1,6 @@
 ---
 title: Three AI checkers, and nobody whose job was to ask them.
-date: 2026-11-03
+date: 2026-10-23
 summary: The bot that fixed my spam was the one I hired in a hurry.
 tags: [agentic-engineering, ai-agents, pipeline]
 ---
