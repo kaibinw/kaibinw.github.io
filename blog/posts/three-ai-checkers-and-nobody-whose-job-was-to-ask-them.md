@@ -1,3 +1,7 @@
+---
+date: 2026-10-23
+---
+
 # Three AI checkers, and nobody whose job was to ask them.
 
 _The bot that fixed my spam was the one I hired in a hurry._
