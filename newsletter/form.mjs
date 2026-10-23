@@ -4,7 +4,13 @@
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // variant: "inline" (after a post's TL;DR), "end" (end-of-post call to action), "page" (the /newsletter/ landing page)
+export function formReady(cfg) {
+  return Boolean(cfg && cfg.enabled && /^https:\/\/[^\s]+$/.test(String(cfg.formAction || '')));
+}
+
+// returns '' (no form at all) unless the newsletter is enabled and formAction is an absolute https: URL
 export function signupForm(cfg, variant) {
+  if (!formReady(cfg)) return '';
   const id = `nl-${variant}`;
   const hidden = Object.entries(cfg.hiddenFields || {})
     .map(([k, v]) => `<input type="hidden" name="${esc(k)}" value="${esc(v)}">`)
