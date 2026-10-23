@@ -4,6 +4,7 @@
 <title>Kai-Bin Wong — Blog</title>
 <link>https://kaibinw.github.io/blog/</link>
 <description>Notes from a VFX editor who ships software.</description>
+<item><title>Three AI checkers, and nobody whose job was to ask them.</title><link>https://kaibinw.github.io/blog/three-ai-checkers-and-nobody-to-ask-them.html</link><guid>https://kaibinw.github.io/blog/three-ai-checkers-and-nobody-to-ask-them.html</guid><pubDate>Mon, 02 Nov 2026 14:00:00 GMT</pubDate><description>The bot that fixed my spam was the one I hired in a hurry.</description></item>
 <item><title>My AI wrote the code. Three other AIs tried to stop it shipping.</title><link>https://kaibinw.github.io/blog/my-ai-wrote-the-code.html</link><guid>https://kaibinw.github.io/blog/my-ai-wrote-the-code.html</guid><pubDate>Wed, 21 Oct 2026 14:00:00 GMT</pubDate><description>I built the bots first and the org chart second. This is the log from the morning that went wrong, and the chart I put in place at 11:26.</description></item>
 </channel>
 </rss>
