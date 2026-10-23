@@ -1,0 +1,49 @@
+# Builds the blog when a post lands on main: stamps the merge date on any post without one,
+# regenerates blog/*.html, blog/feed.xml and the homepage "Latest writing", commits them, and asks Pages to rebuild.
+name: Build blog
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'blog/posts/**'
+      - 'blog/config.json'
+      - 'build-blog.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: blog-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build
+        run: node build-blog.mjs --stamp
+      - name: Commit generated files
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A blog index.html
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Build blog"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Ask Pages to rebuild
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "::warning::Pages build request failed; the site may take a few minutes or need a manual rebuild"
