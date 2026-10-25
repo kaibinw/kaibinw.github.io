@@ -78,7 +78,13 @@
         <p class="sh-tag">Brief your agent properly.</p>
         <p class="sh-price">$0</p>
         <p class="sh-price-note">Free download</p>
-        <a class="btn btn-ghost" href="downloads/baseline-aios.zip" data-goatcounter-click="shop-tier0-download">Download free</a>
+        <form class="sh-form" id="t0-form" action="downloads/baseline-aios.zip" method="get">
+          <label class="sh-sr" for="t0-email">Email address</label>
+          <input class="sh-input" id="t0-email" type="email" required autocomplete="email" placeholder="you@example.com">
+          <button class="btn btn-ghost" type="submit">Download free</button>
+          <p class="sh-micro" id="t0-note">No drip sequences. Changelog updates only.</p>
+          <p class="sh-micro sh-ok" id="t0-done" role="status" hidden>Download started. Check your downloads folder.</p>
+        </form>
         <ul class="sh-incl">
           <li>Briefing template with rules for your agent</li>
           <li>One-page primer on how to route an agent</li>
@@ -92,8 +98,7 @@
         <p class="sh-tag">Start a vault, or fix the one you have.</p>
         <p class="sh-price">$20</p>
         <p class="sh-price-note">Early bird, then $29. One-off, AUD.</p>
-        <!-- OWNER: replace href with the Stripe Payment Link for Tier 1 -->
-        <a class="btn" href="#" data-goatcounter-click="shop-tier1-buy">Buy for $20</a>
+        <a class="btn" href="https://buy.stripe.com/cNi3cwddJ4kE6ksgLm9sk00" data-goatcounter-click="shop-tier1-buy">Buy for $20</a>
         <p class="sh-incl-head">Everything in Baseline AIOS, plus:</p>
         <ul class="sh-incl">
           <li>Rules, routing and a starter wiki</li>
@@ -135,6 +140,39 @@
 </footer>
 
 </main>
+
+<script>
+/* Tier 0: capture the email, then start the download. Paste the Apps Script web-app URL below. */
+(function () {
+  var APPS_SCRIPT_URL = 'PASTE_URL_HERE';
+  var ZIP = 'downloads/baseline-aios.zip';
+  var form = document.getElementById('t0-form');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('t0-email').value.trim();
+    if (!email) return;
+    if (APPS_SCRIPT_URL.indexOf('PASTE_URL_HERE') === -1) {
+      try {
+        fetch(APPS_SCRIPT_URL, {
+          method: 'POST', mode: 'no-cors', keepalive: true,
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ email: email, source: 'kits-tier0', ts: new Date().toISOString() })
+        });
+      } catch (err) { /* the download still starts */ }
+    }
+    try {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: 'shop-tier0-download', title: 'Tier 0 download', event: true });
+      }
+    } catch (err) { /* counting must never block the download */ }
+    var a = document.createElement('a');
+    a.href = ZIP; a.download = 'baseline-aios.zip';
+    document.body.appendChild(a); a.click(); a.remove();
+    document.getElementById('t0-done').hidden = false;
+  });
+})();
+</script>
 
 <script data-goatcounter="https://kaibinw.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>

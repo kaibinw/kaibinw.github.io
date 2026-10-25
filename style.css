@@ -1315,3 +1315,15 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
 
 .sh-fine { margin-top: clamp(3rem, 7vw, 4.5rem); padding-top: 1.5rem; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); max-width: 70ch; }
 @media (prefers-reduced-motion: reduce) { .shop .btn { transition: none; } }
+.sh-form { margin: 1.25rem 0 1.5rem; display: grid; gap: 0.75rem; }
+.sh-form .btn { margin: 0; }
+.sh-input { width: 100%; min-height: 2.75rem; padding: 0.6rem 0.9rem; background: var(--bg); color: var(--ink); border: 1px solid var(--line-strong); border-radius: 6px; font: inherit; font-size: 0.97rem; }
+.sh-input::placeholder { color: var(--muted); opacity: 0.8; }
+.sh-input:hover { border-color: var(--primary-bright); }
+.sh-micro { margin: 0; font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); }
+.sh-ok { color: var(--shop-ok); }
+.sh-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.sh-plan .sh-form + .sh-incl { padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.sh-access { margin: 2rem 0; }
+.sh-steps { margin: 0 0 1.75rem; padding-left: 1.25rem; display: grid; gap: 0.6rem; color: var(--muted); max-width: 56ch; }
+.sh-steps code, .shop .sh-micro code { font-family: var(--font-mono); font-size: 0.85em; color: var(--ink); }
