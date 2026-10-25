@@ -78,13 +78,14 @@
         <p class="sh-tag">Brief your agent properly.</p>
         <p class="sh-price">$0</p>
         <p class="sh-price-note">Free download</p>
-        <form class="sh-form" id="t0-form" action="downloads/baseline-aios.zip" method="get">
+        <div class="sh-t0" id="t0-state" aria-live="polite">
+        <form class="sh-form" id="t0-form" action="/kits/downloads/baseline-aios.zip" method="get">
           <label class="sh-sr" for="t0-email">Email address</label>
-          <input class="sh-input" id="t0-email" type="email" required autocomplete="email" placeholder="you@example.com">
-          <button class="btn btn-ghost" type="submit">Download free</button>
-          <p class="sh-micro" id="t0-note">No drip sequences. Changelog updates only.</p>
-          <p class="sh-micro sh-ok" id="t0-done" role="status" hidden>Download started. Check your downloads folder.</p>
+          <input class="sh-input" id="t0-email" type="email" required autocomplete="email" placeholder="Enter your email">
+          <button class="btn btn-ghost" type="submit">Download Free (.zip)</button>
+          <p class="sh-micro">No automated drips. Changelog updates only.</p>
         </form>
+        </div>
         <ul class="sh-incl">
           <li>Briefing template with rules for your agent</li>
           <li>One-page primer on how to route an agent</li>
@@ -142,34 +143,28 @@
 </main>
 
 <script>
-/* Tier 0: capture the email, then start the download. Paste the Apps Script web-app URL below. */
+/* Tier 0: start the download at once, send the email in the background, count the event, then replace the form. */
 (function () {
-  var APPS_SCRIPT_URL = 'PASTE_URL_HERE';
-  var ZIP = 'downloads/baseline-aios.zip';
-  var form = document.getElementById('t0-form');
+  var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxVjPLM8Z0JHzuTmnwn8nHHO0tgVF2fYexxo_HSgtCw2TDvK1EPcqgLLkj_Ms7gpVI4/exec";
+  var ZIP = "/kits/downloads/baseline-aios.zip";
+  var form = document.getElementById("t0-form");
   if (!form) return;
-  form.addEventListener('submit', function (e) {
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var email = document.getElementById('t0-email').value.trim();
-    if (!email) return;
-    if (APPS_SCRIPT_URL.indexOf('PASTE_URL_HERE') === -1) {
-      try {
-        fetch(APPS_SCRIPT_URL, {
-          method: 'POST', mode: 'no-cors', keepalive: true,
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({ email: email, source: 'kits-tier0', ts: new Date().toISOString() })
-        });
-      } catch (err) { /* the download still starts */ }
-    }
+    var userEmail = document.getElementById("t0-email").value.trim();
+    if (!userEmail) return;
+    var a = document.createElement("a");
+    a.href = ZIP; a.download = "baseline-aios.zip";
+    document.body.appendChild(a); a.click(); a.remove();
+    try {
+      fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", keepalive: true, body: JSON.stringify({ email: userEmail }) });
+    } catch (err) { /* the download has already started */ }
     try {
       if (window.goatcounter && window.goatcounter.count) {
-        window.goatcounter.count({ path: 'shop-tier0-download', title: 'Tier 0 download', event: true });
+        window.goatcounter.count({ path: "shop-tier0-download", title: "Tier 0 download", event: true });
       }
     } catch (err) { /* counting must never block the download */ }
-    var a = document.createElement('a');
-    a.href = ZIP; a.download = 'baseline-aios.zip';
-    document.body.appendChild(a); a.click(); a.remove();
-    document.getElementById('t0-done').hidden = false;
+    document.getElementById("t0-state").innerHTML = '<p class="sh-micro sh-ok">Download started. Check your downloads folder.</p>';
   });
 })();
 </script>
