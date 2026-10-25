@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop (draft) — Kai-Bin Wong</title>
-<meta name="description" content="Draft shop page. Not published.">
+<title>Shop — Kai-Bin Wong</title>
+<meta name="description" content="Kits for making an AI agent safe to leave in a folder of notes: rules, audit scripts and a headless task runner. Pre-release.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- DORMANT: lives on the `shop` branch only. Not linked from any nav; not on main, so it 404s live. -->
+<!-- DORMANT: noindex and not linked from any other page until the owner says go. Checkout hrefs are placeholders (see CLAUDE.md, "Shop"). -->
 <aside class="sidebar">
   <div class="sidebar-inner">
     <a class="wordmark" href="../index.html">KBW<span class="cursor">_</span></a>
@@ -51,6 +51,7 @@
       <a class="sidebar-nav-item" href="../case-studies/second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 05</span></a>
       </details>
       <a class="sidebar-nav-item" href="../blog/index.html"><span>Blog</span><span class="tc-num">01:09:30:00</span></a>
+      <a class="sidebar-nav-item active" href="index.html" aria-current="page"><span>Shop</span><span class="tc-num">01:20:00:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#about"><span>About</span><span class="tc-num">01:15:00:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#contact"><span>Contact</span><span class="tc-num">01:17:00:00</span></a>
@@ -59,64 +60,92 @@
     <a class="btn" href="https://www.linkedin.com/in/kai-bin-wong-805a60101/"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>Message me on LinkedIn</a>
     <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg>Email me</a>
 
-    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · SHOP · DRAFT</p>
+    <p class="sidebar-foot">© 2026 Kai-Bin Wong<br>CUT: KBW · SHOP</p>
   </div>
 </aside>
 
 <main class="content" id="main">
 
-<section aria-labelledby="shop-title">
-  <div class="wrap wrap-wide">
-    <p class="tc">TC 01:20:00:00 — SHOP · DRAFT</p>
-    <h1 class="section-title" id="shop-title">Pick your depth.</h1>
-    <p class="shop-lede">A playbook for working with Claude Code and Obsidian: a markdown vault your AI agent can read and write without breaking it. Prices in AUD.</p>
+<section aria-labelledby="shop-title" class="shop-hero">
+  <div class="wrap wrap-wide shop">
+    <p class="tc">TC 01:20:00:00 — SHOP · PRE-RELEASE</p>
+    <h1 class="sh-h1" id="shop-title">Make an AI agent safe to leave in your notes.</h1>
+    <p class="sh-sub">Rules it follows, scripts that check it did, and no edits without your approval.</p>
 
-    <div class="tiers">
-      <article class="tier">
-        <h2>Vault Rules Lite</h2>
-        <p class="tier-tag">The starting kit.</p>
-        <p class="tier-price"><span>A$0</span><small>Free. Email address required.</small></p>
-        <!-- KaiBin-only: replace PASTE_LS_URL_HERE with the checkout URL -->
-        <a class="btn tier-cta" href="PASTE_LS_URL_HERE">Get the free kit</a>
-        <ul class="tier-list">
-          <li>Folder skeleton for a markdown vault</li>
-          <li>A 41-line rules file your agent follows every session</li>
-          <li>Write guardrails: read-only by default, a proposed-edits folder, backups before edits</li>
-          <li>Two starter skills: session logging and orphan repair</li>
-          <li>Ten draft prompts</li>
+    <div class="sh-plans">
+      <article class="sh-plan" aria-labelledby="t0">
+        <h2 id="t0">Baseline AIOS</h2>
+        <p class="sh-tag">Brief your agent properly.</p>
+        <p class="sh-price">$0</p>
+        <p class="sh-price-note">Free download</p>
+        <a class="btn btn-ghost" href="downloads/baseline-aios.zip" data-goatcounter-click="shop-tier0-download">Download free</a>
+        <ul class="sh-incl">
+          <li>Briefing template with rules for your agent</li>
+          <li>Ten-minute calibration prompt</li>
+          <li>Loading guide and a two-minute test</li>
         </ul>
       </article>
-      <article class="tier tier-featured">
-        <h2>The Working File</h2>
-        <p class="tier-tag">The method, with evidence.</p>
-        <p class="tier-price"><span>A$59</span><small>One-off. AUD.</small></p>
-        <!-- KaiBin-only: replace PASTE_LS_URL_HERE with the checkout URL -->
-        <a class="btn tier-cta" href="PASTE_LS_URL_HERE">Buy the Working File</a>
-        <ul class="tier-list">
-          <li>Everything in Lite</li>
-          <li>The full method: how the vault is organised and why</li>
-          <li>Five before-and-after case studies</li>
-          <li>Real session logs</li>
-          <li>Three walkthroughs of 15 minutes or less</li>
-          <li>Two more skills: ingest and health check</li>
+
+      <article class="sh-plan sh-plan-feat" aria-labelledby="t1">
+        <h2 id="t1">Starter Blueprint</h2>
+        <p class="sh-tag">A vault your agent can work in.</p>
+        <p class="sh-price">$20</p>
+        <p class="sh-price-note">Early bird, then $29. One-off, AUD.</p>
+        <!-- OWNER: replace href with the Stripe Payment Link for Tier 1 -->
+        <a class="btn" href="#" data-goatcounter-click="shop-tier1-buy">Buy for $20</a>
+        <p class="sh-incl-head">Everything in Baseline AIOS, plus:</p>
+        <ul class="sh-incl">
+          <li>Rules, routing and a starter wiki</li>
+          <li>Four skills: audit, ingest, session log, link repair</li>
+          <li>Audit and link-repair scripts with an approval wall</li>
+          <li>Memory-layers guide</li>
+          <li>Short multi-agent protocol</li>
         </ul>
       </article>
-      <article class="tier">
-        <h2>Vault Install Session</h2>
-        <p class="tier-tag">Set up with you.</p>
-        <p class="tier-price"><span>A$299</span><small>One-off. AUD.</small></p>
-        <!-- KaiBin-only: replace PASTE_LS_URL_HERE with the checkout URL -->
-        <a class="btn tier-cta" href="PASTE_LS_URL_HERE">Book the session</a>
-        <ul class="tier-list">
-          <li>Everything in the Working File</li>
-          <li>A 90-minute done-with-you setup, guardrails included</li>
-          <li>A rules file customised to how you work</li>
-          <li>The deep-audit skill</li>
+
+      <article class="sh-plan" aria-labelledby="t2">
+        <h2 id="t2">Operator Kit</h2>
+        <p class="sh-tag">The parts that run without you.</p>
+        <p class="sh-price">$59</p>
+        <p class="sh-price-note">Waitlist. One-off, AUD.</p>
+        <a class="btn btn-ghost" href="mailto:wongkaibin8080@gmail.com?subject=Operator%20Kit%20waitlist" data-goatcounter-click="shop-tier2-waitlist">Join the waitlist</a>
+        <p class="sh-incl-head">Everything in Starter Blueprint, plus:</p>
+        <ul class="sh-incl">
+          <li>Four skills merged into two</li>
+          <li>Full multi-agent protocol with a worked example</li>
+          <li>Context bridge for a second assistant</li>
+          <li>Headless task runner with snapshot, timeout and run record</li>
+          <li>Nightly ingest and weekly audit tasks</li>
         </ul>
       </article>
     </div>
 
-    <p class="shop-fine">Not affiliated with or endorsed by Anthropic or Obsidian.</p>
+    <p class="sh-gate">Operator Kit opens when a fresh agent has passed both skills with no coaching and one task has run unattended for seven days.</p>
+
+    <section class="sh-status" aria-labelledby="status">
+      <h2 id="status">Where it stands</h2>
+      <p class="sh-sec-note">Pre-release. This is what has and hasn't been checked.</p>
+      <div class="sh-ledger">
+        <div class="sh-ledger-col">
+          <h3>Checked</h3>
+          <ul class="sh-list">
+            <li>The scripts pass 39 seeded checks: planted faults, the approval wall, backups and undo, and a large mixed vault</li>
+            <li>The Operator Kit tools pass 22 more, using a stand-in agent</li>
+            <li>Every file is scanned for private names, paths and emails before it ships</li>
+          </ul>
+        </div>
+        <div class="sh-ledger-col sh-open">
+          <h3>Not yet checked</h3>
+          <ul class="sh-list">
+            <li>A fresh agent following each skill with no coaching</li>
+            <li>A week of unattended runs of the task runner</li>
+            <li>Agents from other vendors. The rules are written to be neutral, and have been run with one</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <p class="sh-fine">Rules are instructions an agent is asked to follow, not enforcement. If you need a hard guarantee, use filesystem permissions or version control. Not affiliated with or endorsed by any AI vendor or notes app.</p>
   </div>
 </section>
 
@@ -128,6 +157,9 @@
 </footer>
 
 </main>
+
+<script data-goatcounter="https://kaibinw.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
