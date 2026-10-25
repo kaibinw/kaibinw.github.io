@@ -16,7 +16,7 @@ case-studies/dental-catalog.html
 case-studies/hq.html             parked: unlinked, noindex
 case-studies/second-brain.html
 case-studies/dashboard.html      parked: unlinked, noindex
-shop/index.html                  dormant (shop branch only): noindex, not linked, checkout links are placeholders
+kits/index.html                  dormant (shop branch only): noindex, not linked, checkout links are placeholders
 ```
 
 ## Content rules
@@ -57,10 +57,10 @@ Files starting with `_` and posts with `draft: true` are skipped. Generated HTML
 
 ## Shop (dormant)
 
-`shop/index.html` is the page for three kits: Baseline AIOS ($0), Starter Blueprint ($29, $20 early bird) and Operator Kit ($59, waitlist). It lives on the `shop` branch only, is `noindex`, and is linked from no other page. Nothing here is merged by automation; Kai decides when it goes live.
+`kits/index.html` is the page for three kits: Baseline AIOS ($0), Starter Blueprint ($29, $20 early bird) and Operator Kit ($59, waitlist). It lives on the `shop` branch only (the page lives at `kits/`, nav label "Get the kits"), is `noindex`, and is linked from no other page. Nothing here is merged by automation; Kai decides when it goes live.
 
 - Currency, prices and the early-bird cap are Kai's to set. The page says "AUD" and "$20 then $29" as drafted.
-- Tier 0 links `shop/downloads/baseline-aios.zip`, which does not exist in the repo yet. Tier 1's button is a placeholder for a Stripe Payment Link. Tier 2's button is a `mailto:` waitlist, with no form or backend.
+- Tier 0 links `kits/downloads/baseline-aios.zip` (the Tier 0 zip, built from the vault kit; rebuild and replace it when the kit changes). Tier 1's button is a placeholder for a Stripe Payment Link. Tier 2's button is a `mailto:` waitlist, with no form or backend.
 - Click counts go to GoatCounter through `data-goatcounter-click` attributes (`shop-tier0-download`, `shop-tier1-buy`, `shop-tier2-waitlist`).
-- To go live: merge `main` into `shop` first (the branch predates the GoatCounter merge), add the Shop link to every sidebar, remove `noindex`, add the og/twitter/canonical tags every page carries, and add `shop/downloads/`.
+- To go live: merge `main` into `shop` first (the branch predates the GoatCounter merge), add the Shop link to every sidebar, remove `noindex`, add the og/twitter/canonical tags every page carries, and replace the Tier 1 placeholder link.
 - The page states what has and has not been tested. Keep that list true: update it when the cold test or the seven-day unattended run finishes.
