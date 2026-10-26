@@ -64,7 +64,7 @@ Files starting with `_` and posts with `draft: true` are skipped. Generated HTML
 `kits/index.html` shows Baseline Core (free download), Starter Blueprint and Operator Kit, so nothing about the paid tiers is a surprise. The page is `noindex` and linked from every sidebar as "Kits".
 
 - All three cards use the same email capture. Each form sends `{email, source}` to a Google Apps Script web app (`APPS_SCRIPT_URL` at the bottom of `kits/index.html`) with `sendBeacon`. Sources: `tier0` (also starts the download of `kits/downloads/baseline-core.zip`), `tier1-notify` ("Notify me at launch") and `tier2-waitlist`. The sheet has the columns Timestamp, Email, Status, Source.
-- GoatCounter events: `shop-tier0-download`, `shop-tier1-notify`, `shop-tier2-waitlist`. The download never waits on the sheet; the same email and source is not sent twice within 24 hours from one browser. The email is never put in a URL.
+- GoatCounter events: `shop-tier0-download`, `shop-tier1-notify`, `shop-tier2-waitlist`. The download never waits on the sheet; a repeat of the same email and source is ignored by the sheet script, not by the browser. The email is never put in a URL.
 - Canonical and social tags use `https://kaibinw.github.io` until a custom domain is live. The footer reads kaibinw.github.io for now; switch it to the trading domain once that is live.
 - Before this merges: deploy the hardened Apps Script handler (`leads_apps_script.gs` in the vault).
 - Starter Blueprint and Operator Kit show a button that opens the email field in place. The free card keeps its field open. With JavaScript off, all three forms stay open.

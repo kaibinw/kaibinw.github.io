@@ -469,6 +469,7 @@ section + section { border-top: 1px solid var(--line); }
 .track h3 { font-size: var(--step-2); font-weight: 700; letter-spacing: -0.015em; margin-bottom: 0.9rem; }
 .track p { color: var(--muted); }
 .track p strong { color: var(--ink); font-weight: 500; }
+.track-link { margin: 1.5rem 0 0; }
 .tools {
   margin-top: 1.4rem;
   display: flex;
