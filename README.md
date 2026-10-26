@@ -55,14 +55,10 @@ The build also refreshes the homepage's "Latest writing" section (the 3 newest p
 
 Files starting with `_` and posts with `draft: true` are skipped. Generated HTML is never edited by hand; deleting a post's `.md` and rebuilding removes its page.
 
-## Shop (dormant)
+## Kits page, launch state (Post 04)
 
-`kits/index.html` is the page for three kits: Baseline Core ($0), Starter Blueprint ($29, $20 early bird) and Operator Kit ($59, waitlist). It lives on the `shop` branch only (the page lives at `kits/`, nav label "Get the kits"), is `noindex`, and is linked from no other page. Nothing here is merged by automation; Kai decides when it goes live.
+This pull request is the commercial switch on top of the three-card page: Starter Blueprint's "Notify me at launch" becomes the Stripe Buy button ("Buy for $20", Managed Payments), `kits/access/` (the post-purchase page, `noindex`) is added, and `noindex` comes off `/kits/`. Merge Sunday evening 8 Nov, after the Fri 6 Nov go/no-go.
 
-- Currency, prices and the early-bird cap are Kai's to set. The page says "AUD" and "$20 then $29" as drafted.
-- Tier 0: an email field and a download button. On submit the page POSTs the email to a Google Apps Script web app (its URL is the `APPS_SCRIPT_URL` constant at the bottom of `kits/index.html`) and starts the download of `kits/downloads/baseline-core.zip`. Without JavaScript the form just downloads the zip. The email is never put in a URL.
-- Tier 1: the button is the Stripe Payment Link (Managed Payments, A$20 early bird). After payment Stripe redirects to `kits/access/` (noindex, linked from nowhere), which links `starter-blueprint-4cd1c5cbc1.zip`. **That zip is deliberately not in the repo**: the repo is public, so committing it would publish the paid product. Copy it into `kits/access/` at merge time and know that anyone who finds the URL can download it; GitHub Pages cannot gate a file.
-- Tier 2 is a `mailto:` waitlist, with no form or backend.
-- Click counts go to GoatCounter through `data-goatcounter-click` attributes (`shop-tier0-download`, `shop-tier1-buy`, `shop-tier2-waitlist`).
-- To go live: merge `main` into `shop` first (the branch predates the GoatCounter merge), add the Shop link to every sidebar, remove `noindex`, add the og/twitter/canonical tags every page carries, and add the Tier 1 zip. The redirect URL on the Stripe link uses `kaibinw.github.io`; change it when the domain moves.
-- The page states what has and has not been tested. Keep that list true: update it when the cold test or the seven-day unattended run finishes.
+- After payment Stripe redirects to `https://kaibinw.github.io/kits/access/`, which links `starter-blueprint-4cd1c5cbc1.zip`. **That zip is deliberately not in the repo** (public). Copy it into `kits/access/` before merging; GitHub Pages cannot gate a file, so anyone who finds the URL can download it.
+- GoatCounter events added: `shop-tier1-buy` (the Buy click) and `shop-tier1-download` (the download button on the access page).
+- Domain: every working URL uses `kaibinw.github.io`; the footer reads kaibinw.io. Change the Stripe redirect only if the domain moves.
