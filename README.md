@@ -16,7 +16,11 @@ case-studies/dental-catalog.html
 case-studies/hq.html             parked: unlinked, noindex
 case-studies/second-brain.html
 case-studies/dashboard.html      parked: unlinked, noindex
-kits/index.html                  dormant (shop branch only): noindex, not linked, checkout links are placeholders
+kits/index.html                  kits page: noindex, linked from every sidebar and footer
+kits/access/index.html           post-purchase download page: noindex, unlisted; download button is disabled until the Starter Blueprint zip is published
+terms/index.html                 Terms of Sale, licence and Australian Consumer Law notice
+privacy/index.html               Privacy Policy and Spam Act statement
+unsubscribe/index.html           unsubscribe page: noindex, no analytics; calls the Apps Script with ?action=unsub&e=<email>&t=<token>
 ```
 
 ## Content rules
@@ -55,10 +59,16 @@ The build also refreshes the homepage's "Latest writing" section (the 3 newest p
 
 Files starting with `_` and posts with `draft: true` are skipped. Generated HTML is never edited by hand; deleting a post's `.md` and rebuilding removes its page.
 
-## Kits page, launch state (Post 04)
+## Kits page (all three tiers visible; selling starts with Post 04)
 
-This pull request is the commercial switch on top of the three-card page: Starter Blueprint's "Notify me at launch" becomes the Stripe Buy button ("Buy for $20", Managed Payments), `kits/access/` (the post-purchase page, `noindex`) is added, and `noindex` comes off `/kits/`. Merge Sunday evening 8 Nov, after the Fri 6 Nov go/no-go.
+`kits/index.html` shows Baseline Core (free download), Starter Blueprint and Operator Kit, so nothing about the paid tiers is a surprise. The page is `noindex` and linked from every sidebar as "Kits".
 
-- After payment Stripe redirects to `https://kaibinw.github.io/kits/access/`, which links `starter-blueprint-4cd1c5cbc1.zip`. **That zip is deliberately not in the repo** (public). Copy it into `kits/access/` before merging; GitHub Pages cannot gate a file, so anyone who finds the URL can download it.
-- GoatCounter events added: `shop-tier1-buy` (the Buy click) and `shop-tier1-download` (the download button on the access page).
-- Domain: every working URL uses `kaibinw.github.io`; the footer reads kaibinw.io. Change the Stripe redirect only if the domain moves.
+- All three cards use the same email capture. Each form sends `{email, source}` to a Google Apps Script web app (`APPS_SCRIPT_URL` at the bottom of `kits/index.html`) with `sendBeacon`. Sources: `tier0` (also starts the download of `kits/downloads/baseline-core.zip`), `tier1-notify` ("Notify me at launch") and `tier2-waitlist`. The sheet has the columns Timestamp, Email, Status, Source.
+- GoatCounter events: `shop-tier0-download`, `shop-tier1-notify`, `shop-tier2-waitlist`. The download never waits on the sheet; a repeat of the same email and source is ignored by the sheet script, not by the browser. The email is never put in a URL.
+- Canonical and social tags use `https://kaibinw.github.io` until a custom domain is live. The footer reads kaibinw.github.io for now; switch it to the trading domain once that is live.
+- Before this merges: deploy the Apps Script (`leads_apps_script.gs` in the vault) with unsubscribe and the Tier 1 confirmation.
+- Starter Blueprint and Operator Kit show a button that opens the email field in place. The free card keeps its field open. With JavaScript off, all three forms stay open.
+- The ACL sales notice sits under the Starter Blueprint button and again on `kits/access/`. Keep the wording identical in both places and in `terms/`.
+- Launch state (this pull request): Starter Blueprint's "Notify me" is the Stripe Buy button ("Buy for $20", Managed Payments, capped at 50 buyers on the link), `kits/access/` links `starter-blueprint-4cd1c5cbc1.zip`, and the page is indexable. **That zip is deliberately not in the repo until launch** (public): copy it into `kits/access/` before merging. GoatCounter adds `shop-tier1-buy` and `shop-tier1-download`.
+- Unsubscribe links in emails are built by the Apps Script (`unsubLink_`, handler in `leads_apps_script.gs` in the vault) and point at `/unsubscribe/`. The page removes the link's query string from the address bar as soon as it loads.
+- Every footer links to `/terms/` and `/privacy/`; Kits is in the sidebar only until selling starts. Those two URLs are the ones for Stripe's support settings. When the footer is edited, change it in every page, including `terms/`, `privacy/` and `kits/access/`; blog pages copy it from `case-studies/ledger.html` at build time.

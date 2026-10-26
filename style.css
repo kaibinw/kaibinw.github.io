@@ -469,6 +469,7 @@ section + section { border-top: 1px solid var(--line); }
 .track h3 { font-size: var(--step-2); font-weight: 700; letter-spacing: -0.015em; margin-bottom: 0.9rem; }
 .track p { color: var(--muted); }
 .track p strong { color: var(--ink); font-weight: 500; }
+.track-link { margin: 1.5rem 0 0; }
 .tools {
   margin-top: 1.4rem;
   display: flex;
@@ -681,6 +682,8 @@ section + section { border-top: 1px solid var(--line); }
 }
 .foot-cut { letter-spacing: 0.02em; }
 .foot-cut b { color: var(--accent); font-weight: 400; }
+.foot-cut a { color: inherit; text-decoration: none; }
+.foot-cut a:hover { color: var(--ink); text-decoration: underline; }
 @media (max-width: 55.99em) {
   /* stack, and give the social icons a full spread-out row of their own */
   .site-foot .wrap { flex-direction: column-reverse; align-items: center; text-align: center; }
@@ -1311,9 +1314,8 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
 .sh-incl { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; color: var(--muted); font-size: 0.97rem; }
 .sh-incl li { position: relative; padding-left: 1.6rem; }
 .sh-incl li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); }
-.sh-gate { margin: 1.75rem 0 0; font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); max-width: 70ch; }
-
-.sh-fine { margin-top: clamp(3rem, 7vw, 4.5rem); padding-top: 1.5rem; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); max-width: 70ch; }
+.sh-notes { margin-top: clamp(3rem, 7vw, 4.5rem); padding-top: 1.25rem; border-top: 1px solid var(--line); max-width: 70ch; }
+.sh-notes p { margin: 0 0 0.6rem; font-family: var(--font-mono); font-size: 0.7rem; line-height: 1.6; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { .shop .btn { transition: none; } }
 .sh-form { margin: 1.25rem 0 1.5rem; display: grid; gap: 0.75rem; }
 .sh-form .btn { margin: 0; }
@@ -1325,7 +1327,39 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
 .sh-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .sh-capture { margin: 1.25rem 0 1.5rem; min-height: 9.5rem; }
 .sh-capture .sh-form { margin: 0; }
+.sh-form[hidden], .sh-plan .sh-capture .sh-trigger[hidden] { display: none; }
+.sh-plan .sh-capture .sh-trigger { margin: 0; }
 .sh-plan .sh-capture + .sh-incl { padding-top: 1.5rem; border-top: 1px solid var(--line); }
 .sh-access { margin: 2rem 0; }
 .sh-steps { margin: 0 0 1.75rem; padding-left: 1.25rem; display: grid; gap: 0.6rem; color: var(--muted); max-width: 56ch; }
 .sh-steps code, .shop .sh-micro code { font-family: var(--font-mono); font-size: 0.85em; color: var(--ink); }
+
+/* ---------- Blog index rows: one slim, full-width row per post; the whole row is the link ---------- */
+.post-row { position: relative; display: block; padding-block: 1.25rem; padding-right: 3rem; }
+.post-row h3 { margin: 0; max-width: none; text-wrap: pretty; }
+.post-row h3 a::after { content: ""; position: absolute; inset: 0; }
+.post-row:hover h3 a, .post-row:focus-within h3 a { color: var(--primary-bright); }
+.post-row h3 a:focus-visible { outline: none; }
+.post-row:has(h3 a:focus-visible) { outline: 2px solid var(--primary-bright); outline-offset: 4px; }
+.post-no { margin: 0 0 0.5rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+.post-tagline { margin: 0.5rem 0 0; font-style: italic; color: var(--muted); line-height: 1.4; max-width: 60ch; }
+.post-row .work-kind { margin-top: 0.6rem; }
+.post-go { position: absolute; right: 0; top: 50%; font-size: 1.25rem; line-height: 1; color: var(--primary-bright); transform: translateY(-50%); transition: transform 0.15s ease; }
+.post-row:hover .post-go, .post-row:focus-within .post-go { transform: translate(4px, -50%); }
+@media (prefers-reduced-motion: reduce) { .post-go { transition: none; } }
+
+/* ---------- Legal pages (/terms/, /privacy/) and the sales notice ---------- */
+.legal { max-width: 46rem; margin-inline: auto; padding-block: clamp(2.5rem, 6vw, 4rem); }
+.legal h1 { font-size: var(--step-3); font-weight: 700; letter-spacing: -0.02em; margin: 0.5rem 0 0.5rem; }
+.legal h2 { font-size: var(--step-1); font-weight: 700; letter-spacing: -0.01em; margin: 2.25rem 0 0.6rem; }
+.legal p, .legal li { color: var(--muted); line-height: 1.65; max-width: 70ch; }
+.legal p { margin: 0 0 0.9rem; }
+.legal h3 { font-size: var(--step-0); font-weight: 700; margin: 1.4rem 0 0.4rem; }
+.legal ul, .legal ol { margin: 0 0 0.9rem; padding-left: 1.25rem; display: grid; gap: 0.5rem; }
+.legal strong { color: var(--ink); font-weight: 500; }
+.legal a, .sh-acl a { color: var(--ink); text-underline-offset: 0.2em; }
+.legal code { font-family: var(--font-mono); font-size: 0.88em; color: var(--ink); }
+.legal-meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); }
+.sh-capture .sh-acl { margin: 1.25rem 0 0; }
+.sh-acl { margin: 0 0 1.5rem; font-family: var(--font-mono); font-size: 0.7rem; line-height: 1.6; color: var(--muted); max-width: 70ch; }
+.sh-access .btn[disabled] { opacity: 0.6; cursor: not-allowed; }
