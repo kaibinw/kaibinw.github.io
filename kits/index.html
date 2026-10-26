@@ -177,28 +177,12 @@
 (function () {
   var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxVjPLM8Z0JHzuTmnwn8nHHO0tgVF2fYexxo_HSgtCw2TDvK1EPcqgLLkj_Ms7gpVI4/exec";
   var ZIP = "/kits/downloads/baseline-core.zip";
-  var KEY = "kits-leads-sent";
   var DONE = {
     "tier0": "Download started. Check your downloads folder.",
     "tier1-notify": "You are on the list. I will email when the Starter Blueprint opens.",
     "tier2-waitlist": "You are on the waitlist. I will email when the Operator Kit opens."
   };
 
-  function sentRecently(id) {
-    try {
-      var map = JSON.parse(localStorage.getItem(KEY) || "{}");
-      return !!map[id] && Date.now() - map[id] < 24 * 3600 * 1000;
-    } catch (err) { return false; }
-  }
-  function remember(id) {
-    try {
-      var map = JSON.parse(localStorage.getItem(KEY) || "{}");
-      map[id] = Date.now();
-      var keys = Object.keys(map).sort(function (a, b) { return map[b] - map[a]; }).slice(0, 20);
-      var kept = {}; keys.forEach(function (k) { kept[k] = map[k]; });
-      localStorage.setItem(KEY, JSON.stringify(kept));
-    } catch (err) { /* private mode */ }
-  }
   function send(email, source) {
     var body = JSON.stringify({ email: email, source: source });
     try {
@@ -234,8 +218,7 @@
         a.href = ZIP; a.download = "baseline-core.zip";
         document.body.appendChild(a); a.click(); a.remove();
       }
-      var id = source + ":" + email;
-      if (!sentRecently(id)) { send(email, source); remember(id); }
+      send(email, source);   // the sheet script ignores a repeat of the same email and source
       try {
         if (window.goatcounter && window.goatcounter.count) {
           window.goatcounter.count({ path: eventName, title: source, event: true });
