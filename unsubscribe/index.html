@@ -78,7 +78,7 @@
     <p class="tc">TC 01:23:00:00 — UNSUBSCRIBE</p>
     <h1 id="unsub-title">Unsubscribe</h1>
     <p id="unsub-status" role="status" aria-live="polite">Working on it…</p>
-    <noscript><p>This page needs JavaScript. To unsubscribe without it, email <a href="mailto:wongkaibin8080@gmail.com">wongkaibin8080@gmail.com</a> and I will remove you.</p></noscript>
+    <noscript><p>This page needs JavaScript. To unsubscribe without it, <a href="mailto:wongkaibin8080@gmail.com">email me</a> and I will remove you.</p></noscript>
     <p class="legal-meta">See the <a href="/privacy/">Privacy Policy</a>.</p>
   </div>
 </section>
@@ -97,7 +97,8 @@
 (function () {
   var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxVjPLM8Z0JHzuTmnwn8nHHO0tgVF2fYexxo_HSgtCw2TDvK1EPcqgLLkj_Ms7gpVI4/exec";
   var status = document.getElementById("unsub-status");
-  var MAIL = '<a href="mailto:wongkaibin8080@gmail.com">wongkaibin8080@gmail.com</a>';
+  var MAIL = '<a href="mailto:wongkaibin8080@gmail.com">email me</a>';
+  var MAILCAP = '<a href="mailto:wongkaibin8080@gmail.com">Email me</a>';
   var params = new URLSearchParams(window.location.search);
   var email = (params.get("e") || "").trim().toLowerCase();
   var token = (params.get("t") || "").trim();
@@ -106,7 +107,7 @@
   try { history.replaceState(null, "", window.location.pathname); } catch (err) { /* keep the link as is */ }
 
   if (!email || !token) {
-    say("This link is incomplete. Use the unsubscribe link in the email, or email " + MAIL + " and I will remove you.");
+    say("This link is incomplete. Use the unsubscribe link in the email, or " + MAIL + " and I will remove you.");
     return;
   }
   var url = APPS_SCRIPT_URL + "?action=unsub&e=" + encodeURIComponent(email) + "&t=" + encodeURIComponent(token);
@@ -116,13 +117,13 @@
       if (data.status === "unsubscribed") {
         say("You are unsubscribed. You will not get any more emails from me. If this was a mistake, you can sign up again at the <a href=\"/kits/\">kits page</a>.");
       } else if (data.status === "busy") {
-        say("The list is busy. Reload this page in a minute, or email " + MAIL + " and I will remove you.");
+        say("The list is busy. Reload this page in a minute, or " + MAIL + " and I will remove you.");
       } else {
-        say("This link did not work. Email " + MAIL + " and I will remove you.");
+        say("This link did not work. " + MAILCAP + " and I will remove you.");
       }
     })
     .catch(function () {
-      say("I could not reach the list. Reload this page, or email " + MAIL + " and I will remove you.");
+      say("I could not reach the list. Reload this page, or " + MAIL + " and I will remove you.");
     });
 })();
 </script>
