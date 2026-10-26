@@ -55,10 +55,14 @@ The build also refreshes the homepage's "Latest writing" section (the 3 newest p
 
 Files starting with `_` and posts with `draft: true` are skipped. Generated HTML is never edited by hand; deleting a post's `.md` and rebuilding removes its page.
 
-## Kits page (Tier 0 only)
+## Shop (dormant)
 
-`kits/index.html` carries one card: Baseline Core, a free download with an email field. The page is `noindex` for now and is linked from every sidebar as "Get the kits". The commercial tiers (Starter Blueprint, Operator Kit and the post-purchase page) are staged in a second pull request and ship with Post 04.
+`kits/index.html` is the page for three kits: Baseline Core ($0), Starter Blueprint ($29, $20 early bird) and Operator Kit ($59, waitlist). It lives on the `shop` branch only (the page lives at `kits/`, nav label "Get the kits"), is `noindex`, and is linked from no other page. Nothing here is merged by automation; Kai decides when it goes live.
 
-- On submit the page starts the download of `kits/downloads/baseline-core.zip`, sends the email to a Google Apps Script web app (`APPS_SCRIPT_URL` at the bottom of `kits/index.html`) with `sendBeacon`, counts the GoatCounter event `shop-tier0-download`, then replaces the form with a confirmation. The download never waits on the sheet, and the same email is not sent twice within 24 hours from one browser. Without JavaScript the form just downloads the zip. The email is never put in a URL.
-- Canonical and social tags use `https://kaibinw.github.io` until a custom domain is live. The footer reads kaibinw.io, the planned trading domain.
-- Before this merges: deploy the hardened Apps Script handler and settle the consent wording on the form.
+- Currency, prices and the early-bird cap are Kai's to set. The page says "AUD" and "$20 then $29" as drafted.
+- Tier 0: an email field and a download button. On submit the page POSTs the email to a Google Apps Script web app (its URL is the `APPS_SCRIPT_URL` constant at the bottom of `kits/index.html`) and starts the download of `kits/downloads/baseline-core.zip`. Without JavaScript the form just downloads the zip. The email is never put in a URL.
+- Tier 1: the button is the Stripe Payment Link (Managed Payments, A$20 early bird). After payment Stripe redirects to `kits/access/` (noindex, linked from nowhere), which links `starter-blueprint-4cd1c5cbc1.zip`. **That zip is deliberately not in the repo**: the repo is public, so committing it would publish the paid product. Copy it into `kits/access/` at merge time and know that anyone who finds the URL can download it; GitHub Pages cannot gate a file.
+- Tier 2 is a `mailto:` waitlist, with no form or backend.
+- Click counts go to GoatCounter through `data-goatcounter-click` attributes (`shop-tier0-download`, `shop-tier1-buy`, `shop-tier2-waitlist`).
+- To go live: merge `main` into `shop` first (the branch predates the GoatCounter merge), add the Shop link to every sidebar, remove `noindex`, add the og/twitter/canonical tags every page carries, and add the Tier 1 zip. The redirect URL on the Stripe link uses `kaibinw.github.io`; change it when the domain moves.
+- The page states what has and has not been tested. Keep that list true: update it when the cold test or the seven-day unattended run finishes.
