@@ -1324,6 +1324,8 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
 .sh-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .sh-capture { margin: 1.25rem 0 1.5rem; min-height: 9.5rem; }
 .sh-capture .sh-form { margin: 0; }
+.sh-form[hidden] { display: none; }
+.sh-plan .sh-capture .sh-trigger { margin: 0; }
 .sh-plan .sh-capture + .sh-incl { padding-top: 1.5rem; border-top: 1px solid var(--line); }
 .sh-access { margin: 2rem 0; }
 .sh-steps { margin: 0 0 1.75rem; padding-left: 1.25rem; display: grid; gap: 0.6rem; color: var(--muted); max-width: 56ch; }
