@@ -1354,7 +1354,8 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
 .legal h2 { font-size: var(--step-1); font-weight: 700; letter-spacing: -0.01em; margin: 2.25rem 0 0.6rem; }
 .legal p, .legal li { color: var(--muted); line-height: 1.65; max-width: 70ch; }
 .legal p { margin: 0 0 0.9rem; }
-.legal ul { margin: 0 0 0.9rem; padding-left: 1.25rem; display: grid; gap: 0.5rem; }
+.legal h3 { font-size: var(--step-0); font-weight: 700; margin: 1.4rem 0 0.4rem; }
+.legal ul, .legal ol { margin: 0 0 0.9rem; padding-left: 1.25rem; display: grid; gap: 0.5rem; }
 .legal strong { color: var(--ink); font-weight: 500; }
 .legal a, .sh-acl a { color: var(--ink); text-underline-offset: 0.2em; }
 .legal code { font-family: var(--font-mono); font-size: 0.88em; color: var(--ink); }
