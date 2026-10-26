@@ -1334,6 +1334,20 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
 .sh-steps { margin: 0 0 1.75rem; padding-left: 1.25rem; display: grid; gap: 0.6rem; color: var(--muted); max-width: 56ch; }
 .sh-steps code, .shop .sh-micro code { font-family: var(--font-mono); font-size: 0.85em; color: var(--ink); }
 
+/* ---------- Blog index rows: one slim, full-width row per post; the whole row is the link ---------- */
+.post-row { position: relative; display: block; padding-block: 1.25rem; padding-right: 3rem; }
+.post-row h3 { margin: 0; max-width: none; text-wrap: pretty; }
+.post-row h3 a::after { content: ""; position: absolute; inset: 0; }
+.post-row:hover h3 a, .post-row:focus-within h3 a { color: var(--primary-bright); }
+.post-row h3 a:focus-visible { outline: none; }
+.post-row:has(h3 a:focus-visible) { outline: 2px solid var(--primary-bright); outline-offset: 4px; }
+.post-no { margin: 0 0 0.5rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); }
+.post-tagline { margin: 0.5rem 0 0; font-style: italic; color: var(--muted); line-height: 1.4; max-width: 60ch; }
+.post-row .work-kind { margin-top: 0.6rem; }
+.post-go { position: absolute; right: 0; top: 50%; font-size: 1.25rem; line-height: 1; color: var(--primary-bright); transform: translateY(-50%); transition: transform 0.15s ease; }
+.post-row:hover .post-go, .post-row:focus-within .post-go { transform: translate(4px, -50%); }
+@media (prefers-reduced-motion: reduce) { .post-go { transition: none; } }
+
 /* ---------- Legal pages (/terms/, /privacy/) and the sales notice ---------- */
 .legal { max-width: 46rem; margin-inline: auto; padding-block: clamp(2.5rem, 6vw, 4rem); }
 .legal h1 { font-size: var(--step-3); font-weight: 700; letter-spacing: -0.02em; margin: 0.5rem 0 0.5rem; }

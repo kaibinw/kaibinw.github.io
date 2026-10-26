@@ -332,15 +332,12 @@ ${p.html}
 });
 
 const list = posts.length
-  ? posts.map((p) => `    <article class="work-item">
-      <div>
-        <h3><a href="${p.slug}.html">${esc(p.title)}</a></h3>
-        <p class="work-kind">${esc(kindLine(p))}</p>
-      </div>
-      <div class="work-body">
-        <p>${esc(p.summary)}</p>
-        <a class="work-link" href="${p.slug}.html">Read the post</a>
-      </div>
+  ? posts.map((p, idx) => `    <article class="work-item post-row">
+      <p class="post-no">ENTRY ${String(posts.length - idx).padStart(2, '0')} · ${fmtDate(p.date)} · ${p.minutes} MIN READ</p>
+      <h3><a href="${p.slug}.html">${esc(p.title)}</a></h3>
+      <p class="post-tagline">${esc(p.summary)}</p>
+      <p class="work-kind">${esc(p.tags.map((t) => t.toUpperCase()).join(' · '))}</p>
+      <span class="post-go" aria-hidden="true">→</span>
     </article>`).join('\n\n')
   : `    <p class="work-kind">NO POSTS YET</p>`;
 
