@@ -1311,9 +1311,8 @@ button.mock-btn, button.mock-chip-btn { cursor: pointer; border: 0; font-family:
 .sh-incl { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; color: var(--muted); font-size: 0.97rem; }
 .sh-incl li { position: relative; padding-left: 1.6rem; }
 .sh-incl li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); }
-.sh-gate { margin: 1.75rem 0 0; font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); max-width: 70ch; }
-
-.sh-fine { margin-top: clamp(3rem, 7vw, 4.5rem); padding-top: 1.5rem; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); max-width: 70ch; }
+.sh-notes { margin-top: clamp(3rem, 7vw, 4.5rem); padding-top: 1.25rem; border-top: 1px solid var(--line); max-width: 70ch; }
+.sh-notes p { margin: 0 0 0.6rem; font-family: var(--font-mono); font-size: 0.7rem; line-height: 1.6; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { .shop .btn { transition: none; } }
 .sh-form { margin: 1.25rem 0 1.5rem; display: grid; gap: 0.75rem; }
 .sh-form .btn { margin: 0; }

@@ -61,6 +61,6 @@ Files starting with `_` and posts with `draft: true` are skipped. Generated HTML
 
 - All three cards use the same email capture. Each form sends `{email, source}` to a Google Apps Script web app (`APPS_SCRIPT_URL` at the bottom of `kits/index.html`) with `sendBeacon`. Sources: `tier0` (also starts the download of `kits/downloads/baseline-core.zip`), `tier1-notify` ("Notify me at launch") and `tier2-waitlist`. The sheet has the columns Timestamp, Email, Status, Source.
 - GoatCounter events: `shop-tier0-download`, `shop-tier1-notify`, `shop-tier2-waitlist`. The download never waits on the sheet; the same email and source is not sent twice within 24 hours from one browser. The email is never put in a URL.
-- Canonical and social tags use `https://kaibinw.github.io` until a custom domain is live. The footer reads kaibinw.io, the planned trading domain.
+- Canonical and social tags use `https://kaibinw.github.io` until a custom domain is live. The footer reads kaibinw.github.io for now; switch it to the trading domain once that is live.
 - Before this merges: deploy the hardened Apps Script handler (`leads_apps_script.gs` in the vault).
 - Starter Blueprint's "Notify me" becomes the Stripe Buy button in the second pull request, which adds `kits/access/` and merges Sunday evening 8 Nov.
