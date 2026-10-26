@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get the kits — Kai-Bin Wong</title>
+<title>Kits — Kai-Bin Wong</title>
 <meta name="description" content="Kits for making an AI agent safe to leave in a folder of notes, new or existing: rules, audit scripts and a headless task runner. Pre-release.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://kaibinw.github.io/kits/">
-<meta property="og:title" content="Get the kits | Kai-Bin Wong">
+<meta property="og:title" content="Kits | Kai-Bin Wong">
 <meta property="og:description" content="Kits for making an AI agent safe to leave in a folder of notes, new or existing. Pre-release.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kaibinw.github.io/kits/">
@@ -58,7 +58,7 @@
       <a class="sidebar-nav-item" href="../case-studies/second-brain.html"><span>Second Brain</span><span class="tc-num">CASE 05</span></a>
       </details>
       <a class="sidebar-nav-item" href="../blog/index.html"><span>Blog</span><span class="tc-num">01:09:30:00</span></a>
-      <a class="sidebar-nav-item active" href="index.html" aria-current="page"><span>Get the kits</span><span class="tc-num">01:20:00:00</span></a>
+      <a class="sidebar-nav-item active" href="index.html" aria-current="page"><span>Kits</span><span class="tc-num">01:20:00:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#credits"><span>Credits</span><span class="tc-num">01:11:07:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#about"><span>About</span><span class="tc-num">01:15:00:00</span></a>
       <a class="sidebar-nav-item" href="../index.html#contact"><span>Contact</span><span class="tc-num">01:17:00:00</span></a>
@@ -108,12 +108,16 @@
         <p class="sh-price">$20</p>
         <p class="sh-price-note">Early bird, then $29. One-off, AUD. Opens with the next post in the series.</p>
         <div class="sh-capture" id="t1-state" aria-live="polite">
-        <form class="sh-form sh-capture-form" data-source="tier1-notify" data-event="shop-tier1-notify">
+        <div class="sh-slot">
+        <button class="btn btn-ghost sh-trigger" type="button" aria-expanded="false" aria-controls="t1-form" hidden>Notify me at launch</button>
+        <form class="sh-form sh-capture-form" id="t1-form" data-source="tier1-notify" data-event="shop-tier1-notify">
           <label class="sh-sr" for="t1-email">Email address</label>
           <input class="sh-input" id="t1-email" type="email" required autocomplete="email" placeholder="Enter your email">
           <button class="btn btn-ghost" type="submit">Notify me at launch</button>
           <p class="sh-micro">Release updates and new tiers only. Unsubscribe anytime.</p>
         </form>
+        </div>
+        <p class="sh-acl">All sales final upon digital delivery. In accordance with Australian Consumer Law, refunds are not provided for change of mind once files are accessed. Corrupt archives replaced on request. See the <a href="/terms/">Terms of Sale</a>.</p>
         </div>
         <p class="sh-incl-head">Everything in Baseline Core, plus:</p>
         <ul class="sh-incl">
@@ -131,7 +135,8 @@
         <p class="sh-price">$59</p>
         <p class="sh-price-note">Waitlist. One-off, AUD.</p>
         <div class="sh-capture" id="t2-state" aria-live="polite">
-        <form class="sh-form sh-capture-form" data-source="tier2-waitlist" data-event="shop-tier2-waitlist">
+        <button class="btn btn-ghost sh-trigger" type="button" aria-expanded="false" aria-controls="t2-form" hidden>Join the waitlist</button>
+        <form class="sh-form sh-capture-form" id="t2-form" data-source="tier2-waitlist" data-event="shop-tier2-waitlist">
           <label class="sh-sr" for="t2-email">Email address</label>
           <input class="sh-input" id="t2-email" type="email" required autocomplete="email" placeholder="Enter your email">
           <button class="btn btn-ghost" type="submit">Join the waitlist</button>
@@ -160,7 +165,7 @@
 <footer class="site-foot">
   <div class="wrap">
     <span class="foot-links"><a href="https://www.imdb.com/name/nm7834405/" aria-label="IMDb profile"><svg class="icon" viewBox="0 0 44 24" style="width:2em" aria-hidden="true"><rect x="1" y="2" width="42" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="22" y="16.5" text-anchor="middle" font-family="inherit" font-size="10" font-weight="700" fill="currentColor">IMDb</text></svg></a><a href="https://www.linkedin.com/in/kai-bin-wong-805a60101/" aria-label="LinkedIn profile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a><a href="mailto:wongkaibin8080@gmail.com" aria-label="Email Kai-Bin"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 3.24V18h16V7.24l-8 5.86-8-5.86zM19.11 6H4.89L12 11.21 19.11 6z"/></svg></a></span>
-    <span class="foot-cut">&copy; 2026 kaibinw.github.io | ABN: 35 840 410 536</span>
+    <span class="foot-cut">&copy; 2026 kaibinw.github.io | ABN: 35 840 410 536 | <a href="/terms/">Terms</a> | <a href="/privacy/">Privacy</a></span>
   </div>
 </footer>
 
@@ -201,6 +206,17 @@
     } catch (err) { /* fall through to fetch */ }
     try { fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", keepalive: true, body: body }); } catch (err) { /* nothing to do */ }
   }
+
+  /* Paid tiers start as a button and open the email field in place. With no script the form stays open. */
+  Array.prototype.forEach.call(document.querySelectorAll(".sh-trigger"), function (btn) {
+    var form = document.getElementById(btn.getAttribute("aria-controls"));
+    var input = form.querySelector("input[type=email]");
+    function open() { btn.hidden = true; btn.setAttribute("aria-expanded", "true"); form.hidden = false; input.focus(); }
+    function close() { form.hidden = true; btn.hidden = false; btn.setAttribute("aria-expanded", "false"); btn.focus(); }
+    btn.hidden = false; form.hidden = true;
+    btn.addEventListener("click", open);
+    input.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  });
 
   Array.prototype.forEach.call(document.querySelectorAll("form.sh-capture-form"), function (form) {
     var source = form.getAttribute("data-source");

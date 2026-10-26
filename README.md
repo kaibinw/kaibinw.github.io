@@ -16,7 +16,11 @@ case-studies/dental-catalog.html
 case-studies/hq.html             parked: unlinked, noindex
 case-studies/second-brain.html
 case-studies/dashboard.html      parked: unlinked, noindex
-kits/index.html                  dormant (shop branch only): noindex, not linked, checkout links are placeholders
+kits/index.html                  kits page: noindex, linked from every sidebar and footer
+kits/access/index.html           post-purchase download page: noindex, unlisted; download button is disabled until the Starter Blueprint zip is published
+terms/index.html                 Terms of Sale, licence and Australian Consumer Law notice
+privacy/index.html               Privacy Policy and Spam Act statement
+unsubscribe/index.html           unsubscribe page: noindex, no analytics; calls the Apps Script with ?action=unsub&e=<email>&t=<token>
 ```
 
 ## Content rules
@@ -57,10 +61,14 @@ Files starting with `_` and posts with `draft: true` are skipped. Generated HTML
 
 ## Kits page (all three tiers visible; selling starts with Post 04)
 
-`kits/index.html` shows Baseline Core (free download), Starter Blueprint and Operator Kit, so nothing about the paid tiers is a surprise. The page is `noindex` and linked from every sidebar as "Get the kits".
+`kits/index.html` shows Baseline Core (free download), Starter Blueprint and Operator Kit, so nothing about the paid tiers is a surprise. The page is `noindex` and linked from every sidebar as "Kits".
 
 - All three cards use the same email capture. Each form sends `{email, source}` to a Google Apps Script web app (`APPS_SCRIPT_URL` at the bottom of `kits/index.html`) with `sendBeacon`. Sources: `tier0` (also starts the download of `kits/downloads/baseline-core.zip`), `tier1-notify` ("Notify me at launch") and `tier2-waitlist`. The sheet has the columns Timestamp, Email, Status, Source.
 - GoatCounter events: `shop-tier0-download`, `shop-tier1-notify`, `shop-tier2-waitlist`. The download never waits on the sheet; the same email and source is not sent twice within 24 hours from one browser. The email is never put in a URL.
 - Canonical and social tags use `https://kaibinw.github.io` until a custom domain is live. The footer reads kaibinw.github.io for now; switch it to the trading domain once that is live.
 - Before this merges: deploy the hardened Apps Script handler (`leads_apps_script.gs` in the vault).
-- Starter Blueprint's "Notify me" becomes the Stripe Buy button in the second pull request, which adds `kits/access/` and merges Sunday evening 8 Nov.
+- Starter Blueprint and Operator Kit show a button that opens the email field in place. The free card keeps its field open. With JavaScript off, all three forms stay open.
+- The ACL sales notice sits under the Starter Blueprint button and again on `kits/access/`. Keep the wording identical in both places and in `terms/`.
+- Starter Blueprint's "Notify me" becomes the Stripe Buy button in the second pull request, which publishes the zip and enables the button on `kits/access/`.
+- Unsubscribe links in emails are built by the Apps Script (`unsubLink_`, handler in `leads_apps_script.gs` in the vault) and point at `/unsubscribe/`. The page removes the link's query string from the address bar as soon as it loads.
+- Every footer links to `/terms/` and `/privacy/`; Kits is in the sidebar only until selling starts. Those two URLs are the ones for Stripe's support settings. When the footer is edited, change it in every page, including `terms/`, `privacy/` and `kits/access/`; blog pages copy it from `case-studies/ledger.html` at build time.
