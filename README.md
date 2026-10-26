@@ -16,6 +16,7 @@ case-studies/dental-catalog.html
 case-studies/hq.html             parked: unlinked, noindex
 case-studies/second-brain.html
 case-studies/dashboard.html      parked: unlinked, noindex
+kits/index.html                  dormant (shop branch only): noindex, not linked, checkout links are placeholders
 ```
 
 ## Content rules
@@ -53,3 +54,13 @@ Posts are markdown files in `blog/posts/`. A zero-dependency script turns them i
 The build also refreshes the homepage's "Latest writing" section (the 3 newest posts, between the `blog:latest` markers in `index.html`), so commit `index.html` too.
 
 Files starting with `_` and posts with `draft: true` are skipped. Generated HTML is never edited by hand; deleting a post's `.md` and rebuilding removes its page.
+
+## Kits page (all three tiers visible; selling starts with Post 04)
+
+`kits/index.html` shows Baseline Core (free download), Starter Blueprint and Operator Kit, so nothing about the paid tiers is a surprise. The page is `noindex` and linked from every sidebar as "Get the kits".
+
+- All three cards use the same email capture. Each form sends `{email, source}` to a Google Apps Script web app (`APPS_SCRIPT_URL` at the bottom of `kits/index.html`) with `sendBeacon`. Sources: `tier0` (also starts the download of `kits/downloads/baseline-core.zip`), `tier1-notify` ("Notify me at launch") and `tier2-waitlist`. The sheet has the columns Timestamp, Email, Status, Source.
+- GoatCounter events: `shop-tier0-download`, `shop-tier1-notify`, `shop-tier2-waitlist`. The download never waits on the sheet; the same email and source is not sent twice within 24 hours from one browser. The email is never put in a URL.
+- Canonical and social tags use `https://kaibinw.github.io` until a custom domain is live. The footer reads kaibinw.io, the planned trading domain.
+- Before this merges: deploy the hardened Apps Script handler (`leads_apps_script.gs` in the vault).
+- Starter Blueprint's "Notify me" becomes the Stripe Buy button in the second pull request, which adds `kits/access/` and merges Sunday evening 8 Nov.

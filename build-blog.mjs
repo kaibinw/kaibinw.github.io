@@ -272,6 +272,9 @@ ${footer()}
 
 </main>
 
+<script data-goatcounter="https://kaibinw.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
 </body>
 </html>
 `;
