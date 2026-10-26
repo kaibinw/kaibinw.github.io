@@ -74,12 +74,12 @@
 
     <div class="sh-plans">
       <article class="sh-plan" aria-labelledby="t0">
-        <h2 id="t0">Baseline AIOS</h2>
+        <h2 id="t0">Baseline Core</h2>
         <p class="sh-tag">Brief your agent properly.</p>
         <p class="sh-price">$0</p>
         <p class="sh-price-note">Free download</p>
         <div class="sh-t0" id="t0-state" aria-live="polite">
-        <form class="sh-form" id="t0-form" action="/kits/downloads/baseline-aios.zip" method="get">
+        <form class="sh-form" id="t0-form" action="/kits/downloads/baseline-core.zip" method="get">
           <label class="sh-sr" for="t0-email">Email address</label>
           <input class="sh-input" id="t0-email" type="email" required autocomplete="email" placeholder="Enter your email">
           <button class="btn btn-ghost" type="submit">Download Free (.zip)</button>
@@ -100,7 +100,7 @@
         <p class="sh-price">$20</p>
         <p class="sh-price-note">Early bird, then $29. One-off, AUD.</p>
         <a class="btn" href="https://buy.stripe.com/cNi3cwddJ4kE6ksgLm9sk00" data-goatcounter-click="shop-tier1-buy">Buy for $20</a>
-        <p class="sh-incl-head">Everything in Baseline AIOS, plus:</p>
+        <p class="sh-incl-head">Everything in Baseline Core, plus:</p>
         <ul class="sh-incl">
           <li>Rules, routing and a starter wiki</li>
           <li>Four skills: audit, ingest, session log, link repair</li>
@@ -146,7 +146,7 @@
 /* Tier 0: start the download at once, send the email in the background, count the event, then replace the form. */
 (function () {
   var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxVjPLM8Z0JHzuTmnwn8nHHO0tgVF2fYexxo_HSgtCw2TDvK1EPcqgLLkj_Ms7gpVI4/exec";
-  var ZIP = "/kits/downloads/baseline-aios.zip";
+  var ZIP = "/kits/downloads/baseline-core.zip";
   var form = document.getElementById("t0-form");
   if (!form) return;
   form.addEventListener("submit", function (e) {
@@ -154,7 +154,7 @@
     var userEmail = document.getElementById("t0-email").value.trim();
     if (!userEmail) return;
     var a = document.createElement("a");
-    a.href = ZIP; a.download = "baseline-aios.zip";
+    a.href = ZIP; a.download = "baseline-core.zip";
     document.body.appendChild(a); a.click(); a.remove();
     try {
       fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", keepalive: true, body: JSON.stringify({ email: userEmail }) });

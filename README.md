@@ -57,10 +57,10 @@ Files starting with `_` and posts with `draft: true` are skipped. Generated HTML
 
 ## Shop (dormant)
 
-`kits/index.html` is the page for three kits: Baseline AIOS ($0), Starter Blueprint ($29, $20 early bird) and Operator Kit ($59, waitlist). It lives on the `shop` branch only (the page lives at `kits/`, nav label "Get the kits"), is `noindex`, and is linked from no other page. Nothing here is merged by automation; Kai decides when it goes live.
+`kits/index.html` is the page for three kits: Baseline Core ($0), Starter Blueprint ($29, $20 early bird) and Operator Kit ($59, waitlist). It lives on the `shop` branch only (the page lives at `kits/`, nav label "Get the kits"), is `noindex`, and is linked from no other page. Nothing here is merged by automation; Kai decides when it goes live.
 
 - Currency, prices and the early-bird cap are Kai's to set. The page says "AUD" and "$20 then $29" as drafted.
-- Tier 0: an email field and a download button. On submit the page POSTs the email to a Google Apps Script web app (its URL is the `APPS_SCRIPT_URL` constant at the bottom of `kits/index.html`) and starts the download of `kits/downloads/baseline-aios.zip`. Without JavaScript the form just downloads the zip. The email is never put in a URL.
+- Tier 0: an email field and a download button. On submit the page POSTs the email to a Google Apps Script web app (its URL is the `APPS_SCRIPT_URL` constant at the bottom of `kits/index.html`) and starts the download of `kits/downloads/baseline-core.zip`. Without JavaScript the form just downloads the zip. The email is never put in a URL.
 - Tier 1: the button is the Stripe Payment Link (Managed Payments, A$20 early bird). After payment Stripe redirects to `kits/access/` (noindex, linked from nowhere), which links `starter-blueprint-4cd1c5cbc1.zip`. **That zip is deliberately not in the repo**: the repo is public, so committing it would publish the paid product. Copy it into `kits/access/` at merge time and know that anyone who finds the URL can download it; GitHub Pages cannot gate a file.
 - Tier 2 is a `mailto:` waitlist, with no form or backend.
 - Click counts go to GoatCounter through `data-goatcounter-click` attributes (`shop-tier0-download`, `shop-tier1-buy`, `shop-tier2-waitlist`).
