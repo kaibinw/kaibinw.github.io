@@ -20,6 +20,7 @@ kits/index.html                  kits page: noindex, linked from every sidebar a
 kits/access/index.html           post-purchase download page: noindex, unlisted; download button is disabled until the Starter Blueprint zip is published
 terms/index.html                 Terms of Sale, licence and Australian Consumer Law notice
 privacy/index.html               Privacy Policy and Spam Act statement
+unsubscribe/index.html           unsubscribe page: noindex, no analytics; calls the Apps Script with ?action=unsub&e=<email>&t=<token>
 ```
 
 ## Content rules
@@ -69,4 +70,5 @@ Files starting with `_` and posts with `draft: true` are skipped. Generated HTML
 - Starter Blueprint and Operator Kit show a button that opens the email field in place. The free card keeps its field open. With JavaScript off, all three forms stay open.
 - The ACL sales notice sits under the Starter Blueprint button and again on `kits/access/`. Keep the wording identical in both places and in `terms/`.
 - Starter Blueprint's "Notify me" becomes the Stripe Buy button in the second pull request, which publishes the zip and enables the button on `kits/access/`.
+- Unsubscribe links in emails are built by the Apps Script (`unsubLink_`, handler in `leads_apps_script.gs` in the vault) and point at `/unsubscribe/`. The page removes the link's query string from the address bar as soon as it loads.
 - Every footer links to `/terms/` and `/privacy/`; Kits is in the sidebar only until selling starts. Those two URLs are the ones for Stripe's support settings. When the footer is edited, change it in every page, including `terms/`, `privacy/` and `kits/access/`; blog pages copy it from `case-studies/ledger.html` at build time.
