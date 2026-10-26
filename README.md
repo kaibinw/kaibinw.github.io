@@ -16,6 +16,7 @@ case-studies/dental-catalog.html
 case-studies/hq.html             parked: unlinked, noindex
 case-studies/second-brain.html
 case-studies/dashboard.html      parked: unlinked, noindex
+kits/index.html                  dormant (shop branch only): noindex, not linked, checkout links are placeholders
 ```
 
 ## Content rules
@@ -53,3 +54,11 @@ Posts are markdown files in `blog/posts/`. A zero-dependency script turns them i
 The build also refreshes the homepage's "Latest writing" section (the 3 newest posts, between the `blog:latest` markers in `index.html`), so commit `index.html` too.
 
 Files starting with `_` and posts with `draft: true` are skipped. Generated HTML is never edited by hand; deleting a post's `.md` and rebuilding removes its page.
+
+## Kits page (Tier 0 only)
+
+`kits/index.html` carries one card: Baseline Core, a free download with an email field. The page is `noindex` for now and is linked from every sidebar as "Get the kits". The commercial tiers (Starter Blueprint, Operator Kit and the post-purchase page) are staged in a second pull request and ship with Post 04.
+
+- On submit the page starts the download of `kits/downloads/baseline-core.zip`, sends the email to a Google Apps Script web app (`APPS_SCRIPT_URL` at the bottom of `kits/index.html`) with `sendBeacon`, counts the GoatCounter event `shop-tier0-download`, then replaces the form with a confirmation. The download never waits on the sheet, and the same email is not sent twice within 24 hours from one browser. Without JavaScript the form just downloads the zip. The email is never put in a URL.
+- Canonical and social tags use `https://kaibinw.github.io` until a custom domain is live. The footer reads kaibinw.io, the planned trading domain.
+- Before this merges: deploy the hardened Apps Script handler and settle the consent wording on the form.
