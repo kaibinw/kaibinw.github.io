@@ -53,6 +53,8 @@ Posts are markdown files in `blog/posts/`. A zero-dependency script turns them i
 1. Copy `blog/posts/_template.md` to `blog/posts/<slug>.md` (the filename becomes the URL: `/blog/<slug>.html`).
 2. Fill in the frontmatter (`title`, `date: YYYY-MM-DD`, `summary`, optional `tags: [a, b]`, optional `draft: true`) and write the post. Images go in `blog/img/` and are referenced as `![alt](img/name.png)`.
 3. Run `node build-blog.mjs` (Node 18+). Add `--drafts` to preview drafts locally.
+   - **Link previews:** each post gets a card at `blog/og/<slug>.png` (the `.tc` timecode kicker + title + summary, drawn with `style.css` by headless Chrome/Chromium; `CHROME=/path` if it isn't on PATH), and `/blog/` gets `blog/og/index.png` ("Notes from the cut."). Cards re-render when the title/summary changes; `--og` forces all. Without a browser the build still runs and keeps the existing cards.
+   - To use your own image instead, add `image:` (or `og_image:`) to the frontmatter: a full URL, a root-relative `/assets/og/post.png`, or a path relative to `blog/`. Order: frontmatter image → generated card → `/og.png`. Feeds `og:image`, `twitter:image` and `twitter:card=summary_large_image`.
 4. Commit the markdown **and** the generated `blog/*.html` + `blog/feed.xml`, then push or open a PR.
 
 The build also refreshes the homepage's "Latest writing" section (the 3 newest posts, between the `blog:latest` markers in `index.html`), so commit `index.html` too.
