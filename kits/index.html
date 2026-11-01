@@ -222,6 +222,7 @@
     var p = new URLSearchParams();
     p.set(FORM_ENTRY_EMAIL, email);
     p.set(FORM_ENTRY_SOURCE, source);
+    p.set("emailAddress", email);   // the form's built-in email field, if "Collect email addresses" is on; ignored otherwise
     try { fetch(FORM_URL, { method: "POST", mode: "no-cors", keepalive: true, body: p }); } catch (err) { /* nothing to do */ }
   }
 
