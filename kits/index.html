@@ -186,9 +186,9 @@
 
   /* Backup copy: a Google Form with two short-answer fields. Leave FORM_URL empty to switch it off.
      FORM_URL is the form's .../formResponse address; the two entry ids come from the form's pre-filled link. */
-  var FORM_URL = "";
-  var FORM_ENTRY_EMAIL = "";    // e.g. "entry.1234567890"
-  var FORM_ENTRY_SOURCE = "";   // e.g. "entry.0987654321"
+  var FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdV-6QYxTO0Wl3O1FVpyAwOqA2DWmWemtrd1YAVk9FVTrytOA/formResponse";
+  var FORM_ENTRY_EMAIL = "entry.672637665";
+  var FORM_ENTRY_SOURCE = "entry.84629965";
   var OUTBOX = "kits-outbox";
 
   function outbox() { try { return JSON.parse(localStorage.getItem(OUTBOX) || "[]"); } catch (err) { return []; } }
