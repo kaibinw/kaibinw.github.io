@@ -204,13 +204,23 @@
 
   /* Primary: the Apps Script. The reply is readable, so only a {status:"success"} counts as saved.
      Anything else (network error, redirect to a login page, "rejected", "busy") leaves the signup queued for a retry. */
+  /* POST tracking: one GoatCounter event per Apps Script reply, never carrying the email.
+     kits-post-ok (saved), kits-post-<status> (rejected, busy, ...), kits-post-error (no readable reply). The title is the source. */
+  function track(path, title) {
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: path, title: title, event: true }); } catch (err) { /* never block */ }
+  }
+
   function sendPrimary(email, source) {
     var body = JSON.stringify({ email: email, source: source });
     try {
       fetch(APPS_SCRIPT_URL, { method: "POST", keepalive: true, headers: { "Content-Type": "text/plain;charset=UTF-8" }, body: body })
         .then(function (r) { return r.json(); })
-        .then(function (j) { if (j && j.status === "success") unqueue(email, source); })
-        .catch(function () { /* stays queued */ });
+        .then(function (j) {
+          var st = j && j.status;
+          if (st === "success") unqueue(email, source);
+          track("kits-post-" + (st === "success" ? "ok" : String(st || "error").replace(/[^a-z0-9-]/gi, "").slice(0, 20)), source);
+        })
+        .catch(function () { track("kits-post-error", source); /* stays queued */ });
     } catch (err) {
       try { navigator.sendBeacon && navigator.sendBeacon(APPS_SCRIPT_URL, new Blob([body], { type: "text/plain;charset=UTF-8" })); } catch (e2) { /* stays queued */ }
     }
