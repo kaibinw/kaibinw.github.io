@@ -1,3 +1,7 @@
+---
+date: 2026-11-02
+---
+
 # The bots don't talk to each other. They write it down.
 
 _How my coding agent and three checker bots hand work back and forth through a shared log, and where that log is weaker than it looks._
