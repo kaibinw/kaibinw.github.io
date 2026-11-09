@@ -11,8 +11,9 @@
 <meta property="og:description" content="Kits for making an AI agent safe to leave in a folder of notes, new or existing. Pre-release.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kaibinw.github.io/kits/">
-<meta property="og:image" content="https://kaibinw.github.io/og.png">
+<meta property="og:image" content="https://kaibinw.github.io/assets/og/kits.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kaibinw.github.io/assets/og/kits.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Fragment+Mono&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -183,13 +184,66 @@
     "tier2-waitlist": "You are on the waitlist. I will email when the Operator Kit opens."
   };
 
-  function send(email, source) {
+  /* Backup copy: a Google Form with two short-answer fields. Leave FORM_URL empty to switch it off.
+     FORM_URL is the form's .../formResponse address; the two entry ids come from the form's pre-filled link. */
+  var FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdV-6QYxTO0Wl3O1FVpyAwOqA2DWmWemtrd1YAVk9FVTrytOA/formResponse";
+  var FORM_ENTRY_EMAIL = "entry.672637665";
+  var FORM_ENTRY_SOURCE = "entry.84629965";
+  var OUTBOX = "kits-outbox";
+
+  function outbox() { try { return JSON.parse(localStorage.getItem(OUTBOX) || "[]"); } catch (err) { return []; } }
+  function saveOutbox(list) { try { localStorage.setItem(OUTBOX, JSON.stringify(list.slice(-20))); } catch (err) { /* private mode */ } }
+  function queue(email, source) {
+    var list = outbox().filter(function (x) { return !(x.email === email && x.source === source); });
+    list.push({ email: email, source: source });
+    saveOutbox(list);
+  }
+  function unqueue(email, source) {
+    saveOutbox(outbox().filter(function (x) { return !(x.email === email && x.source === source); }));
+  }
+
+  /* Primary: the Apps Script. The reply is readable, so only a {status:"success"} counts as saved.
+     Anything else (network error, redirect to a login page, "rejected", "busy") leaves the signup queued for a retry. */
+  /* POST tracking: one GoatCounter event per Apps Script reply, never carrying the email.
+     kits-post-ok (saved), kits-post-<status> (rejected, busy, ...), kits-post-error (no readable reply). The title is the source. */
+  function track(path, title) {
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: path, title: title, event: true }); } catch (err) { /* never block */ }
+  }
+
+  function sendPrimary(email, source) {
     var body = JSON.stringify({ email: email, source: source });
     try {
-      if (navigator.sendBeacon && navigator.sendBeacon(APPS_SCRIPT_URL, new Blob([body], { type: "text/plain;charset=UTF-8" }))) return;
-    } catch (err) { /* fall through to fetch */ }
-    try { fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", keepalive: true, body: body }); } catch (err) { /* nothing to do */ }
+      fetch(APPS_SCRIPT_URL, { method: "POST", keepalive: true, headers: { "Content-Type": "text/plain;charset=UTF-8" }, body: body })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          var st = j && j.status;
+          if (st === "success") unqueue(email, source);
+          track("kits-post-" + (st === "success" ? "ok" : String(st || "error").replace(/[^a-z0-9-]/gi, "").slice(0, 20)), source);
+        })
+        .catch(function () { track("kits-post-error", source); /* stays queued */ });
+    } catch (err) {
+      try { navigator.sendBeacon && navigator.sendBeacon(APPS_SCRIPT_URL, new Blob([body], { type: "text/plain;charset=UTF-8" })); } catch (e2) { /* stays queued */ }
+    }
   }
+
+  /* Backup: an independent copy through the Google Form. No reply is readable (no-cors); the form's own response sheet is the record. */
+  function sendBackup(email, source) {
+    if (!FORM_URL || !FORM_ENTRY_EMAIL || !FORM_ENTRY_SOURCE) return;
+    var p = new URLSearchParams();
+    p.set(FORM_ENTRY_EMAIL, email);
+    p.set(FORM_ENTRY_SOURCE, source);
+    p.set("emailAddress", email);   // the form's built-in email field, if "Collect email addresses" is on; ignored otherwise
+    try { fetch(FORM_URL, { method: "POST", mode: "no-cors", keepalive: true, body: p }); } catch (err) { /* nothing to do */ }
+  }
+
+  function send(email, source) {
+    queue(email, source);          // removed once the Apps Script confirms
+    sendPrimary(email, source);
+    sendBackup(email, source);
+  }
+
+  /* On every page load, retry anything the Apps Script never confirmed. Both sinks ignore repeats of the same email and source. */
+  outbox().forEach(function (x) { sendPrimary(x.email, x.source); });
 
   /* Paid tiers start as a button and open the email field in place. With no script the form stays open. */
   Array.prototype.forEach.call(document.querySelectorAll(".sh-trigger"), function (btn) {

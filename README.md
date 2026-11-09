@@ -53,6 +53,10 @@ Posts are markdown files in `blog/posts/`. A zero-dependency script turns them i
 1. Copy `blog/posts/_template.md` to `blog/posts/<slug>.md` (the filename becomes the URL: `/blog/<slug>.html`).
 2. Fill in the frontmatter (`title`, `date: YYYY-MM-DD`, `summary`, optional `tags: [a, b]`, optional `draft: true`) and write the post. Images go in `blog/img/` and are referenced as `![alt](img/name.png)`.
 3. Run `node build-blog.mjs` (Node 18+). Add `--drafts` to preview drafts locally.
+   - **Link previews:** each post gets a card at `blog/og/<slug>.png` (the `.tc` timecode kicker + title + summary, drawn with `style.css` by headless Chrome/Chromium; `CHROME=/path` if it isn't on PATH), and `/blog/` gets `blog/og/index.png` ("Notes from the cut."). Cards re-render when the title/summary changes; `--og` forces all. Without a browser the build still runs and keeps the existing cards.
+   - To use your own image instead, add `image:` (or `og_image:`) to the frontmatter: a full URL, a root-relative `/assets/og/post.png`, or a path relative to `blog/`. Order: frontmatter image → generated card → `/og.png`. Feeds `og:image`, `twitter:image` and `twitter:card=summary_large_image`.
+   - Case studies and kits get the same cards from `node build-og.mjs` (title + `og:description` of each page → `assets/og/<name>.png`, and it patches `og:image` / `twitter:image` in that page's head). Run it after adding or retitling one of those pages. Pages with a hand-set `og:image` are left alone.
+   - On push to `main`, the Build blog workflow runs both scripts and commits the results, so a new post only needs its markdown file.
 4. Commit the markdown **and** the generated `blog/*.html` + `blog/feed.xml`, then push or open a PR.
 
 The build also refreshes the homepage's "Latest writing" section (the 3 newest posts, between the `blog:latest` markers in `index.html`), so commit `index.html` too.
@@ -64,6 +68,7 @@ Files starting with `_` and posts with `draft: true` are skipped. Generated HTML
 `kits/index.html` shows Baseline Core (free download), Starter Blueprint and Operator Kit, so nothing about the paid tiers is a surprise. The page is `noindex` and linked from every sidebar as "Kits".
 
 - All three cards use the same email capture. Each form sends `{email, source}` to a Google Apps Script web app (`APPS_SCRIPT_URL` at the bottom of `kits/index.html`) with `sendBeacon`. Sources: `tier0` (also starts the download of `kits/downloads/baseline-core.zip`), `tier1-notify` ("Notify me at launch") and `tier2-waitlist`. The sheet has the columns Timestamp, Email, Status, Source.
+- **Two-copy capture:** one email field, two independent writes. The Apps Script reply is read, and only `{status:"success"}` clears the signup from a `localStorage` outbox (`kits-outbox`); anything else is retried on the next page load. The same signup also goes to a Google Form (`FORM_URL`, `FORM_ENTRY_EMAIL`, `FORM_ENTRY_SOURCE` next to `APPS_SCRIPT_URL`; empty = off). Reconcile the Sheet against the form's response sheet; an email in one and not the other means a sink failed.
 - GoatCounter events: `shop-tier0-download`, `shop-tier1-notify`, `shop-tier2-waitlist`. The download never waits on the sheet; a repeat of the same email and source is ignored by the sheet script, not by the browser. The email is never put in a URL.
 - Canonical and social tags use `https://kaibinw.github.io` until a custom domain is live. The footer reads kaibinw.github.io for now; switch it to the trading domain once that is live.
 - Before this merges: deploy the hardened Apps Script handler (`leads_apps_script.gs` in the vault).

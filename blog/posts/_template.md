@@ -3,6 +3,7 @@ title: Post title goes here
 date: 2026-10-22
 summary: One or two sentences. Shows on the blog index, in link previews, and in the RSS feed.
 tags: [pipeline, agentic-engineering]
+# image: /assets/og/my-post.png   # optional custom link-preview image; default is the generated card in blog/og/
 draft: true
 ---
 
