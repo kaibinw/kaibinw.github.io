@@ -1,6 +1,6 @@
 ---
 title: The bots don't talk to each other. They write it down
-date: 2026-11-09
+date: 2026-11-02
 summary: How my coding agent and three checker bots hand work back and forth through a shared log, and where that log is weaker than it looks.
 tags: [pipeline, agentic-engineering]
 ---

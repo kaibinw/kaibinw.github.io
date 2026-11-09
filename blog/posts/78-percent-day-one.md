@@ -3,7 +3,6 @@ title: 78% of my plan on day one. The org chart was the fix.
 date: 2026-11-09
 summary: Fifteen bots, all talking to my Chief of Staff, all asking me for approval. By my own count I burned through about 78% of my daily platform plan that day. The biggest fix wasn't a config setting. It was deciding who reports to whom.
 tags: [pipeline, agentic-engineering]
-draft: true
 ---
 
 On the first day I ran my bot team for real, I checked my usage meter and it sat at 78%. That is my figure, read off my own account dashboard. What I can show is the log: every row the bots wrote, every draft change reviewed, and the bots' own back-and-forth chats. The log shows raw activity—and in multi-agent setups, runaway activity is what costs.
