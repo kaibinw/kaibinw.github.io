@@ -1,14 +1,9 @@
 ---
 title: The bots don't talk to each other. They write it down
-date: 2026-11-02
+date: 2026-11-09
 summary: How my coding agent and three checker bots hand work back and forth through a shared log, and where that log is weaker than it looks.
 tags: [pipeline, agentic-engineering]
 ---
-
-
-# The bots don't talk to each other. They write it down.
-
-_How my coding agent and three checker bots hand work back and forth through a shared log, and where that log is weaker than it looks._
 
 My coding agent and my checker bots don't share a chat. They don't call each other. Nearly everything they say to each other goes through a shared notes workspace: one table for requests between the checkers and the Builder, one table for events, and a status row per pull request. I read the same tables. So does the bot that keeps score.
 
@@ -161,7 +156,7 @@ The bots don't talk to each other. They write it down, and I read it. Most days,
 
 If you are running multi-agent workflows across GitHub PRs, you don't need to rebuild these state tables from scratch. 
 
-I’ve compiled the exact JSON schema validators, table structures, and prompt injection isolation rules used in this setup into a clean starter kit:
+I've compiled the exact JSON schema validators, table structures, and prompt injection isolation rules used in this setup into a clean starter kit:
 
 * **Strict Handoffs & Events Schemas** (JSON/YAML)
 * **Prompt Injection Defense Prompts** (treating logs as data, never instructions)
