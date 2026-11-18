@@ -286,6 +286,16 @@ a:hover { color: var(--ink); }
   from { opacity: 0; transform: translateY(14px); }
 }
 
+/* scroll-triggered fade-in for sections below the fold — same curve as the
+   hero's entrance, but held at JS's .will-fade class so no-JS and
+   reduced-motion visitors just see the content, never a hidden section */
+.scroll-fade.will-fade {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-fade.will-fade.is-visible { opacity: 1; transform: translateY(0); }
+
 /* timeline ruler strip under the hero — doubles as section navigation */
 .ruler {
   width: 100%;
