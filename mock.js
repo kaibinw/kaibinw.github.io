@@ -100,6 +100,27 @@
     }
   }
 
+  /* Scroll-fade sections: [.scroll-fade] blocks fade and rise into place the
+     first time they cross into view. The .will-fade class is added here, not
+     in CSS, so a no-JS or reduced-motion visitor only ever sees the content
+     at full opacity — never a section stuck invisible. */
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+    var fadeEls = document.querySelectorAll(".scroll-fade");
+    if (fadeEls.length) {
+      var fadeObserver = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        });
+      }, { threshold: 0.2 });
+      fadeEls.forEach(function (el) {
+        el.classList.add("will-fade");
+        fadeObserver.observe(el);
+      });
+    }
+  }
+
   /* About hobbies: tapping a timeline marker opens its note, like a
      marker comment on an NLE timeline. One open at a time; Esc closes. */
   var hobbyTrack = document.querySelector(".hobby-track");
