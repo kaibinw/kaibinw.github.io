@@ -1,6 +1,6 @@
 ---
 title: Goodbye to my Grok Bots
-date: 2026-10-22
+date: 2026-11-21
 summary: For months, eighteen bots woke up before me, read the internet while the house was still quiet, and left a neat stack of notes by my coffee.
 tags: [pipeline, agentic-engineering]
 draft: false
