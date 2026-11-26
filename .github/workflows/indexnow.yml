@@ -1,0 +1,80 @@
+# Pings IndexNow (Bing, Yandex, Seznam, Naver; Bing feeds DuckDuckGo and ChatGPT search) with the
+# pages that just changed. Google does not take IndexNow; it finds new posts via sitemap.xml, the
+# feed and the homepage "Latest writing" block.
+#
+# Runs after "Build blog" finishes (its bot commit can't trigger workflows itself) and on direct
+# pushes of hand-written pages. The key is public by design: it lives at /<key>.txt, so no secret.
+name: IndexNow
+
+on:
+  workflow_run:
+    workflows: [Build blog]
+    types: [completed]
+    branches: [main]
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'sitemap.xml'
+  workflow_dispatch:
+    inputs:
+      all:
+        description: Submit every URL in sitemap.xml
+        type: boolean
+        default: false
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Collect changed URLs
+        id: urls
+        env:
+          BEFORE: ${{ github.event.before }}
+          ALL: ${{ inputs.all }}
+          RUN_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          if [ "${ALL:-false}" = "true" ]; then
+            files=$(git ls-files '*.html')
+          elif [ -n "${RUN_SHA:-}" ]; then
+            # everything from the push that started the blog build up to the build commit on main
+            files=$(git diff --name-only "${RUN_SHA}^" HEAD -- '*.html')
+          elif [ -n "${BEFORE:-}" ] && ! [[ "$BEFORE" =~ ^0+$ ]]; then
+            files=$(git diff --name-only "$BEFORE" "$GITHUB_SHA" -- '*.html')
+          else
+            files=$(git diff --name-only HEAD^ HEAD -- '*.html')
+          fi
+          # keep only URLs the sitemap lists (indexable pages), mapped to clean URLs
+          node -e '
+            const fs = require("fs");
+            const listed = new Set([...fs.readFileSync("sitemap.xml", "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]));
+            const urls = process.argv.slice(1).map(f => "https://kaibinw.github.io/" + f.replace(/(^|\/)index\.html$/, "$1")).filter(u => listed.has(u));
+            if (urls.length) urls.push("https://kaibinw.github.io/sitemap.xml");
+            fs.writeFileSync("urls.json", JSON.stringify([...new Set(urls)].slice(0, 10000)));
+            console.log(urls.join("\n") || "no indexable pages changed");
+          ' $files
+          echo "count=$(node -p 'require("./urls.json").length')" >> "$GITHUB_OUTPUT"
+      - name: Wait for Pages to publish
+        if: steps.urls.outputs.count != '0'
+        run: sleep 90
+      - name: Submit to IndexNow
+        if: steps.urls.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          key=$(ls | grep -E '^[0-9a-f]{32}\.txt$' | head -1 | sed 's/\.txt$//')
+          [ -n "$key" ] || { echo "::error::no <key>.txt at repo root"; exit 1; }
+          body=$(node -e 'const k=process.argv[1]; console.log(JSON.stringify({host:"kaibinw.github.io", key:k, keyLocation:`https://kaibinw.github.io/${k}.txt`, urlList:require("./urls.json")}))' "$key")
+          code=$(curl -sS -o resp.txt -w '%{http_code}' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' --data "$body")
+          echo "IndexNow HTTP $code"; cat resp.txt || true
+          case "$code" in 200|202) ;; *) echo "::warning::IndexNow returned $code" ;; esac
