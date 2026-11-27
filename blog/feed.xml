@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
 <title>Kai-Bin Wong — Blog</title>
 <link>https://kaibinw.github.io/blog/</link>
+<atom:link href="https://kaibinw.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from a VFX editor who ships software.</description>
 <item><title>I wrote the rules on day one. Then I audited 96 sessions to see which held.</title><link>https://kaibinw.github.io/blog/rules-on-day-one-audited-96-sessions.html</link><guid>https://kaibinw.github.io/blog/rules-on-day-one-audited-96-sessions.html</guid><pubDate>Mon, 23 Nov 2026 14:00:00 GMT</pubDate><description>Some of my rules were followed, some were bent, and one was rubber-stamped every time. The transcripts told me which was which</description></item>
 <item><title>Goodbye to my Grok Bots</title><link>https://kaibinw.github.io/blog/goodbye-to-my-grok-bots.html</link><guid>https://kaibinw.github.io/blog/goodbye-to-my-grok-bots.html</guid><pubDate>Fri, 20 Nov 2026 14:00:00 GMT</pubDate><description>For months, eighteen bots woke up before me, read the internet while the house was still quiet, and left a neat stack of notes by my coffee.</description></item>

@@ -14,6 +14,8 @@ on:
       - 'og-cards.mjs'
       - 'case-studies/*.html'
       - 'kits/index.html'
+      - 'privacy/index.html'
+      - 'terms/index.html'
   workflow_dispatch:
 
 permissions:
@@ -29,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # sitemap lastmod reads each page's last commit date
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -41,7 +45,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A blog assets/og case-studies kits index.html
+          git add -A blog assets/og case-studies kits privacy terms unsubscribe index.html sitemap.xml feed.xml
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
